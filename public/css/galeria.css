@@ -1,0 +1,64 @@
+#gallery{
+    margin: 0 auto;
+}
+#gallery a,
+#gallery a:hover{
+    color: #000;
+    text-decoration: none!important;
+}
+.lb-nav a.lb-prev{
+    background: url(../img/lightbox/prev.png) left 48% no-repeat!important;
+}
+.lb-nav a.lb-next{
+    background: url(../img/lightbox/next.png) right 48% no-repeat!important;
+}
+.lb-cancel{
+    background: url(../img/lightbox/loading.gif) no-repeat!important;
+}
+.lb-data .lb-close{
+    background: url(../img/lightbox/close.png) top right no-repeat!important;
+}
+
+.masonryholder {
+    column-count: 4;
+    column-gap: 10x;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.masonryblocks {
+    display: inline-block;
+    background: #dfdfdf;
+    padding: 0px;
+    margin: 0 0 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.masonryblocks img {
+    width: 100%;
+}
+
+@media screen and (max-width:768px) {
+    .masonryholder {
+        column-count: 1;
+    }
+}
+
+@media screen and (min-width:769px) {
+    .masonryholder {
+        column-count: 2;
+    }
+}
+
+@media screen and (min-width:1080px) {
+    .masonryholder {
+        column-count: 3;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .masonryholder {
+        column-count: 4;
+    }
+}

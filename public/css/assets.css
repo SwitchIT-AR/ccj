@@ -1,0 +1,546 @@
+/* DEFAULTS */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+  font-family: "proxima-nova";
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 77px;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 75px;
+  margin-bottom: 2rem;
+}
+
+h3 {
+  font-weight: bold;
+  font-size: 55px;
+  margin-bottom: 1.9rem;
+}
+
+h4 {
+  font-size: 3rem;
+  margin-bottom: 1.8rem;
+}
+
+h5 {
+  line-height: 1;
+  font-size: 25px;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.3;
+}
+
+ul {
+  padding-left: 0;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.contenedor {
+  padding: 70px 250px 90px 250px;
+}
+
+.btn-horario {
+  font-size: 1.4rem;
+}
+
+/* LANDING */
+#landing {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+#landing .landing-img {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px;
+  display: table-cell;
+  vertical-align: bottom;
+  color: white;
+  text-align: center;
+}
+
+#landing .landing-title {
+  display: block;
+  font-size: 5rem;
+  font-weight: bolder;
+  margin-bottom: 0;
+}
+
+#landing .landing-subtitle {
+  display: block;
+  letter-spacing: 1px;
+  font-size: 40px;
+  font-weight: 100 !important;
+  font-style: italic;
+  margin-bottom: 2.5rem;
+}
+
+/* INTRO */
+#intro-text {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+/* TITLE CARDS */
+#title-cards .card {
+  border: 0;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.25);
+}
+
+#title-cards .card-img-top {
+  height: 250px;
+  object-fit: cover;
+  padding-bottom: 9px;
+  background-color: #ddd;
+}
+
+#title-cards .card-icon {
+  height: 50px;
+  margin: auto;
+  display: block;
+  margin-bottom: 15px;
+}
+
+#title-cards .card-title {
+  font-weight: bolder;
+  text-align: center;
+  line-height: 25px;
+  font-size: 18px;
+}
+
+#title-cards .card p {
+  font-family: "proxima-nova";
+  font-weight: 100;
+  letter-spacing: -0.33px;
+  justify-content: flex-end;
+  -webkit-box-pack: end;
+  text-align: center;
+  font-size: 16px;
+}
+
+.cards-m,
+#cards-m {
+  margin: 60px 110px;
+}
+
+.cards-m .card,
+#cards-m .card {
+  margin: 0 20px;
+  padding: 15px;
+  border-radius: 9px;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.25);
+}
+
+.cards-m img,
+#cards-m img {
+  height: 400px;
+  object-fit: cover;
+}
+
+.card-deck-primaria {
+  padding: 0 13rem;
+  color: #000;
+}
+
+.card-deck .card-img-top {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.card-deck .card {
+  border-radius: 12px;
+}
+
+.btn-dark {
+  background-color: #000;
+  border-radius: 12px;
+}
+
+.btn-light {
+  border-radius: 12px;
+}
+
+/* TITLE IMG BOTTOM */
+
+#title-img-bot {
+  color: white;
+  background-color: rgb(90, 200, 250);
+}
+
+#title-img-bot img {
+  max-height: 700px;
+  object-fit: cover;
+}
+
+/* TITLE SLIDE IMG */
+
+#title-slide-img .juxtapose {
+  max-height: 500px;
+}
+
+#title-slide-img .juxtapose img {
+  margin: auto;
+  text-align: center;
+  display: block;
+}
+
+/* TITLE TABLE */
+
+#title-table {
+  background-color: rgb(52, 199, 89);
+  color: white;
+}
+
+#title-table .table {
+  margin-top: 70px;
+  background-color: #eee;
+  padding: 50px 100px;
+  border-radius: 0.75rem;
+}
+
+#title-table h2 {
+  font-weight: bolder;
+}
+
+#title-table th {
+  font-weight: normal;
+  text-align: center;
+  padding: 10px;
+}
+
+#title-table tbody th,
+#title-table tbody td {
+  font-weight: bolder;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+#title-table tbody td {
+  color: rgb(90, 200, 250);
+}
+
+/* TITLE CARRUSEL */
+#carrusel,
+.carrusel {
+  padding: 20px;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.carrusel-h100 img {
+  height: 90vh !important;
+}
+
+.carrusel div:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.15) 40%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mix-blend-mode: overlay;
+}
+
+#title-carousel {
+  background-color: rgb(255, 59, 48);
+  color: white;
+}
+
+.title-caption {
+  bottom: 9vh;
+  min-height: 60px;
+  text-align: center;
+  color: white;
+  position: absolute;
+  font-style: italic;
+  font-weight: 200;
+  width: 100%;
+  z-index: 2;
+  display: block;
+}
+
+.caption {
+  bottom: 2.5vh;
+  min-height: 65px;
+  text-align: center;
+  color: white;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  line-height: 1;
+}
+
+.solo-caption {
+  bottom: 0;
+  min-height: 60px;
+  text-align: center;
+  color: white;
+  position: absolute;
+  font-style: italic;
+  font-weight: 200;
+  width: 100%;
+  z-index: 2;
+}
+
+.carrusel {
+  position: relative;
+}
+
+/* PARALLAX */
+
+#plx {
+  padding: 5rem;
+  height: 500px;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: aqua;
+  background-size: cover;
+}
+
+@media only screen and (max-width: 1600px) {
+  .card-deck-primaria {
+    padding: 0;
+  }
+
+  .contenedor {
+    padding: 80px;
+  }
+}
+
+@media only screen and (max-width: 1444px) {
+  h1 {
+    font-size: 75px;
+  }
+
+  h2 {
+    font-size: 68px;
+  }
+
+  h3 {
+    font-size: 52px;
+  }
+
+  h4 {
+    font-size: 44px;
+  }
+
+  h5 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 22px;
+  }
+
+  #title-cards p {
+    font-size: 14px !important;
+    font-weight: 100;
+  }
+
+  .title-caption {
+    bottom: 11vh;
+  }
+
+  .caption {
+    font-size: 1.25em;
+  }
+
+  .contenedor {
+    padding: 70px;
+  }
+
+  .card-deck-primaria {
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 1366px) {
+  #landing .landing-img {
+    height: 300px;
+  }
+
+  .cards-m,
+  #cards-m {
+    margin: 60px 10px;
+  }
+
+  .cards-m .card,
+  #cards-m .card {
+    margin: 0 5px;
+    min-width: 220px;
+  }
+
+  .cards-m img,
+  #cards-m img {
+    height: 330px;
+  }
+
+  #horarios .col h4 {
+    font-size: 30px;
+  }
+
+  .btn-horario {
+    font-size: 1rem;
+  }
+
+  #landing .landing-title {
+    font-size: 4.25rem;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .card-deck-primaria {
+    padding: 0;
+  }
+
+  h1 {
+    font-size: 32px !important;
+    margin-bottom: 2.1rem;
+  }
+
+  h2 {
+    font-size: 30px;
+    margin-bottom: 1.75rem;
+  }
+
+  h3 {
+    font-size: 27px;
+    margin-bottom: 1.6rem;
+  }
+
+  h4 {
+    font-size: 24px;
+    margin-bottom: 1.5rem;
+  }
+
+  h5 {
+    font-size: 20px;
+    margin-bottom: 1.4rem;
+  }
+
+  section p,
+  section a,
+  section button {
+    font-size: 16px !important;
+    font-weight: 400;
+  }
+
+  .contenedor {
+    padding: 70px 25px;
+  }
+
+  .figure {
+    display: none;
+  }
+
+  .img-nivel {
+    width: 100%;
+  }
+
+  #title-cards .p-5 {
+    padding: 50px 0 !important;
+  }
+
+  #landing .landing-title {
+    font-size: 3.2rem;
+  }
+
+  .cards-m,
+  #cards-m {
+    margin: 10px;
+  }
+
+  .cards-m .card,
+  #cards-m .card {
+    margin: 10px;
+  }
+
+  #horarios .col {
+    -ms-flex-preferred-size: auto;
+    flex-basis: auto;
+    -ms-flex-positive: auto;
+    flex-grow: inherit;
+    max-width: 100%;
+  }
+
+  #horarios .fa-5x {
+    font-size: 4rem;
+  }
+}
+
+.chat-box {
+  position: fixed;
+  right: 20px;
+  bottom: 70px;
+  cursor: pointer;
+  border-radius: 50%;
+  background: #007aff;
+  height: 60px;
+  width: 60px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+.btn-chat {
+  border-radius: 50px;
+  padding: 0;
+}
+.menu-chat {
+  top: 0px !important;
+  left: -25px !important;
+  width: 300px;
+  padding: 0 0 10px 0;
+  box-shadow: 1px 1px 7px 3px rgba(0, 0, 0, 0.2);
+}
+.chat-header {
+  background: #007aff;
+  color: white;
+  padding: 15px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.logo-small {
+  height: 35px;
+}
+.dropdown-menu {
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 0.5s ease all;
+  border-radius: 20px;
+}
+.dropdown-menu.show {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0px);
+  transition: 0.5s ease all;
+}
