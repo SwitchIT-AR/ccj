@@ -97,8 +97,8 @@ routes.forEach((route) => {
 router.get("/tickets", ticketCtrl.getTicket);
 
 router.post("/newTicket", ticketCtrl.newTicket);
-router.get("/ticketUpdate", ticketCtrl.updateTicket);
-router.put("/ticketUpdate", ticketCtrl.updateTicket);
+router.get("/ticketUpdate", ticketCtrl.getOneTicket);
+router.put("/:ticketUpdate", ticketCtrl.updateTicket);
 
 const matriculaRoutes = [
   { route: "ig", view: "matriculacion-ig" },

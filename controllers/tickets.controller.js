@@ -6,6 +6,11 @@ ticketsCtrl.getTicket = async (req, res) => {
   res.json(ticketsData);
 };
 
+ticketsCtrl.getOneTicket = async (req, res) => {
+  const ticketsData = await Tickets.find({ _id: req.query._id }).lean();
+  res.json(ticketsData);
+};
+
 ticketsCtrl.newTicket = async (req, res) => {
   try {
     const {
@@ -48,8 +53,25 @@ ticketsCtrl.newTicket = async (req, res) => {
 };
 
 ticketsCtrl.updateTicket = async (req, res) => {
-  const ticketsData = await Tickets.find().lean();
-  res.json(ticketsData);
+  try {
+    console.log(req.query);
+
+    const ticketEdit = await Tickets.findOneAndUpdate(
+      { _id: req.query._id },
+      req.query,
+      {
+        new: true,
+      }
+    );
+    if (!ticketEdit) {
+      return res.status(204).json({ message: "no existe el ticket" });
+    } else {
+      return res.json(ticketEdit);
+    }
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send("There was a problem editing the mate");
+  }
 };
 
 module.exports = ticketsCtrl;
