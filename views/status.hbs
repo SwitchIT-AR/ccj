@@ -1,0 +1,82 @@
+<section id="data">
+  <div class="contenedor c-celeste">
+    <div class="p-3">
+      <h4>Datos actuales de registros</h4>
+      <h5>Conteo de registros:</h5>
+    </div>
+    <div class="card-deck">
+      <div id="total" class="col mb-4"></div>
+    </div>
+    <div id="title-cards">
+      <div class="px-3 pb-3">
+        <h5>Registros:</h5>
+      </div>
+      <div class="card-deck" id="status"></div>
+    </div>
+  </div>
+</section>
+<script>
+  fetch("https://colegiociudadjardin.edu.ar/landing/status/datos")
+    .then((response) => response.json())
+    .then((data) => {
+      const status = document.getElementById("status");
+      const total = document.getElementById("total");
+      data.map((reg) => {
+        datos = `
+            <div class="col-xs-12 col-md-3">
+            <div class="card mb-4" style="min-height:185px">
+              <div class="card-body">
+            <h5 class="card-title">${reg.datos.nombreApellido}</h5>
+            ${reg.red === "Google"
+            ? `<p class="t-rojo font-weight-bold mb-1">Registrado desde: </br>${reg.red} `
+            : ``
+          }
+            ${reg.red === "Facebook"
+            ? `<p class="text-primary font-weight-bold mb-1">Registrado desde: </br>${reg.red} `
+            : ``
+          }
+            ${reg.red === "Instagram"
+            ? `<p class="t-violeta font-weight-bold mb-1">Registrado desde: </br>${reg.red} `
+            : ``
+          }
+            ${reg.red === "Linkedin"
+            ? `<p class="t-amarillo font-weight-bold mb-1">Registrado desde: </br>${reg.red} `
+            : ``
+          }
+            ${reg.red === "Sitio Web Gartenstadt"
+            ? `<p class="t-verde font-weight-bold mb-1">Registrado desde: </br>${reg.red} `
+            : ``
+          }
+            </p>
+            <p class="mb-1">Como nos conociste: </br>${reg.datos.como ? reg.datos.como : "no especificado"
+          }</p>
+            </div>
+            </div>
+            </div>
+            `;
+        status.insertAdjacentHTML("afterbegin", datos);
+      });
+
+      const info = data.reduce(function (c, d) {
+        if (!c[d.red]) c[d.red] = 0;
+        c[d.red]++;
+        return c;
+      }, {});
+
+      redes = `
+          <div class="card">
+            <div class="card-body">
+              <h6>Sitio Web Gartenstadt: ${info["Sitio Web Gartenstadt"]
+          ? info["Sitio Web Gartenstadt"]
+          : 0
+        }</h6>
+              <h6>Facebook: ${info.Facebook ? info.Facebook : 0}</h6>
+              <h6>Google: ${info.Google ? info.Google : 0}</h6>
+              <h6>Instagram: ${info.Instagram ? info.Instagram : 0}</h6>
+              <h6>Linkedin: ${info.Linkedin ? info.Linkedin : 0}</h6>
+            </div>
+          </div>
+          `;
+      total.insertAdjacentHTML("afterbegin", redes);
+    });
+</script>

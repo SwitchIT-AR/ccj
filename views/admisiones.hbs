@@ -1,0 +1,164 @@
+<section>
+  <div class="contenedor">
+    <h3>Admisiones</h3>
+    <p>
+      La elección de un colegio para nuestros hijos es una decisión muy
+      importante. <br />
+      En nuestra institución este proceso lo realizamos de manera
+      personalizada. <br />
+      El proceso consta de tres instancias:
+    </p>
+    <p>
+      <b> 1º Entrevista: </b>
+      Orientada a conocer el colegio y nuestra propuesta educativa y
+      pedagógica.
+    </p>
+    <p>
+      <b> 2º Entrevista: </b>
+      Junto al Gabinete conocer al alumno entrante.
+    </p>
+    <p>
+      <b> 3º Entrevista: </b>
+      Inscripción administrativa de alumno.
+    </p>
+    <hr />
+    <h2 class="h1">Registro</h2>
+    <h5 class="py-3 d-block">
+      A continuación completar estos datos y nos comunicaremos con ustedes:
+    </h5>
+    <form id="form-admisiones" class="p-4" style="background: #ddd; border-radius: 20px">
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="alumno">Nombre y apellido del alumno entrante</label>
+          <input type="text" class="form-control" id="alumno" placeholder="" />
+        </div>
+        <div class="form-group col-md-8">
+          <label for="nivel">Nivel educativo:</label>
+          <input type="text" class="form-control" id="nivel" placeholder="" />
+        </div>
+        <div class="form-group col-md-4">
+          <label for="edad">Edad:</label>
+          <input type="number" class="form-control" id="edad" min="1" max="18" placeholder="" />
+        </div>
+        <div class="form-group col-md-12">
+          <label for="institucion">Institución de la que proviene:</label>
+          <input type="text" class="form-control" id="institucion" placeholder="" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="noPadre">Nombre del padre</label>
+          <input type="text" class="form-control" id="noPadre" placeholder="" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="apPadre">Apellido del padre</label>
+          <input type="text" class="form-control" id="apPadre" placeholder="" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="noMadre">Nombre de la madre</label>
+          <input type="text" class="form-control" id="noMadre" placeholder="" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="apMadre">Apellido de la madre</label>
+          <input type="text" class="form-control" id="apMadre" placeholder="" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="direccion">Dirección:</label>
+        <input type="text" class="form-control" id="direccion" placeholder="" />
+      </div>
+      <div class="form-group">
+        <label for="tel">Teléfono:</label>
+        <input type="text" class="form-control" id="tel" placeholder="" />
+      </div>
+      <div class="form-group">
+        <label for="inputEmail">Mail:</label>
+        <input type="email" class="form-control" id="inputEmail" placeholder="" />
+      </div>
+      <div class="form-group">
+        <label for="porqueGartenstadt">Por qué eligieron esta institución:</label>
+        <textarea class="form-control" id="porqueGartenstadt" rows="3"></textarea>
+      </div>
+      <input type="button" value="ENVIAR" class="btn btn-block btn-primary mt-4 mb-2" onclick="registrar()" />
+      <script>
+        function registrar() {
+          const data = {
+            nombreApellido: document.getElementById("alumno").value,
+            nivelEducativo: document.getElementById("nivel").value,
+            edad: document.getElementById("edad").value,
+            institucionProveniente:
+              document.getElementById("institucion").value,
+            nombrePadre: document.getElementById("noPadre").value,
+            apellidoPadre: document.getElementById("apPadre").value,
+            nombreMadre: document.getElementById("noMadre").value,
+            apellidoMadre: document.getElementById("apMadre").value,
+            direccion: document.getElementById("direccion").value,
+            telefono: document.getElementById("tel").value,
+            mail: document.getElementById("inputEmail").value,
+            mensaje: document.getElementById("porqueGartenstadt").value,
+            como: "Sitio Web",
+            cual: "",
+            red: "Sitio Web Gartenstadt",
+          };
+
+          var urlCompleta =
+            "https://colegiociudadjardin.edu.ar/landing/matricula";
+          var request = $.ajax({
+            url: urlCompleta,
+            type: "POST",
+            dataType: "json",
+            data,
+          });
+
+          request.done(function (response) {
+            document.getElementById("form-admisiones").reset();
+            $("#modalExito").modal("show");
+            fbq("track", "Registro");
+          });
+
+          request.fail(function (jqXHR, textStatus) {
+            document.getElementById("form-admisiones").reset();
+            $("#modalFail").modal("show");
+            fbq("track", "RegistroFallido");
+          });
+        }
+      </script>
+    </form>
+    <p class="p-3 text-center">
+      Se le recuerda que nuestro horario de atención en la administración es
+      de Lunes a Viernes de 8:00 hs a 16:00hs. <br />
+      Nuestros Teléfonos son: (011) 4751-0376 (011) 4758-6245
+    </p>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="row mail-row">
+    <div class="col-sm-6">
+      <div class="row py-5">
+        <div class="col-sm-3 my-auto border-right">
+          <img class="iconos" src="/img/iconos/iconos-11.png" alt="" />
+        </div>
+        <div class="col-sm-9 my-auto pl-4">
+          <h5>Nuevas Familias: Admisión</h5>
+          <h5>Gabinete</h5>
+          <a href="mailto:admision@colegiociudadjardin.edu.ar">admision@colegiociudadjardin.edu.ar</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="row py-5">
+        <div class="col-sm-3 my-auto border-right">
+          <img class="iconos" src="/img/iconos/iconos-12.png" alt="" />
+        </div>
+        <div class="col-sm-9 my-auto pl-4">
+          <h5>Información Administrativa:</h5>
+          <h5>Administración</h5>
+          <a href="mailto:administracion@colegiociudadjardin.edu.ar">administracion@colegiociudadjardin.edu.ar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

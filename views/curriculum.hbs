@@ -1,0 +1,50 @@
+<section id="data" class="my-5">
+  <div class="container py-3">
+    <div class="card card-body p-5">
+      <h1 class="pb-4">Trabajá con Nosotros</h1>
+      <h2>Registro</h2>
+      <h5 class="py-3 d-block">Complete sus datos a continuación:</h5>
+      <form id="form-cv">
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="alumno">Nombre y apellido del interesado:</label>
+            <input type="text" class="form-control" id="alumno" placeholder="" />
+          </div>
+          <div class="form-group col-md-8">
+            <label for="nivel">Nivel educativo:</label>
+            <input type="text" class="form-control" id="nivel" placeholder="" />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="edad">Edad:</label>
+            <input type="number" class="form-control" id="edad" min="1" max="18" placeholder="" />
+          </div>
+          <div class="form-group col-md-12">
+            <label for="institucion">Titulo Obtenido:</label>
+            <input type="text" class="form-control" id="institucion" placeholder="" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="direccion">Dirección:</label>
+          <input type="text" class="form-control" id="direccion" placeholder="" />
+        </div>
+        <div class="form-group">
+          <label for="tel">Teléfono:</label>
+          <input type="text" class="form-control" id="tel" placeholder="" />
+        </div>
+        <div class="form-group">
+          <label for="inputEmail">Mail:</label>
+          <input type="email" class="form-control" id="inputEmail" placeholder="" />
+        </div>
+        <div class="form-group">
+          <label for="porqueGartenstadt">Porque quiere ser parte de esta institución:</label>
+          <textarea class="form-control" id="porqueGartenstadt" rows="3"></textarea>
+        </div>
+        <label for="cv" style="display: block">A continuación adjunte su curriculum en formato .PDF o
+          .DOC</label>
+        <input type="file" name="cv" id="cv-file" style="display: block; margin: 20px 0 30px 0"
+          accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.pdf" />
+        <input type="button" value="ENVIAR" class="btn btn-info px-5 mb-2" onclick="" />
+      </form>
+    </div>
+  </div>
+</section>

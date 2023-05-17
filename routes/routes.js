@@ -1,112 +1,122 @@
 const { Router } = require("express");
+const router = Router();
 const nodemailer = require("nodemailer");
 const path = require("path");
 const Matriculado = require("../models/Matriculado");
 const Consulta = require("../models/Consulta");
+const homeCtrl = require("../controllers/home.controller");
+const galeryCtrl = require("../controllers/galery.controller");
+const Pages = require("../models/Pages");
 
-const router = Router();
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./public/img/car");
+  },
+
+  filename: function (req, file, callback) {
+    callback(null, file.originalname);
+  },
+});
+const upload = multer({ storage: storage });
+
+const storageGalery = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./public/img/galery");
+  },
+
+  filename: function (req, file, callback) {
+    callback(null, file.originalname);
+  },
+});
+const uploadGalery = multer({ storage: storageGalery });
 
 const ruta = path.join(__dirname, "../public/views/");
 
 // rutas del colegio
 
-router.get("/", (req, res) => {
-  res.send(index);
-});
-router.get("/index", function (req, res) {
-  res.sendFile(ruta + "index.html");
-});
-router.get("/admisiones", function (req, res) {
-  res.sendFile(ruta + "admisiones.html");
-});
-router.get("/administracion", function (req, res) {
-  res.sendFile(ruta + "administracion.html");
-});
-router.get("/galeria", function (req, res) {
-  res.sendFile(ruta + "galeria.html");
-});
-router.get("/tour", function (req, res) {
-  res.sendFile(ruta + "tour.html");
-});
-router.get("/orientacion", function (req, res) {
-  res.sendFile(ruta + "orientacion.html");
-});
-router.get("/inicial", function (req, res) {
-  res.sendFile(ruta + "inicial.html");
-});
-router.get("/primaria", function (req, res) {
-  res.sendFile(ruta + "primaria.html");
-});
-router.get("/secundaria", function (req, res) {
-  res.sendFile(ruta + "secundaria.html");
-});
-router.get("/nuestrocolegio", function (req, res) {
-  res.sendFile(ruta + "nuestro-colegio.html");
-});
-router.get("/informatica", function (req, res) {
-  res.sendFile(ruta + "informatica.html");
-});
-router.get("/deutsch", function (req, res) {
-  res.sendFile(ruta + "deutsch.html");
-});
-router.get("/english", function (req, res) {
-  res.sendFile(ruta + "english.html");
-});
-router.get("/musica", function (req, res) {
-  res.sendFile(ruta + "musica.html");
-});
-router.get("/educacionfisica", function (req, res) {
-  res.sendFile(ruta + "ed-fisica.html");
-});
+router.get("/", homeCtrl.getData);
+router.get("/index", homeCtrl.getData);
+router.get("/api/uploadSlide", homeCtrl.uploadSlide);
+router.get("/api/uploadGalery", galeryCtrl.uploadGalery);
+
+//router.post("/api/newSlide", upload.array("images", 3), homeCtrl.createSlide);
+
+router.post(
+  "/api/newSlide/:order",
+  upload.array("images", 3),
+  homeCtrl.editSlide
+);
+
+router.get("/fotos/:slide", galeryCtrl.getImages);
+
+router.post(
+  "/api/fotos/:slide",
+  uploadGalery.array("images", 10),
+  galeryCtrl.uploadImages
+);
+
 router.get("/login", function (req, res) {
-  res.sendFile(ruta + "login.html");
-});
-router.get("/inicial/actividades", function (req, res) {
-  res.sendFile(ruta + "i-actividades.html");
-});
-router.get("/primaria/actividades", function (req, res) {
-  res.sendFile(ruta + "p-actividades.html");
-});
-router.get("/secundaria/actividades", function (req, res) {
-  res.sendFile(ruta + "s-actividades.html");
-});
-router.get("/covid", function (req, res) {
-  res.sendFile(ruta + "covid.html");
-});
-router.get("/ActoInicial", function (req, res) {
-  res.sendFile(ruta + "acto-inicial.html");
-});
-router.get("/ActoPrimaria", function (req, res) {
-  res.sendFile(ruta + "acto-primaria.html");
-});
-router.get("/ActoSecundaria", function (req, res) {
-  res.sendFile(ruta + "acto-secundaria.html");
+  res.redirect("https://familias.colegiociudadjardin.edu.ar");
 });
 
-router.get("/landing/matricula/ig", (req, res) => {
-  res.sendFile(ruta + "matriculacion-ig.html");
-});
-router.get("/landing/matricula/goo", (req, res) => {
-  res.sendFile(ruta + "matriculacion-goo.html");
-});
-router.get("/landing/matricula/fb", (req, res) => {
-  res.sendFile(ruta + "matriculacion-fb.html");
-});
-router.get("/landing/matricula/in", (req, res) => {
-  res.sendFile(ruta + "matriculacion-in.html");
+const routes = [
+  { route: "admisiones", view: "admisiones" },
+  { route: "deutsch", view: "deutsch" },
+  { route: "administracion", view: "administracion" },
+  { route: "galeria", view: "galeria" },
+  { route: "tour", view: "tour" },
+  { route: "cv", view: "curriculum" },
+  { route: "orientacion", view: "orientacion" },
+  { route: "inicial", view: "inicial" },
+  { route: "primaria", view: "primaria" },
+  { route: "secundaria", view: "secundaria" },
+  { route: "nuestrocolegio", view: "nuestro-colegio" },
+  { route: "informatica", view: "informatica" },
+  { route: "english", view: "english" },
+  { route: "musica", view: "musica" },
+  { route: "educacionfisica", view: "ed-fisica" },
+  { route: "inicial/actividades", view: "i-actividades" },
+  { route: "primaria/actividades", view: "p-actividades" },
+  { route: "secundaria/actividades", view: "s-actividades" },
+  { route: "covid", view: "covid" },
+  { route: "ActoInicial", view: "acto-inicial" },
+  { route: "ActoPrimaria", view: "acto-primaria" },
+  { route: "ActoSecundaria", view: "acto-secundaria" },
+];
+
+routes.forEach((route) => {
+  router.get("/" + route.route, async (req, res) => {
+    const pagesData = await Pages.find({ ruta: "/" + route.route }).lean();
+    res.render(route.view, { textos: pagesData[0], layout: "pages" });
+  });
 });
 
-router.get("/landing/inicial/ig", (req, res) => {
-  res.sendFile(ruta + "inicial-ig.html");
+const matriculaRoutes = [
+  { route: "ig", view: "matriculacion-ig" },
+  { route: "goo", view: "matriculacion-goo" },
+  { route: "fb", view: "matriculacion-fb" },
+  { route: "in", view: "matriculacion-in" },
+];
+
+matriculaRoutes.forEach((route) => {
+  router.get("/landing/matricula/" + route.route, (req, res) => {
+    res.render(route.view, { layout: false });
+  });
 });
-router.get("/landing/inicial/goo", (req, res) => {
-  res.sendFile(ruta + "inicial-goo.html");
-});
-router.get("/landing/inicial/fb", (req, res) => {
-  res.sendFile(ruta + "inicial-fb.html");
-});
-router.get("/landing/inicial/in", (req, res) => {
-  res.sendFile(ruta + "inicial-in.html");
+
+const inicialRoutes = [
+  { route: "ig", view: "inicial-ig" },
+  { route: "goo", view: "inicial-goo" },
+  { route: "fb", view: "inicial-fb" },
+  { route: "in", view: "inicial-in" },
+];
+
+inicialRoutes.forEach((route) => {
+  router.get("/landing/inicial/" + route.route, (req, res) => {
+    res.render(route.view, { layout: false });
+  });
 });
 
 router.post("/landing/matricula", async (req, res) => {
@@ -281,7 +291,7 @@ router.post("/landing/consulta", async (req, res) => {
 });
 
 router.get("/landing/status", (req, res) => {
-  res.sendFile(ruta + "status.html");
+  res.render("status", { layout: "pages" });
 });
 
 router.get("/landing/status/datos", async (req, res) => {

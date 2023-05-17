@@ -1,0 +1,64 @@
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript" src="/slick/slick.min.js"></script>
+<script type="text/javascript">
+  $(".carru") .slick({ dots: false, arrows: true, autoplay: true, draggable:
+  true, fade: true, lazyLoad: "progressive", infinite: true, autoplaySpeed:
+  6000, speed: 2000, }) .slick("slickPause"); let initialDelay = 5000;
+  setTimeout(function () { $(".carru").slick("slickPlay"); }, initialDelay);
+</script>
+<script
+  src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
+></script>
+
+<!-- Page refresh al salir de modal -->
+<script>
+  $("#modal550").on("hide.bs.modal", function (e) { $("#modal550
+  iframe").attr("src", $("#modal550 iframe").attr("src")); });
+  $("#modalExtra").on("hide.bs.modal", function (e) { $("#modalExtra
+  iframe").attr( "src", $("#modalExtra iframe").attr("src") ); });
+</script>
+
+<!-- creación de tooltips -->
+<script>
+  $(function () { $('[data-toggle="tooltip"]').tooltip(); });
+</script>
+
+<!-- Boton que desliza menú -->
+<!-- <script>
+    document.getElementById('btn-2').addEventListener("click", deslizar);
+
+    function deslizar() {
+      document.getElementById('fs-menu').style.display = "block";
+      document.getElementById('body').style.overflowY = "hidden";
+      window.scrollTo(0, 0);
+      document.getElementById('btn-2').addEventListener("click", cerrar);
+      document.getElementById('menu-close1').addEventListener("click", cerrar);
+      document.getElementById('menu-close2').addEventListener("click", cerrar);
+      document.getElementById('menu-close3').addEventListener("click", cerrar);
+    }
+  </script>
+  <script>
+    document.getElementById('close-2').addEventListener("click", cerrar);
+
+    function cerrar() {
+      document.getElementById('fs-menu').style.display = "none";
+      document.getElementById('body').style.overflowY = "initial";
+      document.getElementById('menu-close1').removeEventListener("click", cerrar);
+      document.getElementById('menu-close2').removeEventListener("click", cerrar);
+      document.getElementById('menu-close3').removeEventListener("click", cerrar);
+      document.getElementById('btn-2').removeEventListener("click", cerrar);
+      document.getElementById('btn-2').addEventListener("click", deslizar);
+    }
+  </script> -->
+<script>
+  $("#modalStreaming").modal("show");
+</script>

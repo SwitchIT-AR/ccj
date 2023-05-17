@@ -1,0 +1,48 @@
+<section class='content'>
+  <div class='container-fluid'>
+    <!-- row -->
+    <div class='row'>
+      <div class='col-12'>
+        <div class='card card-teal'>
+          <div class='card-header'>
+            <h3 class='card-title'>Alta de Materiales</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form class='form-horizontal' id='order' action='/api/fotos/slide1' method='POST' enctype="multipart/form-data">
+            <div class='card-body'>
+              <div class='row'>
+                <div class='form-group col-sm-6 col-md-4'>
+                  <label for='images'>maximo 10 fotos</label>
+                  <input type="file" multiple class='form-control-file'  name='images' placeholder='images' />
+                </div>
+                <div class='form-group col-sm-6 col-md-4'>
+                  <label for='order'>Seleccionar la slide</label>
+                  <select name='order'  class='form-control' onchange='changeAction(this.value)'>
+                  <option value="slide1">1</option>
+                  <option value="slide2">2</option>
+                  <option value="slide3">3</option>
+                  <option value="slide4">4</option>
+                  </select>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- /.card-body -->
+            <div class='card-footer'>
+              <div class='float-right'>
+                <button type='submit' class='btn bg-teal font-weight-bold mr-2'>
+                  CREAR SLIDE</button>
+                <button type='reset' class='btn btn-default'>Cancelar</button>
+              </div>
+            </div>
+            <!-- /.card-footer -->
+          </form>
+        </div>
+      </div>
+      <script >
+function changeAction(val){
+    document.getElementById('order').setAttribute('action', "/api/fotos/" + val);
+}
+</script>

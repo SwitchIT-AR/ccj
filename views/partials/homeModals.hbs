@@ -1,0 +1,257 @@
+<!-- Modal Classroom -->
+
+<div
+  class="modal fade"
+  id="modalClassroom"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalClassroom"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Classroom</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Usted esta intentando abrir la aplicación de Google Classroom para
+          continuar haga click en ACEPTAR.
+        </p>
+        <p
+          style="
+                font-size: 0.85rem;
+                font-family: 'Work Sans', sans-serif;
+                font-weight: bold;
+              "
+        >
+          NOTA: Esto es un acceso directo al sitio/app de Classroom. Si usted
+          inició sesión en Google con anterioridad será dirigido al Classroom
+          correspondiente a su cuenta.
+        </p>
+        <p
+          style="
+                font-size: 0.85rem;
+                font-family: 'Work Sans', sans-serif;
+                font-weight: bolder;
+              "
+        >
+          <b>DE NINGUNA MANERA ES UN ACCESO PUBLICO A LA CUENTA DEL ALUMNO.</b>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <a
+          target="_blank"
+          href="https://classroom.google.com/u/0/h?hl=es"
+          class="btn btn-primary"
+        >ACEPTAR</a>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Mensaje Exitoso -->
+
+<div
+  class="modal fade"
+  id="modalExito"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalExito"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">
+          Mensaje enviado
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Su mensaje ha sido enviado con éxito y será respondido a la brevedad.
+          <br />
+          Muchas gracias.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">
+          Aceptar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Hubo un Problema -->
+
+<div
+  class="modal fade"
+  id="modalFail"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalFail"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">
+          El mensaje NO ha sido enviado
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Su mensaje no ha podido enviarse, intente nuevamente, o comuníquese
+          por mail a
+          <a
+            href="mailto:contacto@colegiociudadjardin.edu.ar"
+          >contacto@colegiociudadjardin.edu.ar</a>, sepa disculpar el
+          inconveniente.<br />
+          Muchas gracias.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">
+          Aceptar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Streaming 
+
+    <div class="modal fade" id="modalStreaming" tabIndex="-1" role="dialog" aria-labelledby="modalStreaming" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Bienvenidos al Acto en Vivo del CCJ</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Presione el boton para ingresar al acto en vivo
+            </p>
+            <a href="https://youtu.be/9UGJ9Drdt6Q" target="_blank" class="btn btn-lg btn-block btn-primary">Ingresar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  -->
+
+<!-- Modal Acto -->
+
+<div
+  class="modal fade"
+  id="modalActo"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalActo"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">
+          Seleccione el nivel
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Ingrese a la versión del acto correspondiente a su nivel.</p>
+        <!-- <a href="/ActoSecundaria" class="btn btn-lg btn-block" style="background-color: #ccc;">Secundaria</a> -->
+        <a
+          href="/ActoPrimaria"
+          class="btn btn-lg btn-block btn-primary"
+        >Primaria</a>
+        <a
+          href="/ActoInicial"
+          class="btn btn-lg btn-block btn-danger"
+        >Inicial</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 550 -->
+
+<div
+  class="modal fade"
+  id="modal550"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modal550"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <iframe
+        width="100%"
+        height="550"
+        src="https://www.youtube.com/embed/VjKy6C0pkzE"
+        frameborder="0"
+        allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; controls"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Extra -->
+
+<div
+  class="modal fade"
+  id="modalExtra"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalExtra"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div id="reformas">
+        <img src="/img/reformas/reformas1.jpeg" />
+        <img src="/img/reformas/reformas2.jpeg" />
+        <img src="/img/reformas/reformas3.jpeg" />
+        <img src="/img/reformas/reformas4.jpeg" />
+      </div>
+    </div>
+  </div>
+</div>
