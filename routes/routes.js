@@ -7,6 +7,7 @@ const Consulta = require("../models/Consulta");
 const homeCtrl = require("../controllers/home.controller");
 const galeryCtrl = require("../controllers/galery.controller");
 const Pages = require("../models/Pages");
+const ticketCtrl = require("../controllers/tickets.controller");
 
 const multer = require("multer");
 
@@ -92,6 +93,12 @@ routes.forEach((route) => {
     res.render(route.view, { textos: pagesData[0], layout: "pages" });
   });
 });
+
+router.get("/tickets", ticketCtrl.getTicket);
+
+router.post("/newTicket", ticketCtrl.newTicket);
+router.get("/ticketUpdate", ticketCtrl.updateTicket);
+router.put("/ticketUpdate", ticketCtrl.updateTicket);
 
 const matriculaRoutes = [
   { route: "ig", view: "matriculacion-ig" },
