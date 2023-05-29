@@ -70,6 +70,7 @@ const routes = [
   { route: "tour", view: "tour" },
   { route: "cv", view: "curriculum" },
   { route: "orientacion", view: "orientacion" },
+  { route: "mint", view: "mint" },
   { route: "inicial", view: "inicial" },
   { route: "primaria", view: "primaria" },
   { route: "secundaria", view: "secundaria" },

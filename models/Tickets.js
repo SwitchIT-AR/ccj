@@ -10,6 +10,7 @@ const ticketsSchema = new Schema(
     plazoReso: Date,
     compras: Boolean,
     presupuesto: Number,
+    dateEstCompras: Date,
     descripSist: String,
     dirAprobe: Boolean,
     dateCompras: Date,
