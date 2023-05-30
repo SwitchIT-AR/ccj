@@ -2,6 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const pagesSchema = new Schema(
   {
+    ruta: String,
     pagina: String,
     titulo: String,
     saludo: String,

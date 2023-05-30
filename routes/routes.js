@@ -8,7 +8,7 @@ const homeCtrl = require("../controllers/home.controller");
 const galeryCtrl = require("../controllers/galery.controller");
 const Pages = require("../models/Pages");
 const ticketCtrl = require("../controllers/tickets.controller");
-
+const pagesCtrl = require("../controllers/pages.controller");
 const multer = require("multer");
 
 const storage = multer.diskStorage({
@@ -94,6 +94,14 @@ routes.forEach((route) => {
     res.render(route.view, { textos: pagesData[0], layout: "pages" });
   });
 });
+
+router.get("/pages/:page", async (req, res) => {
+  const pagesData = await Pages.find({ ruta: "/" + req.params.page }).lean();
+  console.log(pagesData);
+  res.render("pages", { pages: pagesData[0], layout: "pages" });
+});
+router.post("/pages/newTicket", pagesCtrl.newPages);
+router.post("/pages/pagesUpdate", pagesCtrl.updatePages);
 
 router.get("/tickets", ticketCtrl.getTicket);
 
