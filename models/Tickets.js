@@ -15,7 +15,7 @@ const ticketsSchema = new Schema(
     dirAprobe: Boolean,
     dateCompras: Date,
     estimFin: Date,
-    dateSolved: String,
+    dateSolved: Date,
     status: String,
   },
   {
