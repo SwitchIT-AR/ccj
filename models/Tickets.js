@@ -4,6 +4,7 @@ const ticketsSchema = new Schema(
   {
     nivel: String,
     solicitante: String,
+    docenteId: Types.ObjectId,
     tipoProblema: String,
     descripUser: String,
     dateTicket: Date,
