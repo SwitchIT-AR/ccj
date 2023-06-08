@@ -56,10 +56,31 @@ pagesCtrl.newPages = async (req, res) => {
 
 pagesCtrl.updatePages = async (req, res) => {
   console.log("post.body", req.body);
+
+  const { _id, pagina, ...rest } = req.body;
+  console.log("pagina", pagina);
+  console.log("req files", req.files);
+
+  // Save images to a folder on the server
+  if (req.files && req.files.cardImage1) {
+    const image1 = req.files.cardImage1[0];
+  }
+
+  if (req.files && req.files.cardImage2) {
+    const image2 = req.files.cardImage2[0];
+  }
+
+  if (req.files && req.files.cardImage3) {
+    const image3 = req.files.cardImage3[0];
+  }
+
+  if (req.files && req.files.cardImage4) {
+    const image4 = req.files.cardImage4[0];
+  }
   try {
     const pageEdit = await Pages.findOneAndUpdate(
       { _id: req.body._id },
-      req.body,
+      { ...rest },
       {
         new: true,
       }
@@ -67,7 +88,7 @@ pagesCtrl.updatePages = async (req, res) => {
     if (!pageEdit) {
       return res.status(204).json({ message: "no existe el ticket" });
     } else {
-      return res.status(200).render("pages", {
+      return res.status(200).render("deptoEdit", {
         message: "los datos fueron guardados",
       });
     }
@@ -76,5 +97,4 @@ pagesCtrl.updatePages = async (req, res) => {
     return res.status(500).send("There was a problem editing the mate");
   }
 };
-
 module.exports = pagesCtrl;

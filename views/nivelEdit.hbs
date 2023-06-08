@@ -1,0 +1,187 @@
+<div class="container-fluid" style=" background-color:rgb(198, 198, 198);">
+    <div class="container" style=" padding-top: 100px; background-color: white;">
+        <h1>Niveles Update</h1>
+        <span>Seleccione la pagina a editar</span>
+        <br />
+        <select id="page" class="form-control-sm" onchange="redirectToSelectedOption()">
+            <option value="">Seleccione una pagina</option>
+
+            <option value="inicial">inicial</option>
+            <option value="primaria">primaria</option>
+            <option value="secundaria">secundaria</option>
+        </select>
+        <label for="pagina">ID</label>
+        <input type="text" class="form-control" name="_id" value="{{pages._id}}" disabled><br>
+
+        <label for="pagina">Pagina:</label>
+        <input type="text" class="form-control" value="{{pages.ruta}}" disabled><br>
+
+    </div>
+
+
+
+
+    <form action="/pagesEdit/depto/pagesUpdate" method="post" enctype="multipart/form-data">
+        <input type="text" class="form-control" name="_id" value="{{pages._id}}" hidden><br>
+        <input type="text" class="form-control" name="pagina" value="{{pages.ruta}}" hidden><br>
+        <div class="container">
+            <section id="landing">
+                <div class="landing-img"
+                    style="background-image: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.15)),url({{pages.imageTop}});">
+                    <label for="titulo">Titulo:</label>
+                    <input type="text" class="form-control-sm" name="titulo" value="{{pages.titulo}}"><br>
+
+                    <label for="saludo">Saludo:</label>
+                    <input type="text" class="form-control-sm" name="saludo" value="{{pages.saludo}}"><br>
+                </div>
+            </section>
+
+
+
+            <section>
+                <div class="contenedor" style="background-color: white
+                ;">
+                    <label for="subTitulo1">Subtitulo 1:</label>
+                    <input type="text" class="form-control" name="subTitulo1" value="{{pages.subTitulo1}}"><br>
+                    <label for="parrafo1">Parrafo 1:</label>
+                    <input type="text" class="form-control" name="parrafo1" value="{{pages.parrafo1}}"><br>
+                </div>
+            </section>
+            <section class="c-amarillo text-white">
+                <div class="contenedor">
+                    <label for="subTitulo2">Subtitulo 2:</label>
+                    <input type="text" class="form-control" name="subTitulo2" value="{{pages.subTitulo2}}"><br>
+                    <label for="parrafo2">Parrafo 2:</label>
+                    <input type="text" class="form-control" name="parrafo2" value="{{pages.parrafo2}}"><br>
+                    <div class="row">
+                        <div class="col">
+                            <label for="auxText1">Auxiliar Texto 1:</label>
+                            <input type="text" class="form-control" name="auxText1" value="{{pages.auxText1}}"><br>
+
+                            <label for="auxText2">Auxiliar Texto 2:</label>
+                            <input type="text" class="form-control" name="auxText2" value="{{pages.auxText2}}"><br>
+                        </div>
+                        <div class="col">
+                            <label for="auxText3">Auxiliar Texto 3:</label>
+                            <input type="text" class="form-control" name="auxText3" value="{{pages.auxText3}}"><br>
+
+                            <label for="auxText4">Auxiliar Texto 4:</label>
+                            <input type="text" class="form-control" name="auxText4" value="{{pages.auxText4}}"><br>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="c-rojo text-white">
+                <div class="contenedor">
+                    <label for="subTitulo3">Subtitulo 3:</label>
+                    <input type="text" class="form-control" name="subTitulo3" value="{{pages.subTitulo3}}"><br>
+                    <label for="parrafo3">Parrafo 3:</label>
+                    <input type="text" class="form-control" name="parrafo3" value="{{pages.parrafo3}}"><br>
+
+                </div>
+            </section>
+
+
+
+
+            <section id="title-cards" class="c-celeste">
+                <div class="mx-4 p-5">
+                    <input type="text" class="form-control" name="subTitulo4" value="{{pages.subTitulo4}}"><br>
+                    <div class="card-deck mb-5">
+                        <div class="card">
+                            <img src={{pages.cardImage1}} class="card-img-top" alt="proyectos inicial">
+                            <input type="file" class="form-control" name="cardImage1" accept="image/*"><br>
+                            <div class="card-body pb-2">
+                                <label for="cardTitulo1">Card Titulo 1:</label>
+                                <input type="text" class="form-control" name="cardTitulo1"
+                                    value="{{pages.cardTitulo1}}"><br>
+                            </div>
+                            <div class="col">
+                                <label for="cardTexto1">Card Texto 1:</label>
+                                <input type="text" class="form-control" name="cardTexto1"
+                                    value="{{pages.cardTexto1}}"><br>
+                            </div>
+                            <div class="card-footer text-center border-0 bg-transparent pt-0">
+                                <a href="#" class="btn btn-dark" hidden>Ver más</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src={{pages.cardImage2}} class="card-img-top" alt="proyectos inicial">
+                            <input type="file" class="form-control" name="cardImage2" accept="image/*"><br>
+                            <div class="card-body pb-2">
+                                <label for="cardTitulo2">Card Titulo 2:</label>
+                                <input type="text" class="form-control" name="cardTitulo2"
+                                    value="{{pages.cardTitulo2}}"><br>
+
+                                <label for="cardTexto2">Card Texto 2:</label>
+                                <input type="text" class="form-control" name="cardTexto2"
+                                    value="{{pages.cardTexto2}}"><br>
+                            </div>
+                            <div class="card-footer text-center border-0 bg-transparent pt-0">
+                                <a href="#" class="btn btn-dark" hidden>Ver más</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src={{pages.cardImage3}} class="card-img-top" alt="proyectos inicial">
+                            <input type="file" class="form-control" name="cardImage3" accept="image/*"><br>
+                            <div class="card-body pb-2">
+                                <label for="cardTitulo3">Card Titulo 3:</label>
+                                <input type="text" class="form-control" name="cardTitulo3"
+                                    value="{{pages.cardTitulo3}}"><br>
+
+                                <label for="cardTexto3">Card Texto 3:</label>
+                                <input type="text" class="form-control" name="cardTexto3"
+                                    value="{{pages.cardTexto3}}"><br>
+                            </div>
+                            <div class="card-footer text-center border-0 bg-transparent pt-0">
+                                <a href="#" class="btn btn-dark" hidden>Ver más</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src={{pages.cardImage4}} class="card-img-top" alt="proyectos inicial">
+                            <input type="file" class="form-control" name="cardImage4" accept="image/*"><br>
+                            <div class="card-body pb-2">
+                                <label for="cardTitulo4">Card Titulo 4:</label>
+                                <input type="text" class="form-control" name="cardTitulo4"
+                                    value="{{pages.cardTitulo4}}"><br>
+
+                                <label for="cardTexto4">Card Texto 4:</label>
+                                <input type="text" class="form-control" name="cardTexto4"
+                                    value="{{pages.cardTexto4}}"><br>
+                            </div>
+                            <div class="card-footer text-center border-0 bg-transparent pt-0">
+                                <a href="#" class="btn btn-dark" hidden>Ver más</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="c-rojo text-white text-center" id="horarios">
+                <div class="contenedor">
+                    <input type="text" class="form-control" name="subTitulo5" value="{{pages.subTitulo5}}"><br>
+                    <input type="text" class="form-control" name="parrafo5" value="{{pages.parrafo5}}"><br>
+                </div>
+            </section>
+
+            <section id="title-cards" class="c-violeta">
+                <div class="mx-4 p-5">
+
+                    <label for="horarioEntrada">Horario de Entrada:</label>
+                    <input type="text" class="form-control" name="horarioEntrada" value="{{pages.horarioEntrada}}"><br>
+
+                    <label for="almuerzo">Almuerzo:</label>
+                    <input type="text" class="form-control" name="almuerzo" value="{{pages.almuerzo}}"><br>
+                    <label for="almuerzo">Salida:</label>
+                    <input type="text" class="form-control" name="horarioSalida" value="{{pages.horarioSalida}}"><br>
+
+
+
+            </section>
+            <br />
+            <input class="btn btn-primary btn-lg btn-block" type="submit" value="Guardar">
+            <br />
+        </div>
+    </form>
+</div>
+<script src="/dist/js/pages/nivelEdit.js">

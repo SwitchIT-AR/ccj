@@ -1,5 +1,5 @@
 function redirectToSelectedOption() {
   var selectElement = document.getElementById("page");
   var selectedOption = selectElement.options[selectElement.selectedIndex].value;
-  window.location.href = "/pages/" + selectedOption;
+  window.location.href = "/pagesEdit/depto/" + selectedOption;
 }

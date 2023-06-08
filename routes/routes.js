@@ -33,6 +33,26 @@ const storageGalery = multer.diskStorage({
 });
 const uploadGalery = multer({ storage: storageGalery });
 
+const storageDeptos = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, `./public/img/deptos/${req.body.pagina}`);
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + ".jpg");
+  },
+});
+const uploadDeptos = multer({ storage: storageDeptos });
+
+const storageNiveles = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, `./public/img/niveles/cards`);
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + ".jpg");
+  },
+});
+const uploadNiveles = multer({ storage: storageNiveles });
+
 const ruta = path.join(__dirname, "../public/views/");
 
 // rutas del colegio
@@ -64,28 +84,21 @@ router.get("/login", function (req, res) {
 
 const routes = [
   { route: "admisiones", view: "admisiones" },
-  { route: "deutsch", view: "deutsch" },
+  { route: "deutsch", view: "departamentos" },
   { route: "administracion", view: "administracion" },
-  { route: "galeria", view: "galeria" },
-  { route: "tour", view: "tour" },
   { route: "cv", view: "curriculum" },
   { route: "orientacion", view: "orientacion" },
   { route: "mint", view: "mint" },
-  { route: "inicial", view: "inicial" },
-  { route: "primaria", view: "primaria" },
-  { route: "secundaria", view: "secundaria" },
+  { route: "inicial", view: "niveles" },
+  { route: "primaria", view: "niveles" },
+  { route: "secundaria", view: "niveles" },
   { route: "nuestrocolegio", view: "nuestro-colegio" },
-  { route: "informatica", view: "informatica" },
-  { route: "english", view: "english" },
-  { route: "musica", view: "musica" },
-  { route: "educacionfisica", view: "ed-fisica" },
-  { route: "inicial/actividades", view: "i-actividades" },
-  { route: "primaria/actividades", view: "p-actividades" },
-  { route: "secundaria/actividades", view: "s-actividades" },
-  { route: "covid", view: "covid" },
-  { route: "ActoInicial", view: "acto-inicial" },
-  { route: "ActoPrimaria", view: "acto-primaria" },
-  { route: "ActoSecundaria", view: "acto-secundaria" },
+  { route: "informatica", view: "departamentos" },
+  { route: "english", view: "departamentos" },
+  { route: "musica", view: "departamentos" },
+  { route: "educacionfisica", view: "departamentos" },
+  { route: "veronica", view: "departamentos" },
+  { route: "actividadesMint", view: "departamentos" },
 ];
 
 routes.forEach((route) => {
@@ -95,13 +108,39 @@ routes.forEach((route) => {
   });
 });
 
-router.get("/pages/:page", async (req, res) => {
+router.get("/pagesEdit/depto/:page", async (req, res) => {
   const pagesData = await Pages.find({ ruta: "/" + req.params.page }).lean();
   console.log(pagesData);
-  res.render("pages", { pages: pagesData[0], layout: "pages" });
+  res.render("deptoEdit", { pages: pagesData[0], layout: "pages" });
 });
 router.post("/pages/newTicket", pagesCtrl.newPages);
-router.post("/pages/pagesUpdate", pagesCtrl.updatePages);
+
+router.post(
+  "/pagesEdit/depto/pagesUpdate",
+  uploadDeptos.fields([
+    { name: "cardImage1", maxCount: 1 },
+    { name: "cardImage2", maxCount: 1 },
+    { name: "cardImage3", maxCount: 1 },
+    { name: "cardImage4", maxCount: 1 },
+  ]),
+  pagesCtrl.updatePages
+);
+
+router.get("/pagesEdit/nivel/:page", async (req, res) => {
+  const pagesData = await Pages.find({ ruta: "/" + req.params.page }).lean();
+  console.log(pagesData);
+  res.render("nivelEdit", { pages: pagesData[0], layout: "pages" });
+});
+router.post(
+  "/pagesEdit/nivel/pagesUpdate",
+  uploadNiveles.fields([
+    { name: "cardImage1", maxCount: 1 },
+    { name: "cardImage2", maxCount: 1 },
+    { name: "cardImage3", maxCount: 1 },
+    { name: "cardImage4", maxCount: 1 },
+  ]),
+  pagesCtrl.updatePages
+);
 
 router.get("/tickets", ticketCtrl.getTicket);
 

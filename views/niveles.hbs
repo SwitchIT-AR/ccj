@@ -1,0 +1,189 @@
+<section id="landing">
+  <div class="landing-img"
+    style="background-image: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.15)),url({{textos.imageTop}});">
+    <h2 class="landing-title">{{textos.titulo}}</h2>
+    <h5 class="landing-subtitle">{{textos.saludo}}</h5>
+  </div>
+</section>
+
+<section>
+  <div class="contenedor">
+    <h3 class="text-center">{{textos.subTitulo1}}</h3>
+    <p>
+      {{{textos.parrafo1}}}
+    </p>
+  </div>
+</section>
+
+<section class="c-amarillo text-white">
+  <div class="contenedor pb-3">
+    <h3 class="text-center">
+      {{textos.subTitulo2}}
+    </h3>
+    <p>
+      {{{textos.parrafo2}}}
+    </p>
+    <div class="row justify-content-md-center">
+      <div class="col-5">
+        <ul class="py-5">
+
+          <h5 class="h3 d-inline">
+
+            {{{textos.auxText1}}}
+
+          </h5>
+
+
+          <br>
+
+          <h5 class="h3 d-inline">
+
+            {{{textos.auxText2}}}
+
+          </h5>
+
+
+        </ul>
+      </div>
+      <div class="col-5">
+        <ul class="py-5">
+
+          <h5 class="h3 d-inline">
+
+            {{{textos.auxText3}}}
+
+          </h5>
+
+
+          <br>
+
+          <h5 class="h3 d-inline">
+
+            {{{textos.auxText4}}}
+
+          </h5>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="c-rojo text-white">
+  <div class="contenedor">
+    <h3 class="text-center">{{textos.subTitulo3}}</h3>
+    <p>
+
+      {{{textos.parrafo3}}}
+    </p>
+  </div>
+</section>
+
+<section id="title-cards" class="c-celeste text-white">
+  <div class="mx-4 p-5">
+    <h3 class="text-center mb-5">{{textos.subTitulo4}}</h3>
+    <div class="card-deck mb-5 text-dark">
+      <div class="card">
+        <img src={{textos.cardImage1}} class="card-img-top" alt="{{textos.cardTitulo1}}">
+        <div class="card-body pb-2">
+          <h5 class="card-title">
+            {{textos.cardTitulo1}}
+          </h5>
+          <p>
+            {{textos.cardTexto1}}
+          </p>
+        </div>
+        <div class="card-footer text-center border-0 bg-transparent pt-0">
+          <a href="#" class="btn btn-dark" hidden>Ver más</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src={{textos.cardImage2}} class="card-img-top" alt="{{textos.cardTitulo2}}">
+        <div class="card-body pb-2">
+          <h5 class="card-title">{{textos.cardTitulo2}}</h5>
+          <p>
+            {{textos.cardTexto2}}
+          </p>
+        </div>
+        <div class="card-footer text-center border-0 bg-transparent pt-0">
+          <a href="#" class="btn btn-dark" hidden>Ver más</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src={{textos.cardImage3}} class="card-img-top" alt="{{textos.cardTitulo3}}">
+        <div class="card-body pb-2">
+          <h5 class="card-title">{{textos.cardTitulo3}}</h5>
+          <p>
+            {{textos.cardTexto3}}
+          </p>
+        </div>
+        <div class="card-footer text-center border-0 bg-transparent pt-0">
+          <a href="#" class="btn btn-dark" hidden>Ver más</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src={{textos.cardImage4}} class="card-img-top" alt="{{textos.cardTitulo4}}">
+        <div class="card-body pb-2">
+          <h5 class="card-title">{{textos.cardTitulo4}}</h5>
+          <p>
+            {{textos.cardTexto4}}
+          </p>
+        </div>
+        <div class="card-footer text-center border-0 bg-transparent pt-0">
+          <a href="#" class="btn btn-dark" hidden>Ver más</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="c-rojo text-white text-center" id="horarios">
+  <div class="contenedor">
+    <h3 class="landing-title mb-2">{{textos.subTitulo5}}</h3>
+    <p class="font-weight-bolder"> {{{textos.parrafo5}}}</p>
+  </div>
+</section>
+<section>
+  <div class="contenedor">
+    <div class="row my-4">
+      <div class="col text-center mt-5">
+        <i class="far fa-clock fa-5x mb-4 t-celeste"></i>
+        <h4 class="font-weight-bolder t-celeste">
+          Horario <br> Entrada
+        </h4>
+        <h3 class="btn c-celeste text-white btn-horario">
+          {{textos.horarioEntrada}}
+        </h3>
+      </div>
+      <div class="col text-center mt-5">
+        <i class="fa fa-utensils fa-5x mb-4 t-amarillo"></i>
+        <h4 class="font-weight-bolder t-amarillo">
+          Almuerzo y <br> Recreación
+        </h4>
+        <h3 class="btn c-amarillo text-white btn-horario">
+          {{textos.almuerzo}}
+        </h3>
+
+      </div>
+      <div class="col text-center mt-5">
+        <i class="fa fa-house-user fa-5x mb-4 t-rojo"></i>
+        <h4 class="font-weight-bolder t-rojo">
+          Horario<br> Salida
+        </h4>
+        <h3 class="btn c-rojo text-white btn-horario">
+          {{textos.horarioSalida}}
+        </h3>
+
+      </div>
+
+    </div>
+    <center>
+      <p style="font-style: italic; font-size:smaller">
+        * todos los horarios son aproximados. Dependendiendo la programacion anual, los mismos pueden
+        variar segunr el curso/grado. Cualquier duda consultar con la secretaría de cada nivel
+      </p>
+    </center>
+
+  </div>
+</section>

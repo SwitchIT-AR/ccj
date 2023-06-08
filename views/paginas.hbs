@@ -1,0 +1,167 @@
+<section id="landing">
+  <div class="landing-img"
+    style="background-image: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.15)),url(/img/secundaria/top.jpg);">
+    <h2 class="landing-title">{{textos.titulo}}</h2>
+    <h5 class="landing-subtitle">{{textos.saludo}}</h5>
+  </div>
+</section>
+
+
+<section class="c-amarillo text-white">
+  <div class="contenedor">
+    <h3 class="text-center">
+      {{textos.subTitulo2}}
+    </h3>
+    <p>
+      {{textos.parrafo2}}
+    </p>
+    <div class="text-center pt-4">
+      <a href="/deutsch" class="btn btn-lg btn-light text-warning mx-3" style="border-radius: 10px;">Más info de
+        Alemán</a>
+      <a href="/english" class="btn btn-lg btn-light text-warning mx-3" style="border-radius: 10px;">Más info de
+        Inglés</a>
+    </div>
+  </div>
+</section>
+
+<section id="title-cards" class="c-rojo">
+  <div class="mx-4 p-5">
+    <h3 class="text-center mb-5 text-white">Actividades</h3>
+    <div class="card-deck mb-5">
+      <div class="card">
+        <img src="/img/secundaria/Intercambio.jpg" class="card-img-top" alt="matematicas">
+        <div class="card-body pb-2">
+          <h5 class="card-title">
+            {{textos.cardTitulo1}}
+          </h5>
+          <p>
+            {{textos.cardTexto1}}
+          </p>
+        </div>
+        <div class="card-footer text-center border-0 bg-transparent pt-0">
+          <a href="#" class="btn btn-dark" hidden>Ver más</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="/img/secundaria/Viajes educativos.jpg" class="card-img-top" alt="Salidas">
+        <div class="card-body pb-2">
+          <h5 class="card-title">{{textos.cardTitulo2}}</h5>
+          <p>
+            {{textos.cardTexto2}}
+          </p>
+        </div>
+        <div class="card-footer text-center border-0 bg-transparent pt-0">
+          <a href="#" class="btn btn-dark" hidden>Ver más</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="/img/secundaria/Salidas educativas.jpg" class="card-img-top" alt="muestras y eventos">
+        <div class="card-body pb-2">
+          <h5 class="card-title">{{textos.cardTitulo3}}</h5>
+          <p>
+            {{textos.cardTexto3}}
+          </p>
+        </div>
+        <div class="card-footer text-center border-0 bg-transparent pt-0">
+          <a href="#" class="btn btn-dark" hidden>Ver más</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="/img/secundaria/eventos.jpg" class="card-img-top" alt="proyectos inicial">
+        <div class="card-body pb-2">
+          <h5 class="card-title">{{textos.cardTitulo4}}</h5>
+          <p>
+            {{textos.cardTexto4}}
+          </p>
+        </div>
+        <div class="card-footer text-center border-0 bg-transparent pt-0">
+          <a href="#" class="btn btn-dark" hidden>Ver más</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="d-none">
+  <div class="contenedor">
+    <h3 class="text-center">Música y Arte</h3>
+    <p>...</p>
+    <div class="text-center">
+      <a href="#" class="btn btn-dark py-2 px-3">Ver más</a>
+    </div>
+  </div>
+</section>
+
+<section class="c-celeste text-white d-none">
+  <div class="contenedor">
+    <h3 class="text-center">Educación Física</h3>
+    <p>...</p>
+    <div class="text-center">
+      <a href="#" class="btn btn-light t-celeste py-2 px-3">Ver más</a>
+    </div>
+  </div>
+</section>
+
+<section class="c-amarillo text-white d-none">
+  <div class="contenedor">
+    <h3 class="text-center">Equipo de Orientación Escolar</h3>
+    <p>...</p>
+    <div class="text-center">
+      <a href="#" class="btn btn-light t-amarillo py-2 px-3">Ver más</a>
+    </div>
+  </div>
+</section>
+
+<section class="c-rojo text-white text-center" id="horarios">
+  <div class="contenedor">
+    <h3 class="landing-title mb-2">La Jornada</h3>
+    <h5 class="font-weight-bolder"> Jornada completa: {{textos.horarioEntrada}} - {{textos.horarioSalida}}</h5>
+    <p class="font-italic font-weight-lighter mt-2">
+      Almuerzo: {{textos.almuerzo}}
+    </p>
+
+  </div>
+</section>
+<section>
+  <div class="contenedor">
+    <div class="row my-4">
+      <div class="col text-center mt-5">
+        <i class="far fa-clock fa-5x mb-4 t-celeste"></i>
+        <h4 class="font-weight-bolder t-celeste">
+          Horario <br> Entrada
+        </h4>
+        <h3 class="btn c-celeste text-white btn-horario">
+          {{textos.horarioEntrada}}
+        </h3>
+      </div>
+      <div class="col text-center mt-5">
+        <i class="fa fa-utensils fa-5x mb-4 t-amarillo"></i>
+        <h4 class="font-weight-bolder t-amarillo">
+          Almuerzo y <br> Recreación
+        </h4>
+        <h3 class="btn c-amarillo text-white btn-horario">
+          {{textos.almuerzo}}
+        </h3>
+
+      </div>
+      <div class="col text-center mt-5">
+        <i class="fa fa-house-user fa-5x mb-4 t-rojo"></i>
+        <h4 class="font-weight-bolder t-rojo">
+          Horario<br> Salida
+        </h4>
+        <h3 class="btn c-rojo text-white btn-horario">
+          {{textos.horarioSalida}}
+        </h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="c-amarillo text-white text-center pt-2 d-none">
+  <div class="pt-4">
+    <h3>Las Aulas</h3>
+    <div id="carrusel" class="p-0">
+      <div><img src="" alt="imagen de laternenfest 1"></div>
+    </div>
+  </div>
+</section>
