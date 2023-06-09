@@ -35,7 +35,7 @@ const uploadGalery = multer({ storage: storageGalery });
 
 const storageDeptos = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, `./public/img/deptos/${req.body.pagina}`);
+    cb(null, `./public/img/deptos${req.body.pagina}/cards/`);
   },
   filename: function (req, file, cb) {
     cb(null, file.fieldname + ".jpg");
