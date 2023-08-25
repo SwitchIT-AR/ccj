@@ -19,7 +19,7 @@ body {
 .gallery-container h1 {
   text-align: center;
   margin-top: 50px;
-  font-family: 'Droid Sans', sans-serif;
+  font-family: "Droid Sans", sans-serif;
   font-weight: bold;
   max-width: 100vw;
 }
@@ -55,13 +55,12 @@ body {
   opacity: 0;
   color: #fff;
   font-size: 26px;
-  font-family: 'Glyphicons Halflings';
-  content: '\e003';
+  font-family: "Glyphicons Halflings";
+  content: "\e003";
   pointer-events: none;
   z-index: 9000;
   transition: 0.4s;
 }
-
 
 .tz-gallery .lightbox:after {
   position: absolute;
@@ -71,7 +70,7 @@ body {
   height: 100%;
   opacity: 0;
   background-color: rgba(46, 132, 206, 0.7);
-  content: '';
+  content: "";
   transition: 0.4s;
 }
 
@@ -84,9 +83,9 @@ body {
   background-color: transparent !important;
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   body {
-      padding: 0;
+    padding: 0;
   }
 }
 
@@ -378,12 +377,17 @@ body {
 }
 
 /* NIVELES */
+#niveles .row .col-sm-3,
 #niveles .row .col-sm-4,
 #niveles .row .col-sm-6,
+#niveles .row .col-6,
 #niveles .row .col-sm-3 {
   text-align: center;
   padding: 0 10px;
-  height: 350px;
+  padding: 0;
+  margin: 0;
+  border: 3px solid white;
+  height: 20vw;
 }
 
 #niveles .row .cuadro {
@@ -437,6 +441,11 @@ body {
 
 .btn-success,
 .c-verde {
+  background-color: #34c759;
+}
+
+.btn-success,
+.c-classroom {
   background-color: #34c759;
 }
 
@@ -614,7 +623,16 @@ a.c-celeste:hover {
   background-size: cover !important;
   background-position: center !important;
 }
-
+.c-veronica {
+  background-image: url(../img/c-veronica.jpg) !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+#niveles .c-veronica:hover {
+  background-image: url(../img/c-veronica.jpg) !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
 #niveles .c-musica:hover {
   background-image: url(../img/c-musica.jpg) !important;
   background-size: cover !important;
@@ -1236,7 +1254,7 @@ button:focus,
   }
 
   #niveles .cuadro .icono {
-    height: 45%;
+    height: 75%;
     margin-top: 15px;
   }
 
@@ -1334,17 +1352,25 @@ button:focus,
     text-align: center;
   }
 
-  #niveles {
-    display: none;
+  #niveles .row .col-sm-3,
+  #niveles .row .col-sm-4,
+  #niveles .row .col-sm-6,
+  #niveles .row .col-6,
+  #niveles .row .col-sm-3 {
+    align-content: center;
+    padding: 0 10px;
+    padding: 0;
+    margin: 0;
+    border: 3px solid white;
+    height: 30vw;
   }
-
   #cuadros {
     display: block !important;
   }
 
   #cuadros .icono {
+    height: 60%;
     margin-top: 5vh;
-    height: 70px;
   }
 
   #cuadros .w-50 {
@@ -1354,7 +1380,7 @@ button:focus,
   }
 
   #cuadros .w-50 .cuadro {
-    height: 23vh;
+    height: 35vh;
   }
 
   #cuadros a {
@@ -1455,4 +1481,8 @@ button:focus,
 #reformas img {
   width: 70vw;
   height: auto;
+}
+#niveles .cuadro .icono {
+  height: 60%;
+  margin-top: 10%;
 }
