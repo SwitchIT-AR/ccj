@@ -79,7 +79,7 @@ router.post(
 );
 
 router.get("/login", function (req, res) {
-  res.redirect("https://familias.colegiociudadjardin.edu.ar");
+  res.redirect("https://access.colegiociudadjardin.edu.ar");
 });
 
 const routes = [
