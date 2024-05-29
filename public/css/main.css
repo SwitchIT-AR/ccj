@@ -29,6 +29,8 @@ body {
 
 .grid-item {
   position: relative;
+  margin-top: 100px;
+  padding-bottom: 100px;
 }
 
 .grid-item img {
