@@ -99,6 +99,7 @@ const routes = [
   { route: "educacionfisica", view: "departamentos" },
   { route: "veronica", view: "departamentos" },
   { route: "actividadesMint", view: "departamentos" },
+  { route: "docentes", view: "docentes" },
 ];
 
 routes.forEach((route) => {
