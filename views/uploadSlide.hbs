@@ -1,61 +1,96 @@
-<section class='content'>
-  <div class='container-fluid'>
-    <!-- row -->
-    <div class='row'>
-      <div class='col-12'>
-        <div class='card card-teal'>
-          <div class='card-header'>
-            <h3 class='card-title'>Alta de Materiales</h3>
-          </div>
-          <!-- /.card-header -->
-          <!-- form start -->
-          <form class='form-horizontal' id='order' action='/api/newSlide/1' method='POST' enctype="multipart/form-data">
-            <div class='card-body'>
-              <div class='row'>
-                <div class='form-group col-sm-6 col-md-4'>
-                  <label for='Link'>Link</label>
-                  <input type='text' class='form-control' id='link' name='link' placeholder='link  a redirigir'
-                    required />
-                </div>
-				                  <div class='form-group col-sm-6 col-md-4'>
-                  <label for='imagenAlt'>imagen Alternative text</label>
-                  <input type='text' class='form-control' id='imagenAlt' placeholder='imagenAlt' name='imagenAlt' />
-                </div>
-                <div class='form-group col-sm-6 col-md-4'>
-                  <label for='text'>texto del boton</label>
-                  <input type='text' class='form-control' id='text' placeholder='text' name='text' />
-                </div>
-                <div class='form-group col-sm-6 col-md-4'>
-                  <label for='images'>Imagenes: Cargar siempre 3: slide1-fhd.jpeg , slide1-hd.jpg y slide.jpg</label>
-                  <input type="file" multiple class='form-control-file'  name='images' placeholder='images' />
-                </div>
-                                <div class='form-group col-sm-6 col-md-4'>
-                  <label for='order'>Orden</label>
-                  <select name='order'  class='form-control' onchange='changeAction(this.value)'>
-                  <option  value="1">1</option>
-                  <option value="2">2</option>
-                  <option  value="3">3</option>
-                  <option  value="4">4</option>
-                  </select>
-                </div>
+<section class='content' style="padding-top: 100px;">
+<div class='container-fluid'>
+        <!-- row -->
+        <div class='row'>
+            <div class='col-12'>
+                <div class='card card-teal'>
+                    <div class='card-header'>
+                        <h3 class='card-title'>Por favor, complete los siguientes campos para crear un nuevo slide</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form class='form-horizontal' id='orderForm' action='/api/newSlide/1' method='POST' enctype="multipart/form-data">
+                        <div class='card-body'>
+                            <div class='row'>
+                                <div class='form-group col-sm-6 col-md-3'>
+                                    <label for='order'>Orden</label>
+                                    <select name='order' id='order' class='form-control' onchange='changeAction(this.value)'>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                </div>
+                                <div class='form-group col-sm-6 col-md-3'>
+                                    <label for='Link'>Link</label>
+                                    <input type='text' class='form-control' id='link' name='link' placeholder='Ingrese el link a redirigir' required />
+                                </div>
+                                <div class='form-group col-sm-6 col-md-3'>
+                                    <label for='imagenAlt'>Texto Alternativo de la Imagen</label>
+                                    <input type='text' class='form-control' id='imagenAlt' placeholder='Ingrese el texto alternativo' name='imagenAlt' />
+                                </div>
+                                <div class='form-group col-sm-6 col-md-3'>
+                                    <label for='text'>Texto del Botón</label>
+                                    <input type='text' class='form-control' id='text' placeholder='Ingrese el texto del botón' name='text' />
+                                </div>
+                            </div>
 
-              </div>
+                            <div class='row'>
+                                <div class='form-group col-12'>
+                                    <div class='card card-body' style='box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>
+                                        <div class='form-group'>
+                                            <label for='fhdImage'>Imagen FHD (slideX-fhd.jpeg)</label>
+                                            <input type="file" class='form-control-file' id='fhdImage' name='fhdImage' required onchange='showThumbnail(this, "fhdPreview")' />
+                                            <img id='fhdPreview' src='#' alt='Imagen FHD' style='max-width: 100px; display: none;' />
+                                        </div>
+                                        <div class='form-group'>
+                                            <label for='hdImage'>Imagen HD (slideX-hd.jpg)</label>
+                                            <input type="file" class='form-control-file' id='hdImage' name='hdImage' required onchange='showThumbnail(this, "hdPreview")' />
+                                            <img id='hdPreview' src='#' alt='Imagen HD' style='max-width: 100px; display: none;' />
+                                        </div>
+                                        <div class='form-group'>
+                                            <label for='mobileImage'>Imagen para Móvil (slideX.jpg)</label>
+                                            <input type="file" class='form-control-file' id='mobileImage' name='mobileImage' required onchange='showThumbnail(this, "mobilePreview")' />
+                                            <img id='mobilePreview' src='#' alt='Imagen para Móvil' style='max-width: 100px; display: none;' />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class='card-footer' style='display: flex; justify-content: flex-end; align-items: center;'>
+                            <button type='submit' class='btn bg-teal font-weight-bold mr-2'>
+                                CREAR SLIDE</button>
+                            <button type='reset' class='btn btn-default'>Cancelar</button>
+                        </div>
+                        <!-- /.card-footer -->
+                    </form>
+                </div>
             </div>
-
-            <!-- /.card-body -->
-            <div class='card-footer'>
-              <div class='float-right'>
-                <button type='submit' class='btn bg-teal font-weight-bold mr-2'>
-                  CREAR SLIDE</button>
-                <button type='reset' class='btn btn-default'>Cancelar</button>
-              </div>
-            </div>
-            <!-- /.card-footer -->
-          </form>
         </div>
-      </div>
-      <script >
-function changeAction(val){
-    document.getElementById('order').setAttribute('action', "/api/newSlide/" + val);
-}
-</script>
+    </div>
+
+    <script>
+        function changeAction(val) {
+            document.getElementById('orderForm').setAttribute('action', "/api/newSlide/" + val);
+            renameInputs(val);
+        }
+
+        function showThumbnail(input, previewId) {
+            const file = input.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const preview = document.getElementById(previewId);
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        }
+
+        function renameInputs(order) {
+            document.getElementById('fhdImage').setAttribute('name', 'slide' + order + '-fhd.jpeg');
+            document.getElementById('hdImage').setAttribute('name', 'slide' + order + '-hd.jpg');
+            document.getElementById('mobileImage').setAttribute('name', 'slide' + order + '.jpg');
+        }
+    </script>
+</section>
