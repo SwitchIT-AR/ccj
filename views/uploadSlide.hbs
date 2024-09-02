@@ -1,5 +1,5 @@
 <section class='content' style="padding-top: 100px;">
-<div class='container-fluid'>
+    <div class='container-fluid'>
         <!-- row -->
         <div class='row'>
             <div class='col-12'>
@@ -40,17 +40,17 @@
                                     <div class='card card-body' style='box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>
                                         <div class='form-group'>
                                             <label for='fhdImage'>Imagen FHD (slideX-fhd.jpeg)</label>
-                                            <input type="file" class='form-control-file' id='fhdImage' name='fhdImage' required onchange='showThumbnail(this, "fhdPreview")' />
+                                            <input type="file" class='form-control-file' id='fhdImage' name='images' required onchange='showThumbnail(this, "fhdPreview")' />
                                             <img id='fhdPreview' src='#' alt='Imagen FHD' style='max-width: 100px; display: none;' />
                                         </div>
                                         <div class='form-group'>
                                             <label for='hdImage'>Imagen HD (slideX-hd.jpg)</label>
-                                            <input type="file" class='form-control-file' id='hdImage' name='hdImage' required onchange='showThumbnail(this, "hdPreview")' />
+                                            <input type="file" class='form-control-file' id='hdImage' name='images' required onchange='showThumbnail(this, "hdPreview")' />
                                             <img id='hdPreview' src='#' alt='Imagen HD' style='max-width: 100px; display: none;' />
                                         </div>
                                         <div class='form-group'>
                                             <label for='mobileImage'>Imagen para Móvil (slideX.jpg)</label>
-                                            <input type="file" class='form-control-file' id='mobileImage' name='mobileImage' required onchange='showThumbnail(this, "mobilePreview")' />
+                                            <input type="file" class='form-control-file' id='mobileImage' name='images' required onchange='showThumbnail(this, "mobilePreview")' />
                                             <img id='mobilePreview' src='#' alt='Imagen para Móvil' style='max-width: 100px; display: none;' />
                                         </div>
                                     </div>
@@ -88,9 +88,9 @@
         }
 
         function renameInputs(order) {
-            document.getElementById('fhdImage').setAttribute('name', 'slide' + order + '-fhd.jpeg');
-            document.getElementById('hdImage').setAttribute('name', 'slide' + order + '-hd.jpg');
-            document.getElementById('mobileImage').setAttribute('name', 'slide' + order + '.jpg');
+            document.getElementById('fhdImage').setAttribute('name', 'images');
+            document.getElementById('hdImage').setAttribute('name', 'images');
+            document.getElementById('mobileImage').setAttribute('name', 'images');
         }
     </script>
 </section>
