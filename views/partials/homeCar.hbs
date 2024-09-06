@@ -1,57 +1,48 @@
-    <section id="carrusel">
-      <div class="carru" id="campus-fhd">
-        <!-- Slides FHD-->
-         {{#each Slides}}
+<section id="carrusel">
+    <div class="carru" id="campus-fhd">
+        <!-- Slides FHD -->
+        {{#each Slides}}
             <div>
-              <a href={{link}} target="_blank">
-                 <div class="cuadrito">
-                  <p>{{text}}</p>
-                  </div>
-                    <a href={{link}} target="_blank">     
-                     <img src="/img/car/{{imageFhd}}" alt={{imageAlt}} />
-                  </a>
-           </div> 
-          {{/each}}
-      </div>
-          <!-- fin carrusel FHD -->
-
-            <!-- Carrusel HD -->
-     <div class="carru" id="campus-hd">
-        {{#each Slides}}
-        <div>
-          <a href={{link}} target="_blank">
-            <div class="cuadrito">
-              <p>{{text}}</p>
+                <a href={{link}} target="_blank">
+                    <div class="cuadrito">
+                        <p>{{text}}</p>
+                    </div>
+                    <img src="/img/car/{{imageFhd}}" alt={{imageAlt}} />
+                </a>
             </div>
-          <a
-            href={{link}}
-            target="_blank"
-            ><img src="/img/car/{{imageHd}}" alt={{imageAlt}} />
-          </a>
-          </div>
-          {{/each}}
-      </div>
+        {{/each}}
+    </div>
+    <!-- fin carrusel FHD -->
 
-      <!-- fin carrusel HD -->
-
-      <!-- Carrusel Mobile -->
-     <div class="carru" id="campus">
+    <!-- Carrusel HD -->
+    <div class="carru" id="campus-hd">
         {{#each Slides}}
-        <div>
-          <a href={{link}} target="_blank">
-            <div class="cuadrito">
-              <p>{{text}}</p>
+            <div>
+                <a href={{link}} target="_blank">
+                    <div class="cuadrito">
+                        <p>{{text}}</p>
+                    </div>
+                    <img src="/img/car/{{imageHd}}" alt={{imageAlt}} />
+                </a>
             </div>
-          <a
-            href={{link}}
-            target="_blank"
-            ><img src="/img/car/{{image}}" alt={{imageAlt}} />
-          </a>
-          </div>
-          {{/each}}
-      </div>
-      <!-- fin carrusel Mobile -->
+        {{/each}}
+    </div>
+    <!-- fin carrusel HD -->
 
-<script src="/dist/js/pages/slides.js"></script>
-    </section>
-  
+    <!-- Carrusel Mobile -->
+    <div class="carru" id="campus">
+        {{#each Slides}}
+            <div>
+                <a href={{link}} target="_blank">
+                    <div class="cuadrito">
+                        <p>{{text}}</p>
+                    </div>
+                    <img src="/img/car/{{image}}" alt={{imageAlt}} />
+                </a>
+            </div>
+        {{/each}}
+    </div>
+    <!-- fin carrusel Mobile -->
+
+    <script src="/dist/js/pages/slides.js"></script>
+</section>
