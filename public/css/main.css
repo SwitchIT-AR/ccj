@@ -1377,6 +1377,12 @@ button:focus,
     text-align: center !important;
     padding-bottom: 15px;
   }
+  #staff .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
 
   #data .card img {
     height: auto;
@@ -1390,9 +1396,24 @@ button:focus,
   }
 
   #staff .card-staff {
-    -ms-flex: 0 0 50%;
-    flex: 0 0 50%;
-    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  #staff .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    text-align: center;
+    height: 10px;
+  }
+
+
+  #staff .card img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
   }
 
   #acto-hd {
