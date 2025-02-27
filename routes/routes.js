@@ -79,7 +79,13 @@ router.post(
 );
 
 router.get("/login", function (req, res) {
-  res.redirect("https://access.colegiociudadjardin.edu.ar");
+  const host = req.hostname; // Get the current domain
+  const domainParts = host.split(".");
+
+  // Extract the main domain without subdomains
+  const mainDomain = domainParts.slice(-3).join(".");
+
+  res.redirect(`https://access.${mainDomain}`);
 });
 
 const routes = [
