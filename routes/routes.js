@@ -357,6 +357,33 @@ router.get("/landing/status", (req, res) => {
 });
 
 router.get("/landing/status/datos", async (req, res) => {
+  const datos = await Matriculado.aggregate([
+    {
+      $match: {
+        "datos.como": "Sitio Web",
+      },
+    },
+    {
+      $project: {
+        _id: 0,
+        // createdAt: 0,
+        updatedAt: 0,
+        __v: 0,
+      },
+    },
+    {
+      $sort: {
+        createdAt: 1,
+      },
+    },
+  ]);
+
+  res.send(datos);
+});
+
+
+
+router.get("/landing/status/datosOld", async (req, res) => {
   const datos = await Matriculado.find(
     {},
     {

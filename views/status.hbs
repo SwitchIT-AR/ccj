@@ -1,4 +1,4 @@
-<section id="data">
+<section id="data" >
   <div class="contenedor c-celeste">
     <div class="p-3">
       <h4>Datos actuales de registros</h4>
@@ -16,43 +16,47 @@
   </div>
 </section>
 <script>
-  fetch("https://colegiociudadjardin.edu.ar/landing/status/datos")
+  fetch("/landing/status/datos")
     .then((response) => response.json())
     .then((data) => {
       const status = document.getElementById("status");
       const total = document.getElementById("total");
       data.map((reg) => {
         datos = `
-            <div class="col-xs-12 col-md-3">
-            <div class="card mb-4" style="min-height:185px">
-              <div class="card-body">
-            <h5 class="card-title">${reg.datos.nombreApellido}</h5>
-            ${reg.red === "Google"
-            ? `<p class="t-rojo font-weight-bold mb-1">Registrado desde: </br>${reg.red} `
-            : ``
-          }
-            ${reg.red === "Facebook"
-            ? `<p class="text-primary font-weight-bold mb-1">Registrado desde: </br>${reg.red} `
-            : ``
-          }
-            ${reg.red === "Instagram"
-            ? `<p class="t-violeta font-weight-bold mb-1">Registrado desde: </br>${reg.red} `
-            : ``
-          }
-            ${reg.red === "Linkedin"
-            ? `<p class="t-amarillo font-weight-bold mb-1">Registrado desde: </br>${reg.red} `
-            : ``
-          }
-            ${reg.red === "Sitio Web Gartenstadt"
-            ? `<p class="t-verde font-weight-bold mb-1">Registrado desde: </br>${reg.red} `
-            : ``
-          }
-            </p>
-            <p class="mb-1">Como nos conociste: </br>${reg.datos.como ? reg.datos.como : "no especificado"
-          }</p>
-            </div>
-            </div>
-            </div>
+             <div class="col-xs-12 col-md-4">
+    <div class="card mb-4" style="min-height:185px">
+      <div class="card-body" style="min-height: 600px">
+      <p style="text-align: left; margin: 0">Nombre</p>
+        <p style="text-align: left; font-size: 22px"><strong>${reg.datos.nombreApellido}</strong></p>
+        <p style="text-align: left; margin: 0">Mail</p>
+        <p style="text-align: left; font-size: 22px""><strong>${reg.datos.mail}</strong></p>
+        <p style="text-align: left; margin: 0">Teléfono</p>
+        <p style="text-align: left; font-size: 22px""><strong>${reg.datos.telefono?? '-'}</strong></p>
+        <p style="text-align: left; margin: 0">Dirección</p>
+        <p style="text-align: left; font-size: 22px""><strong>${reg.datos.direccion?? '-'}</strong></p>
+        <p style="text-align: left; margin: 0">Mensaje</p>
+        <p style="text-align: left; font-size: 18px""><strong>${reg.datos.mensaje?? '-'}</strong></p>
+        <p style="text-align: left; margin: 0">Fecha</p>
+        <p style="text-align: left; font-size: 22px""><strong>${new Date(reg.createdAt).toLocaleString()}</strong></p>
+
+        ${
+          reg.red === "Google"
+            ? `<p class="t-rojo font-weight-bold mb-1">Registrado desde: <br>${reg.red}</p>`
+            : reg.red === "Facebook"
+            ? `<p class="text-primary font-weight-bold mb-1">Registrado desde: <br>${reg.red}</p>`
+            : reg.red === "Instagram"
+            ? `<p class="t-violeta font-weight-bold mb-1">Registrado desde: <br>${reg.red}</p>`
+            : reg.red === "Linkedin"
+            ? `<p class="t-amarillo font-weight-bold mb-1">Registrado desde: <br>${reg.red}</p>`
+            : reg.red === "Sitio Web Gartenstadt"
+            ? `<p class="t-verde font-weight-bold mb-1">Registrado desde: <br>${reg.red}</p>`
+            : ""
+        }
+
+        <p class="mb-1"><strong>¿Cómo nos conociste?:</strong> <br>${reg.datos.como || "No especificado"}</p>
+      </div>
+    </div>
+  </div>
             `;
         status.insertAdjacentHTML("afterbegin", datos);
       });
