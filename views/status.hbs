@@ -1,9 +1,9 @@
 <section id="data" >
   <div class="contenedor c-celeste" style="min-height: 100vh;">
     <div class="p-3">
-      <h4>Datos actuales de registros</h4>
+      <h4 class='mb-2'>Datos actuales de registros</h4>
+      <button id="download-xlsx" class="btn btn-success mb-4">Descargar en Excel</button>
       <h5>Conteo de registros:</h5>
-      <button id="download-xlsx" class="btn btn-success mt-2">Descargar en Excel</button>
     </div>
     <div class="card-deck">
       <div id="total" class="col mb-4"></div>
@@ -25,12 +25,12 @@
 <script>
   const downloadButton = document.getElementById("download-xlsx");
   const loader = document.getElementById("loader");
-const status = document.getElementById("status");
-const total = document.getElementById("total");
+  const status = document.getElementById("status");
+  const total = document.getElementById("total");
 
-// Mostrar el loader al inicio
-downloadButton.style.display = "none";
-loader.style.display = "block";
+  // Mostrar el loader al inicio
+  downloadButton.style.display = "none";
+  loader.style.display = "block";
 
   let registrosData = [];
 
