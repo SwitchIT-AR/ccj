@@ -1,8 +1,11 @@
 <section id="data" >
   <div class="contenedor c-celeste">
+   
+
     <div class="p-3">
       <h4>Datos actuales de registros</h4>
       <h5>Conteo de registros:</h5>
+      <button id="download-xlsx" class="btn btn-success mt-2">Descargar en Excel</button>
     </div>
     <div class="card-deck">
       <div id="total" class="col mb-4"></div>
@@ -13,12 +16,30 @@
       </div>
       <div class="card-deck" id="status"></div>
     </div>
+     <div id="loader" style="text-align:center; padding: 2rem;">
+  <div class="spinner-border text-primary" role="status">
+    <span class="sr-only">Cargando...</span>
+  </div>
+</div>
   </div>
 </section>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <script>
+  const downloadButton = document.getElementById("download-xlsx");
+  const loader = document.getElementById("loader");
+const status = document.getElementById("status");
+const total = document.getElementById("total");
+
+// Mostrar el loader al inicio
+downloadButton.style.display = "none";
+loader.style.display = "block";
+
+  let registrosData = [];
+
   fetch("/landing/status/datos")
     .then((response) => response.json())
     .then((data) => {
+      registrosData = data;
       const status = document.getElementById("status");
       const total = document.getElementById("total");
       data.map((reg) => {
@@ -59,7 +80,34 @@
   </div>
             `;
         status.insertAdjacentHTML("afterbegin", datos);
-      });
+        // Ocultar loader después de terminar
+    loader.style.display = "none";
+    downloadButton.style.display = "block";
+      }).catch((err) => {
+    console.error("Error al cargar los datos:", err);
+    loader.innerHTML = "<p class='text-danger'>Error al cargar datos.</p>";
+  });
+
+      document.getElementById("download-xlsx").addEventListener("click", () => {
+          if (!registrosData.length) return console.log(registrosData);
+
+          const excelData = registrosData.map((reg) => ({
+            Nombre: reg.datos?.nombreApellido || "",
+            Mail: reg.datos?.mail || "",
+            Teléfono: reg.datos?.telefono || "",
+            Dirección: reg.datos?.direccion || "",
+            Mensaje: reg.datos?.mensaje || "",
+            Fecha: new Date(reg.createdAt).toLocaleString(),
+            Red: reg.red,
+            contacto: reg.datos?.como || "No especificado",
+          }));
+
+          const ws = XLSX.utils.json_to_sheet(excelData);
+          const wb = XLSX.utils.book_new();
+          XLSX.utils.book_append_sheet(wb, ws, "Registros");
+
+          XLSX.writeFile(wb, "registros.xlsx");
+        });
 
       const info = data.reduce(function (c, d) {
         if (!c[d.red]) c[d.red] = 0;
