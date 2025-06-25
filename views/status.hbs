@@ -81,10 +81,7 @@
         // Ocultar loader después de terminar
     loader.style.display = "none";
     downloadButton.style.display = "block";
-      }).catch((err) => {
-    console.error("Error al cargar los datos:", err);
-    loader.innerHTML = "<p class='text-danger'>Error al cargar datos.</p>";
-  });
+      })
 
       document.getElementById("download-xlsx").addEventListener("click", () => {
           if (!registrosData.length) return console.log(registrosData);
@@ -128,5 +125,8 @@
           </div>
           `;
       total.insertAdjacentHTML("afterbegin", redes);
-    });
+    }).catch((err) => {
+    console.error("Error al cargar los datos:", err);
+    loader.innerHTML = "<p class='text-danger'>Error al cargar datos.</p>";
+  });;
 </script>
