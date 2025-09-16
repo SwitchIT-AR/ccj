@@ -139,9 +139,10 @@
         }
 
         // SCRIPT AUTOLUNCH YOUTUBE MODAL
-         // Todo adentro de DOMContentLoaded para asegurar que #modalVideo ya existe
   document.addEventListener('DOMContentLoaded', function () {
     var modalEl = document.getElementById('modalVideo');
+    var iframeId = 'videoIframe';
+    var player; // objeto YT.Player
     if (!modalEl) {
       console.warn('No se encontró #modalVideo en el DOM.');
       return;
@@ -219,6 +220,19 @@
 
     // abrir automáticamente al cargar el DOM
     openModal();
+
+    // ---- YOUTUBE API ----
+    window.onYouTubeIframeAPIReady = function () {
+      player = new YT.Player(iframeId, {
+        events: {
+          'onStateChange': function (event) {
+            if (event.data === YT.PlayerState.ENDED) {
+              closeModal(); // cerrar cuando termina
+            }
+          }
+        }
+      });
+    };
   });
       </script>
     </form>
