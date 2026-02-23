@@ -11,9 +11,8 @@ body {
 }
 #docentes {
   text-align: center;
-  max-width: 800px;
+  margin-inline: 2rem;
   margin-top: 10vh;
-  margin-left: 25%;
   padding: 25px;
   background: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -21,9 +20,8 @@ body {
 }
 
 .grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  display: flex;
+  gap: 12rem;
   margin-top: 20px;
 }
 
@@ -1383,7 +1381,6 @@ button:focus,
     justify-content: center;
   }
 
-
   #data .card img {
     height: auto;
     width: 50%;
@@ -1408,7 +1405,6 @@ button:focus,
     text-align: center;
     height: 10px;
   }
-
 
   #staff .card img {
     max-width: 100%;
