@@ -23,6 +23,7 @@ body {
   display: flex;
   gap: 12rem;
   margin-top: 20px;
+  justify-content: center;
 }
 
 .grid-item {
