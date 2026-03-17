@@ -85,7 +85,50 @@ router.get("/login", function (req, res) {
   // Extract the main domain without subdomains
   const mainDomain = domainParts.slice(-3).join(".");
 
-  res.redirect(`https://access.${mainDomain}`);
+  const referer = req.get("Referer") || "";
+  const isLocalhost = host === "localhost" || host === "127.0.0.1" || host === "::1";
+
+  if (isLocalhost) {
+    // On local dev avoid redirecting to access.localhost; keep user on the same page
+    if (/\/administracion/i.test(referer) || /\/admin/i.test(referer)) {
+      return res.redirect("/admin/login");
+    }
+
+    if (referer) return res.redirect(referer);
+
+    return res.redirect("/");
+  }
+
+  // Production: redirect to access.<mainDomain>
+  if (/\/administracion/i.test(referer) || /\/admin/i.test(referer)) {
+    return res.redirect(`https://access.${mainDomain}/admin/login`);
+  }
+
+  if (referer) return res.redirect(referer);
+
+  return res.redirect(`https://access.${mainDomain}`);
+});
+router.get("/admin/login", function (req, res) {
+  const host = req.hostname; // Get the current domain
+  const domainParts = host.split(".");
+
+  // Extract the main domain without subdomains
+  const mainDomain = domainParts.slice(-3).join(".");
+
+  const referer = req.get("Referer") || "";
+
+  // If the request comes from an admin area, send to admin login
+  if (/\/administracion/i.test(referer) || /\/admin/i.test(referer)) {
+    return res.redirect(`https://access.${mainDomain}/admin/login`);
+  }
+
+  // Otherwise, keep the user on the same page (redirect back to referer) if available,
+  // otherwise fall back to the main access domain.
+  if (referer) {
+    return res.redirect(referer);
+  }
+
+  return res.redirect(`https://access.${mainDomain}`);
 });
 
 const routes = [
