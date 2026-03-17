@@ -84,30 +84,10 @@ router.get("/login", function (req, res) {
 
   // Extract the main domain without subdomains
   const mainDomain = domainParts.slice(-3).join(".");
-
-  const referer = req.get("Referer") || "";
-  const isLocalhost = host === "localhost" || host === "127.0.0.1" || host === "::1";
-
-  if (isLocalhost) {
-    // On local dev avoid redirecting to access.localhost; keep user on the same page
-    if (/\/administracion/i.test(referer) || /\/admin/i.test(referer)) {
-      return res.redirect("/admin/login");
-    }
-
-    if (referer) return res.redirect(referer);
-
-    return res.redirect("/");
-  }
-
-  // Production: redirect to access.<mainDomain>
-  if (/\/administracion/i.test(referer) || /\/admin/i.test(referer)) {
-    return res.redirect(`https://access.${mainDomain}/admin/login`);
-  }
-
-  if (referer) return res.redirect(referer);
-
-  return res.redirect(`https://access.${mainDomain}`);
+  res.redirect(`https://access.${mainDomain}`);
 });
+
+
 router.get("/admin/login", function (req, res) {
   const host = req.hostname; // Get the current domain
   const domainParts = host.split(".");
