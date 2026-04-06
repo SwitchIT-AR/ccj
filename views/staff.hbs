@@ -1,32 +1,35 @@
-<section id="docentes">
+<section id='docentes'>
   <h1>Beneficios Staff</h1>
 
-  <div class="grid-container">
-    <div class="grid-item">
-      <a href="https://encombo.com.ar/">
-        <img src="/img/logos/encombo.webp" alt="Encombo" />
+  <div class='grid-container'>
+    <div class='grid-item'>
+      <a href='https://encombo.com.ar/'>
+        <img src='/img/logos/encombo.webp' alt='Encombo' />
       </a>
     </div>
-    <div class="grid-item">
-      <a href="https://beneficiosccj.com/">
-        <img src="/img/logos/bonda.svg" alt="Bonda" />
+    <div class='grid-item'>
+      <a href='https://beneficiosccj.com/'>
+        <img src='/img/logos/bonda.svg' alt='Bonda' />
       </a>
     </div>
-    <div class="grid-item">
-      <a href="https://arcorencasa.com/">
-        <img src="/img/logos/arcor.png" alt="Arcor" />
+    <div class='grid-item'>
+      <a href='https://arcorencasa.com/'>
+        <img src='/img/logos/arcor.png' alt='Arcor' />
       </a>
     </div>
-    <div class="grid-item">
-      <a href="#">
-        <img src="/img/logos/LEVEL.jpeg" alt="LEVEL" />
+    <div class='grid-item'>
+      <a href='#'>
+        <img src='/img/logos/LEVEL.jpeg' alt='LEVEL' />
       </a>
     </div>
-    <div class="grid-item paniteca-wrapper">
-      <a href="#">
-        <img src="/img/logos/LA PANITECA_LOGO_SIN_FONDO.png" alt="La Paniteca" />
+    <div class='grid-item paniteca-wrapper'>
+      <a href='#'>
+        <img
+          src='/img/logos/LA PANITECA_LOGO_SIN_FONDO.png'
+          alt='La Paniteca'
+        />
       </a>
-      <div class="tooltip">
+      <div class='tooltip'>
         Por tu compra de $15mil o más, obtenés un 20% de descuento.<br />
         Válido de lunes a sábados al mediodía.<br />
         En el local · Take Away · Delivery<br />
@@ -40,20 +43,36 @@
   </div>
 </section>
 
-<section id="admin-access">
-  <div class="admin-divider">
+<section id='admin-access'>
+  <div class='admin-divider'>
     <span></span>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <rect x="3" y="11" width="18" height="11" rx="2"></rect>
-      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      viewBox='0 0 24 24'
+      fill='none'
+      stroke='currentColor'
+      stroke-width='1.5'
+    >
+      <rect x='3' y='11' width='18' height='11' rx='2'></rect>
+      <path d='M7 11V7a5 5 0 0 1 10 0v4'></path>
     </svg>
     <span></span>
   </div>
 
-  <a target="_blank" href="https://access.colegiociudadjardin.edu.ar/admin/login" class="admin-btn">
+  <a
+    target='_blank'
+    href='https://access.colegiociudadjardin.edu.ar/admin/login'
+    class='admin-btn'
+  >
     Administración
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M5 12h14M12 5l7 7-7 7" />
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      viewBox='0 0 24 24'
+      fill='none'
+      stroke='currentColor'
+      stroke-width='2'
+    >
+      <path d='M5 12h14M12 5l7 7-7 7' />
     </svg>
   </a>
 </section>
@@ -68,9 +87,7 @@
   .grid-container {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 1rem;
-    max-width: 600px;
-    margin: 0 auto;
+    gap: 0.1rem;
   }
 
   /* Fila 1: 3 items, cada uno ocupa 2 columnas (2×3=6) */
@@ -91,16 +108,16 @@
   }
 
   .grid-item {
-    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 0;
   }
 
   .grid-item img {
-    max-width: 110px;
-    max-height: 55px;
     object-fit: contain;
+    max-width: 110px;
+    max-height: 110px;
   }
 
   /* ---- TOOLTIP LA PANITECA ---- */
@@ -185,7 +202,11 @@
     font-weight: 600;
     letter-spacing: 0.03em;
     border: 2px solid #2c5f8a;
-    transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+    transition:
+      background 0.2s,
+      color 0.2s,
+      transform 0.2s,
+      box-shadow 0.2s;
     box-shadow: 0 3px 12px rgba(44, 95, 138, 0.3);
   }
 
