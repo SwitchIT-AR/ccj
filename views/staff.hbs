@@ -1,5 +1,6 @@
 <section id="docentes">
   <h1>Beneficios Staff</h1>
+
   <div class="grid-container">
     <div class="grid-item">
       <a href="https://encombo.com.ar/">
@@ -13,13 +14,28 @@
     </div>
     <div class="grid-item">
       <a href="https://arcorencasa.com/">
-        <img src="/img/logos/arcor.png" alt="logo arcor" />
+        <img src="/img/logos/arcor.png" alt="Arcor" />
       </a>
     </div>
     <div class="grid-item">
       <a href="#">
-        <img src="/img/logos/LEVEL.jpeg" alt="logo LEVEL" />
+        <img src="/img/logos/LEVEL.jpeg" alt="LEVEL" />
       </a>
+    </div>
+    <div class="grid-item paniteca-wrapper">
+      <a href="#">
+        <img src="/img/logos/LA PANITECA_LOGO_SIN_FONDO.png" alt="La Paniteca" />
+      </a>
+      <div class="tooltip">
+        Por tu compra de $15mil o más, obtenés un 20% de descuento.<br />
+        Válido de lunes a sábados al mediodía.<br />
+        En el local · Take Away · Delivery<br />
+        Delivery sin cargo de 12 a 15 hs.<br />
+        Medio de pago: Efvo o MP<br />
+        No acumulable con otras promociones.<br /><br />
+        <strong>Martín Fierro 5718 · Villa Bosch</strong><br />
+        Ig: @lapaniteca
+      </div>
     </div>
   </div>
 </section>
@@ -37,14 +53,98 @@
   <a target="_blank" href="https://access.colegiociudadjardin.edu.ar/admin/login" class="admin-btn">
     Administración
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M5 12h14M12 5l7 7-7 7"/>
+      <path d="M5 12h14M12 5l7 7-7 7" />
     </svg>
   </a>
 </section>
 
 <style>
+  /* ---- STAFF BENEFITS ---- */
+  #docentes h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Fila 1: 3 items, cada uno ocupa 2 columnas (2×3=6) */
+  .grid-item:nth-child(1),
+  .grid-item:nth-child(2),
+  .grid-item:nth-child(3) {
+    grid-column: span 2;
+  }
+
+  /* Fila 2: LEVEL empieza en columna 2 y ocupa 2 */
+  .grid-item:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+
+  /* Fila 2: Paniteca ocupa 2 a continuación */
+  .grid-item:nth-child(5) {
+    grid-column: span 2;
+  }
+
+  .grid-item {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .grid-item img {
+    max-width: 110px;
+    max-height: 55px;
+    object-fit: contain;
+  }
+
+  /* ---- TOOLTIP LA PANITECA ---- */
+  .paniteca-wrapper {
+    position: relative;
+  }
+
+  .tooltip {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #555;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: 10;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #e0e0e0;
+  }
+
+  .paniteca-wrapper:hover .tooltip {
+    opacity: 1;
+  }
+
+  /* ---- ADMIN ACCESS ---- */
   #admin-access {
-    padding: 2rem 1rem 2.5rem;
+    padding: 2rem 1rem 2.5rem 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -72,7 +172,7 @@
     flex-shrink: 0;
   }
 
-.admin-btn {
+  .admin-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -84,12 +184,12 @@
     font-size: 0.9rem;
     font-weight: 600;
     letter-spacing: 0.03em;
-    border: 2px solid #2c5f8a;  /* ← agregado */
+    border: 2px solid #2c5f8a;
     transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 3px 12px rgba(44, 95, 138, 0.3);
   }
 
-.admin-btn:hover {
+  .admin-btn:hover {
     background: #ffffff;
     color: #2c5f8a;
     transform: translateY(-2px);
@@ -99,9 +199,5 @@
   .admin-btn:hover svg {
     transform: translateX(3px);
     stroke: #2c5f8a;
-  }
-
-  .admin-btn:hover svg {
-    transform: translateX(3px);
   }
 </style>
