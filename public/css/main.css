@@ -860,15 +860,14 @@ button:focus,
 
 /* Me mandaban imagenes sin formato y me case de pedirles que las manden bien*/
 .img-perfil-circular {
-  width: 190px !important;
-  height: 190px !important;
-  object-fit: cover;
+  width: 200px !important;
+  height: 200px !important;
+  /* object-fit: cover;
+   */
   object-position: center;
   border-radius: 50%;
   background-color: white;
   padding: 5px !important;
-  display: block;
-  margin: auto;
   float: none !important;
 }
 
