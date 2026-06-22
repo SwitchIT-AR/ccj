@@ -260,59 +260,25 @@ router.post("/landing/matricula", async (req, res) => {
 
     await grabarDatos(req.body);
 
-    res.json({
-      success: true,
-    });
+    res.json({ success: true });
   } else {
-    res.json({
-      success: false,
-    });
+    res.json({ success: false });
   }
 
   async function grabarDatos(data) {
     const {
-      nombreApellido,
-      nivelEducativo,
-      edad,
-      institucionProveniente,
-      nombrePadre,
-      apellidoPadre,
-      nombreMadre,
-      apellidoMadre,
-      direccion,
-      telefono,
-      mail,
-      mensaje,
-      como,
-      cual,
-      red,
+      nombreApellido, nivelEducativo, edad, institucionProveniente,
+      nombrePadre, apellidoPadre, nombreMadre, apellidoMadre,
+      direccion, telefono, mail, mensaje, como, cual, red,
     } = data;
-
-    const datos = {
-      nombreApellido,
-      nivelEducativo,
-      edad,
-      institucionProveniente,
-      nombrePadre,
-      apellidoPadre,
-      nombreMadre,
-      apellidoMadre,
-      direccion,
-      telefono,
-      mail,
-      mensaje,
-      como,
-      cual,
-    };
 
     const matriculado = new Matriculado({
       red,
-      datos,
+      datos: { nombreApellido, nivelEducativo, edad, institucionProveniente, nombrePadre, apellidoPadre, nombreMadre, apellidoMadre, direccion, telefono, mail, mensaje, como, cual },
     });
 
     await matriculado.save();
 
-    // Enviar a schoolit-api (fire-and-forget, no bloquea ni falla el flujo principal)
     fetch(`${process.env.SCHOOLIT_API_URL}/admisiones`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
