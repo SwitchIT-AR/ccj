@@ -311,6 +311,13 @@ router.post("/landing/matricula", async (req, res) => {
     });
 
     await matriculado.save();
+
+    // Enviar a schoolit-api (fire-and-forget, no bloquea ni falla el flujo principal)
+    fetch(`${process.env.SCHOOLIT_API_URL}/admisiones`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nombreApellido, nivelEducativo, edad, institucionProveniente, nombrePadre, apellidoPadre, nombreMadre, apellidoMadre, direccion, telefono, mail, mensaje, como, cual, red }),
+    }).catch((err) => console.error('[schoolit-api] Error al guardar admisión:', err));
   }
 });
 
