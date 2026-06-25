@@ -208,6 +208,9 @@ router.post("/landing/matricula", async (req, res) => {
   const {
     nombreApellido,
     nivelEducativo,
+    sala,
+    jornada,
+    curso,
     edad,
     institucionProveniente,
     nombrePadre,
@@ -229,6 +232,9 @@ router.post("/landing/matricula", async (req, res) => {
     <p>Nombre del alumno entrante: ${nombreApellido}</p>
     <p>Edad: ${edad}</p>
     <p>Nivel educativo: ${nivelEducativo}</p>
+    ${sala ? `<p>Sala: ${sala}</p>` : ''}
+    ${jornada ? `<p>Tipo de jornada: ${jornada}</p>` : ''}
+    ${curso ? `<p>Curso: ${curso}</p>` : ''}
     <p>Institución proveniente: ${institucionProveniente}</p>
     <p>Nombre del Padre: ${nombrePadre + " " + apellidoPadre}</p>
     <p>Nombre de la Madre: ${nombreMadre + " " + apellidoMadre}</p>
@@ -267,14 +273,14 @@ router.post("/landing/matricula", async (req, res) => {
 
   async function grabarDatos(data) {
     const {
-      nombreApellido, nivelEducativo, edad, institucionProveniente,
+      nombreApellido, nivelEducativo, sala, jornada, curso, edad, institucionProveniente,
       nombrePadre, apellidoPadre, nombreMadre, apellidoMadre,
       direccion, telefono, mail, mensaje, como, cual, red,
     } = data;
 
     const matriculado = new Matriculado({
       red,
-      datos: { nombreApellido, nivelEducativo, edad, institucionProveniente, nombrePadre, apellidoPadre, nombreMadre, apellidoMadre, direccion, telefono, mail, mensaje, como, cual },
+      datos: { nombreApellido, nivelEducativo, sala, jornada, curso, edad, institucionProveniente, nombrePadre, apellidoPadre, nombreMadre, apellidoMadre, direccion, telefono, mail, mensaje, como, cual },
     });
 
     await matriculado.save();
@@ -282,7 +288,7 @@ router.post("/landing/matricula", async (req, res) => {
     fetch(`${process.env.SCHOOLIT_API_URL}/admisiones`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nombreApellido, nivelEducativo, edad, institucionProveniente, nombrePadre, apellidoPadre, nombreMadre, apellidoMadre, direccion, telefono, mail, mensaje, como, cual, red }),
+      body: JSON.stringify({ nombreApellido, nivelEducativo, sala, jornada, curso, edad, institucionProveniente, nombrePadre, apellidoPadre, nombreMadre, apellidoMadre, direccion, telefono, mail, mensaje, como, cual, red }),
     }).catch((err) => console.error('[schoolit-api] Error al guardar admisión:', err));
   }
 });

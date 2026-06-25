@@ -279,11 +279,40 @@
             <label for="alumno">Nombre y apellido del alumno entrante</label>
             <input type="text" class="form-control" id="alumno" placeholder="" />
           </div>
-          <div class="form-group col-md-8">
-            <label for="nivel">Nivel educativo:</label>
-            <input type="text" class="form-control" id="nivel" placeholder="" />
-          </div>
           <div class="form-group col-md-4">
+            <label for="nivel">Nivel educativo:</label>
+            <select class="form-control" id="nivel">
+              <option value="" selected disabled hidden>Seleccionar...</option>
+              <option value="Inicial">Nivel Inicial</option>
+              <option value="Primario">Primario</option>
+              <option value="Secundario">Secundario</option>
+            </select>
+          </div>
+          <div class="form-group col-md-3" id="campos-sala" hidden>
+            <label for="sala">Sala:</label>
+            <select class="form-control" id="sala">
+              <option value="" selected disabled hidden>Seleccionar...</option>
+              <option value="Sala de 2 años">Sala de 2 años</option>
+              <option value="Sala de 3 años">Sala de 3 años</option>
+              <option value="Sala de 4 años">Sala de 4 años</option>
+              <option value="Sala de 5 años">Sala de 5 años</option>
+            </select>
+          </div>
+          <div class="form-group col-md-3" id="campos-jornada" hidden>
+            <label for="jornada">Tipo de jornada:</label>
+            <select class="form-control" id="jornada">
+              <option value="" selected disabled hidden>Seleccionar...</option>
+              <option value="Jornada completa">Jornada completa</option>
+              <option value="Media jornada">Media jornada</option>
+            </select>
+          </div>
+          <div class="form-group col-md-5" id="campos-curso" hidden>
+            <label for="curso">Curso:</label>
+            <select class="form-control" id="curso">
+              <option value="" selected disabled hidden>Seleccionar...</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2">
             <label for="edad">Edad:</label>
             <input type="number" class="form-control" id="edad" min="1" max="18" placeholder="" />
           </div>
@@ -361,12 +390,39 @@
                 .setAttribute("hidden", "hidden");
             }
           });
+
+          document.getElementById("nivel").addEventListener("change", function() {
+            var val = this.value;
+            var camposSala = document.getElementById("campos-sala");
+            var camposJornada = document.getElementById("campos-jornada");
+            var camposCurso = document.getElementById("campos-curso");
+            var curso = document.getElementById("curso");
+            if (val === "Inicial") {
+              camposSala.removeAttribute("hidden");
+              camposJornada.removeAttribute("hidden");
+              camposCurso.setAttribute("hidden", "hidden");
+              curso.innerHTML = '<option value="" selected disabled hidden>Seleccionar...</option>';
+            } else if (val === "Primario") {
+              camposSala.setAttribute("hidden", "hidden");
+              camposJornada.setAttribute("hidden", "hidden");
+              camposCurso.removeAttribute("hidden");
+              curso.innerHTML = '<option value="" selected disabled hidden>Seleccionar...</option><option value="1° Grado">1° Grado</option><option value="2° Grado">2° Grado</option><option value="3° Grado">3° Grado</option><option value="4° Grado">4° Grado</option><option value="5° Grado">5° Grado</option><option value="6° Grado">6° Grado</option><option value="7° Grado">7° Grado</option>';
+            } else if (val === "Secundario") {
+              camposSala.setAttribute("hidden", "hidden");
+              camposJornada.setAttribute("hidden", "hidden");
+              camposCurso.removeAttribute("hidden");
+              curso.innerHTML = '<option value="" selected disabled hidden>Seleccionar...</option><option value="1° Año">1° Año</option><option value="2° Año">2° Año</option><option value="3° Año">3° Año</option><option value="4° Año">4° Año</option><option value="5° Año">5° Año</option><option value="6° Año">6° Año</option>';
+            }
+          });
         </script>
         <script>
           function registrar() {
             const data = {
               nombreApellido: document.getElementById("alumno").value,
               nivelEducativo: document.getElementById("nivel").value,
+              sala: (!document.getElementById("campos-sala").hasAttribute("hidden")) ? document.getElementById("sala").value : "",
+              jornada: (!document.getElementById("campos-jornada").hasAttribute("hidden")) ? document.getElementById("jornada").value : "",
+              curso: (!document.getElementById("campos-curso").hasAttribute("hidden")) ? document.getElementById("curso").value : "",
               edad: document.getElementById("edad").value,
               institucionProveniente:
                 document.getElementById("institucion").value,
