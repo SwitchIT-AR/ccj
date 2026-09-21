@@ -10,7 +10,7 @@
         </li>
         <li><a class="btn btn-gart" href="/login">Campus Virtual</a></li>
         <li>
-          <a class="btn btn-gart disabled" href="/comollegar">Como llegar</a>
+          <a class="btn btn-gart" href="/comollegar">Como llegar</a>
         </li>
         <li>
           <div class="btn-group dropup">
@@ -30,13 +30,20 @@
             </div>
           </div>
         </li>
-        <li><a class="btn btn-gart" href="/Tour">Tour 360</a></li>
+        {{!-- 21/09: el botón "Tour 360" apuntaba a /Tour, que es 404 y no existe ni como
+              ruta ni como asset en el repo. Se saca hasta que el colegio entregue el tour;
+              cuando exista, se repone con el destino real. --}}
       </ul>
     </div>
     <div
       class="col-sm-3 offset-sm-1 ml-auto my-auto text-right align-self-center"
     >
-      <a href="#" class="mr-2"><i
+      <a
+        href="https://www.facebook.com/colegiociudadjardin/"
+        target="_blank"
+        rel="noopener"
+        class="mr-2"
+      ><i
           class="fab fa-facebook fa-lg"
           aria-hidden="true"
           data-toggle="tooltip"
@@ -54,7 +61,12 @@
           data-placement="top"
           title="Instagram"
         ></i></a>
-      <a href="#" class="mr-2"><i
+      <a
+        href="https://ar.linkedin.com/company/gartenstadt-schule"
+        target="_blank"
+        rel="noopener"
+        class="mr-2"
+      ><i
           class="fab fa-linkedin fa-lg"
           aria-hidden="true"
           data-toggle="tooltip"

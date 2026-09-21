@@ -1,0 +1,99 @@
+{{!--
+  /comollegar — 21/09/2026.
+
+  Los dos footers (homeFooter.hbs y footerPages.hbs) y las landings de campaña traían un
+  botón "Como llegar" con `class="btn btn-gart disabled"` apuntando a /comollegar, que era
+  404: diez botones apagados apuntando a una página que nunca existió.
+
+  Vista con texto propio (NO lleva `necesitaDoc` en routes/routes.js): los datos de
+  contacto del colegio no viven en Mongo y no tiene sentido que dependan de un documento.
+
+  El mapa es el embed público de Google Maps (`/maps?q=<dirección>&output=embed`), que no
+  necesita API key ni cuenta de facturación.
+--}}
+
+<section id="landing">
+  <div class="landing-img"
+    style="background-image: linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),url(/img/nuestro-colegio/top.jpg);">
+    <h2 class="landing-title">Cómo llegar</h2>
+    <h5 class="landing-subtitle">Ciudad Jardín Lomas del Palomar, Tres de Febrero</h5>
+  </div>
+</section>
+
+<section>
+  <div class="contenedor">
+    <div class="row">
+      <div class="col-md-5">
+        <h3>Dónde estamos</h3>
+        <p class="h5 mb-4">
+          Aviador Tte. Benjamín Matienzo 2799 (ex 509)<br />
+          Ciudad Jardín Lomas del Palomar (B1684)<br />
+          Tres de Febrero, Provincia de Buenos Aires
+        </p>
+
+        <h3>Contacto</h3>
+        <p class="h5">
+          <a href="tel:+541147586245">011 4758-6245</a><br />
+          <a href="tel:+541147510376">011 4751-0376</a><br />
+          <a
+            href="mailto:administracion@colegiociudadjardin.edu.ar"
+          >administracion@colegiociudadjardin.edu.ar</a>
+        </p>
+
+        <h3>Horario de atención</h3>
+        <p class="h5 mb-4">Lunes a viernes de 8:00 a 16:00 hs</p>
+
+        <a
+          class="btn btn-gart"
+          href="https://www.google.com/maps/search/?api=1&query=Aviador+Tte.+Benjam%C3%ADn+Matienzo+2799,+Ciudad+Jard%C3%ADn+Lomas+del+Palomar,+Buenos+Aires"
+          target="_blank"
+          rel="noopener"
+        >Abrir en Google Maps</a>
+      </div>
+
+      <div class="col-md-7 mt-4 mt-md-0">
+        <iframe
+          title="Mapa del Colegio Ciudad Jardín"
+          src="https://www.google.com/maps?q=Aviador%20Tte.%20Benjam%C3%ADn%20Matienzo%202799,%20Ciudad%20Jard%C3%ADn%20Lomas%20del%20Palomar,%20Buenos%20Aires&output=embed"
+          style="border: 0; width: 100%; height: 420px; border-radius: 20px;"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="c-amarillo text-white">
+  <div class="contenedor">
+    <h3 class="text-center">Cómo venir</h3>
+    <div class="row justify-content-md-center">
+      <div class="col-md-4">
+        <h5 class="font-weight-bold">En auto</h5>
+        <p>
+          El colegio está sobre Aviador Tte. Benjamín Matienzo, en el barrio
+          Ciudad Jardín Lomas del Palomar (Tres de Febrero). El botón "Abrir en
+          Google Maps" te arma el recorrido desde donde estés.
+        </p>
+      </div>
+      <div class="col-md-4">
+        <h5 class="font-weight-bold">En tren</h5>
+        <p>
+          Línea San Martín, estación El Palomar. Desde la estación hay
+          colectivos y remises hasta Ciudad Jardín.
+        </p>
+      </div>
+      <div class="col-md-4">
+        <h5 class="font-weight-bold">En colectivo</h5>
+        {{!-- Sin números de línea: no los pudimos verificar y no se inventan datos
+              en una página pública del colegio. Si el colegio los confirma, se agregan. --}}
+        <p>
+          Varias líneas llegan a Ciudad Jardín Lomas del Palomar. Para ver el
+          recorrido y la combinación desde tu domicilio, usá el botón "Abrir en
+          Google Maps".
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
