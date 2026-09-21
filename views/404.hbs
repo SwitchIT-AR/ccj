@@ -1,0 +1,23 @@
+{{!--
+  Página 404. La usa el guard `necesitaDoc` de routes/routes.js: si una ruta que saca todo
+  su texto de Mongo no tiene documento en `pages`, antes renderizaba una página en blanco
+  con el header y el footer (el caso de /actividadesMint, y el de /informatica hasta A.12).
+  Una página vacía es peor que un 404: parece que el sitio está roto y Google la indexa.
+--}}
+
+<section id="landing">
+  <div class="landing-img"
+    style="background-image: linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),url(/img/nuestro-colegio/top.jpg);">
+    <h2 class="landing-title">No encontramos esta página</h2>
+  </div>
+</section>
+
+<section>
+  <div class="contenedor text-center py-5">
+    <p class="h5 mb-4">
+      La página que buscás no existe o todavía no está publicada.
+    </p>
+    <a href="/" class="btn btn-lg px-5 py-3 font-weight-bold text-white"
+      style="background-color: #009540; border-radius: 30px; letter-spacing: 1px;">VOLVER AL INICIO</a>
+  </div>
+</section>

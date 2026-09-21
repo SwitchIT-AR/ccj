@@ -1,25 +1,17 @@
 {{!--
-  PÁGINA PLACEHOLDER — /eventos
+  /eventos — los cuatro eventos del colegio, con ancla propia cada uno.
 
-  Por qué existe este archivo: el punto A.9 del pliego pide que el cuadro "Eventos" de la
-  grilla de la home lleve a /eventos, y los puntos A.7/A.8 (ya mergeados) dejaron los ítems
-  del menú apuntando a /eventos#concert, #expresarte, #familienfest y #musical-de-aleman
-  con `class="dropdown-item disabled"` y el comentario "quedan disabled hasta que exista la
-  ruta /eventos". Esa ruta NO existía en routes/routes.js, así que enlazar el cuadro sin
-  crearla dejaba un 404 en la home.
+  Los ítems del menú EVENTOS de las tres barras (nav.hbs, NavMenu.hbs, homeMenu.hbs) apuntan
+  a #concert, #expresarte, #familienfest y #musical-de-aleman: esos id NO se tocan.
 
-  EL CONTENIDO REAL NO ESTÁ: el Google Doc "Eventos"
-  (1F3zaWhR5AtKnkZUdN2RjcTvhdxjyow_EXQXVrB_knAg) sigue sin compartir — ver la sección
-  "B. Bloqueado por falta de acceso" del pliego. Por eso, siguiendo lo que el propio pliego
-  indica para lo bloqueado ("dejar la estructura armada: ruta + vista + entrada de menú +
-  anclas, con un placeholder claro"), esta vista arma sólo el esqueleto y los cuatro anclas.
+  El texto sale entero de Mongo (colección `pages`, ruta "/eventos"), lo carga
+  scripts/2026-09-contenido-auditoria.js con el contenido del Google Doc "Eventos"
+  (1F3zaWhR5AtKnkZUdN2RjcTvhdxjyow_EXQXVrB_knAg). La ruta tiene el guard `necesitaDoc` en
+  routes/routes.js: sin documento devuelve 404 en vez de una página en blanco, así que acá
+  ya no hace falta el aviso de "estamos preparando esta página" que tenía el placeholder.
 
-  El texto se lee de Mongo (colección `pages`, ruta "/eventos"). Mientras ese documento no
-  exista, se muestra el aviso de "en preparación". CUANDO LLEGUE EL CONTENIDO: se carga el
-  documento en `pages` y esta vista lo renderiza sola, sin tocar código.
-
-  Los ítems del menú siguen `disabled` a propósito: se los habilita recién cuando haya
-  contenido de verdad, no contra este placeholder.
+  Cada bloque muestra su foto sólo si el documento trae el campo, para no publicar
+  placeholders de "FOTO PENDIENTE" a la vista de todos.
 --}}
 
 <section id="landing">
@@ -30,35 +22,54 @@
   </div>
 </section>
 
-{{#unless textos}}
-<section>
-  <div class="contenedor text-center">
-    <h3>Estamos preparando esta página</h3>
-    <p>
-      Muy pronto vas a encontrar acá todos los eventos del colegio: el Concert, Expresarte,
-      el Familienfest y el Musical de Alemán.
-    </p>
-  </div>
-</section>
-{{/unless}}
-
 <section>
   <div class="contenedor">
-    <div id="concert" class="py-4">
-      <h3>{{#if textos.subTitulo1}}{{textos.subTitulo1}}{{else}}Concert{{/if}}</h3>
-      <p>{{{textos.parrafo1}}}</p>
+    <div id="concert" class="row align-items-center py-5">
+      <div class="col-md-7">
+        <h3>{{#if textos.subTitulo1}}{{textos.subTitulo1}}{{else}}Concert{{/if}}</h3>
+        <p>{{{textos.parrafo1}}}</p>
+      </div>
+      {{#if textos.cardImage1}}
+      <div class="col-md-5">
+        <img src="{{textos.cardImage1}}" class="img-fluid rounded" alt="{{textos.subTitulo1}}">
+      </div>
+      {{/if}}
     </div>
-    <div id="expresarte" class="py-4">
-      <h3>{{#if textos.subTitulo2}}{{textos.subTitulo2}}{{else}}Expresarte{{/if}}</h3>
-      <p>{{{textos.parrafo2}}}</p>
+
+    <div id="expresarte" class="row align-items-center py-5">
+      {{#if textos.cardImage2}}
+      <div class="col-md-5 order-md-first">
+        <img src="{{textos.cardImage2}}" class="img-fluid rounded" alt="{{textos.subTitulo2}}">
+      </div>
+      {{/if}}
+      <div class="col-md-7">
+        <h3>{{#if textos.subTitulo2}}{{textos.subTitulo2}}{{else}}Expresarte{{/if}}</h3>
+        <p>{{{textos.parrafo2}}}</p>
+      </div>
     </div>
-    <div id="familienfest" class="py-4">
-      <h3>{{#if textos.subTitulo3}}{{textos.subTitulo3}}{{else}}Familienfest{{/if}}</h3>
-      <p>{{{textos.parrafo3}}}</p>
+
+    <div id="familienfest" class="row align-items-center py-5">
+      <div class="col-md-7">
+        <h3>{{#if textos.subTitulo3}}{{textos.subTitulo3}}{{else}}Familienfest{{/if}}</h3>
+        <p>{{{textos.parrafo3}}}</p>
+      </div>
+      {{#if textos.cardImage3}}
+      <div class="col-md-5">
+        <img src="{{textos.cardImage3}}" class="img-fluid rounded" alt="{{textos.subTitulo3}}">
+      </div>
+      {{/if}}
     </div>
-    <div id="musical-de-aleman" class="py-4">
-      <h3>{{#if textos.subTitulo4}}{{textos.subTitulo4}}{{else}}Musical de Alemán{{/if}}</h3>
-      <p>{{{textos.parrafo4}}}</p>
+
+    <div id="musical-de-aleman" class="row align-items-center py-5">
+      {{#if textos.cardImage4}}
+      <div class="col-md-5 order-md-first">
+        <img src="{{textos.cardImage4}}" class="img-fluid rounded" alt="{{textos.subTitulo4}}">
+      </div>
+      {{/if}}
+      <div class="col-md-7">
+        <h3>{{#if textos.subTitulo4}}{{textos.subTitulo4}}{{else}}Musical de Alemán{{/if}}</h3>
+        <p>{{{textos.parrafo4}}}</p>
+      </div>
     </div>
   </div>
 </section>

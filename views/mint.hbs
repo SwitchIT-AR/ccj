@@ -30,24 +30,17 @@
       habilitó una sala de tecnología para el nivel primario.
     </p>
 
-    {{!-- A.10 — Botón al blog de Blogger de MINT.
-          PLACEHOLDER: todavía NO tenemos la URL del blog. El doc "Link a MINT" de la carpeta
-          de Drive apunta a colegiociudadjardin.edu.ar/mint/, que es ESTA página, no el blog.
-          Se busco "blogspot"/"blogger" en todo el repo y no hay ninguna URL cargada.
-          Queda deshabilitado (mismo criterio que los ítems del menú de EVENTOS en nav.hbs)
-          para no mandar a la gente a un link roto.
-          CUANDO LLEGUE LA URL: poner el href real y borrar ` disabled` y el aria-disabled. --}}
+    {{!-- A.10 — Botón al blog de Blogger de MINT: SACADO hasta que el colegio mande la URL.
+          Estaba publicado con href="#" y disabled, o sea un botón que no hacía nada: peor
+          que no tenerlo. El doc "Link a MINT" de Drive apunta a colegiociudadjardin.edu.ar/mint/,
+          que es ESTA misma página, no el blog; no hay ninguna URL de blogspot/blogger en el repo.
+          CUANDO LLEGUE LA URL: volver a poner este bloque con el href real.
     <div class="text-center mt-5">
-      <a
-        id="btn-mint-blog"
-        class="btn btn-lg px-5 py-3 font-weight-bold text-white disabled"
-        style="background-color: #009540; border-radius: 30px; letter-spacing: 1px;"
-        href="#"
-        aria-disabled="true"
-        data-url-pendiente="blog-blogger-mint"
-        title="Pendiente: falta la URL del blog de MINT"
-      >VER TODAS LAS ACTIVIDADES</a>
+      <a class="btn btn-lg px-5 py-3 font-weight-bold text-white"
+         style="background-color: #009540; border-radius: 30px; letter-spacing: 1px;"
+         href="URL_DEL_BLOG">VER TODAS LAS ACTIVIDADES</a>
     </div>
+    --}}
   </div>
 </section>
 

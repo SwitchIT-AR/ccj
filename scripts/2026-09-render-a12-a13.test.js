@@ -81,7 +81,8 @@ function render(vista, contexto) {
   // las 4 tarjetas, cada una con su foto
   for (const card of ["card1", "card2", "card3", "card4"]) {
     chequear(
-      html.includes(`src=${FOTOS_INFORMATICA[card]}`),
+      // las comillas del src las agregó la tanda de auditoría (antes era src=/img/... crudo)
+      html.includes(`src="${FOTOS_INFORMATICA[card]}"`),
       `A.12: la tarjeta ${card} carga ${FOTOS_INFORMATICA[card]}`
     );
   }
@@ -136,24 +137,27 @@ function render(vista, contexto) {
     (html.match(/class="card"/g) || []).length === 6,
     "A.13: se dibujan exactamente 6 tarjetas"
   );
+  // La tanda de auditoría (21/09) cambió esto a propósito: publicar 7 carteles de "FOTO
+  // PENDIENTE" era el defecto B.6. Ahora la vista dibuja la foto sólo si el campo existe y
+  // el script de auditoría borra del documento los que valen el placeholder. El chequeo de
+  // que la página queda prolija sin fotos está en scripts/2026-09-auditoria.test.js.
   chequear(
     (html.match(/placeholder-foto-pendiente\.svg/g) || []).length === 7,
-    "A.13: las 7 imágenes (portada + 6 tarjetas) usan el placeholder"
+    "A.13: con el documento tal como lo dejó esta tanda, las 7 imágenes traen el placeholder"
   );
 }
 
 // ---------------------------------------------------------------------------
-// A.9 — /eventos placeholder: tiene los 4 anclas que usan los menús
+// A.9 — /eventos: tiene los 4 anclas que usan los menús.
+// El aviso de "Estamos preparando esta página" lo sacó la tanda de auditoría: /eventos ya
+// tiene contenido real, y sin documento la ruta devuelve 404 (guard `necesitaDoc` en
+// routes/routes.js) en vez de servir una página vacía.
 // ---------------------------------------------------------------------------
 {
   const html = render("eventos.hbs", {});
   for (const ancla of ["concert", "expresarte", "familienfest", "musical-de-aleman"]) {
     chequear(html.includes(`id="${ancla}"`), `A.9: /eventos tiene el ancla #${ancla}`);
   }
-  chequear(
-    html.includes("Estamos preparando esta página"),
-    "A.9: sin documento en Mongo, /eventos muestra el aviso de placeholder"
-  );
 }
 
 // ---------------------------------------------------------------------------

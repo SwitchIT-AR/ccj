@@ -111,34 +111,49 @@ router.get("/admin/login", function (req, res) {
   return res.redirect(`https://access.${mainDomain}`);
 });
 
+// `necesitaDoc: true` = la vista NO tiene texto propio, lo saca entero del documento de
+// `pages`. Si ese documento no existe, la página renderiza en blanco (fue el caso de
+// /informatica y sigue siendo el de /actividadesMint): en vez de servir una página vacía
+// se devuelve 404, que es la verdad. Las vistas con texto propio (mint, admisiones, staff,
+// nuestro-colegio, cv, administracion, orientacion) no llevan la marca: nunca leyeron Mongo.
 const routes = [
   { route: "admisiones", view: "admisiones" },
-  { route: "deutsch", view: "departamentos" },
+  { route: "deutsch", view: "departamentos", necesitaDoc: true },
   { route: "administracion", view: "administracion" },
   { route: "cv", view: "curriculum" },
   { route: "orientacion", view: "orientacion" },
   { route: "mint", view: "mint" },
-  { route: "inicial", view: "niveles" },
-  { route: "primaria", view: "niveles" },
-  { route: "secundaria", view: "niveles" },
+  { route: "inicial", view: "niveles", necesitaDoc: true },
+  { route: "primaria", view: "niveles", necesitaDoc: true },
+  { route: "secundaria", view: "niveles", necesitaDoc: true },
   { route: "nuestrocolegio", view: "nuestro-colegio" },
-  { route: "informatica", view: "departamentos" },
-  { route: "english", view: "departamentos" },
-  { route: "musica", view: "departamentos" },
-  { route: "educacionfisica", view: "departamentos" },
-  { route: "veronica", view: "departamentos" },
-  { route: "actividadesMint", view: "departamentos" },
+  { route: "informatica", view: "departamentos", necesitaDoc: true },
+  { route: "english", view: "departamentos", necesitaDoc: true },
+  { route: "musica", view: "departamentos", necesitaDoc: true },
+  { route: "educacionfisica", view: "departamentos", necesitaDoc: true },
+  { route: "veronica", view: "departamentos", necesitaDoc: true },
+  { route: "actividadesMint", view: "departamentos", necesitaDoc: true },
   { route: "staff", view: "staff" },
   // A.13 — página nueva. Vista propia (6 tarjetas) pero el texto sale de Mongo.
-  { route: "alumnos-intercambio", view: "alumnos-intercambio" },
-  // A.9 — la ruta que necesitaba el cuadro "Eventos" de la home y los anclas del menú.
-  // Placeholder: el contenido real sigue bloqueado (doc "Eventos" sin compartir).
-  { route: "eventos", view: "eventos" },
+  { route: "alumnos-intercambio", view: "alumnos-intercambio", necesitaDoc: true },
+  // A.9 — la ruta del cuadro "Eventos" de la home y de los anclas del menú.
+  { route: "eventos", view: "eventos", necesitaDoc: true },
+  // Auditoría 21/09 (B.5): el menú LA GARTENSTADT apuntaba a /lideres y
+  // /escuela-para-familias, que eran 404. Los dos documentos de Drive estaban accesibles
+  // todo el tiempo: el contenido lo carga scripts/2026-09-contenido-auditoria.js.
+  { route: "lideres", view: "departamentos", necesitaDoc: true },
+  { route: "escuela-para-familias", view: "departamentos", necesitaDoc: true },
+  // Auditoría 21/09 (B.8): el cuadro "Exámenes Internacionales" de la home iba a href="#".
+  // Son 9 tarjetas en dos grupos (Alemán / Inglés), no entran en departamentos.hbs.
+  { route: "examenes-internacionales", view: "examenes-internacionales", necesitaDoc: true },
 ];
 
 routes.forEach((route) => {
   router.get("/" + route.route, async (req, res) => {
     const pagesData = await Pages.find({ ruta: "/" + route.route }).lean();
+    if (route.necesitaDoc && !pagesData[0]) {
+      return res.status(404).render("404", { layout: "pages" });
+    }
     res.render(route.view, { textos: pagesData[0], layout: "pages" });
   });
 });

@@ -1,0 +1,173 @@
+{{!--
+  /examenes-internacionales — auditoría 21/09/2026, punto B.8.
+
+  El cuadro "Exámenes Internacionales" de la grilla de la home apuntaba a href="#" desde
+  siempre. El contenido estaba en Drive (doc 1DzaIi6BhH3pl3ngacCuRQsHetyBk3WgWLTb0pbusPrM)
+  y se había dado por inaccesible sin haberlo probado con el conector.
+
+  POR QUÉ VISTA PROPIA Y NO departamentos.hbs: son 9 tarjetas (departamentos.hbs dibuja 4) y
+  además van separadas en dos grupos con subtítulo propio — Alemán (6) e Inglés (3).
+
+  El texto NO está hardcodeado: sale entero de Mongo (colección `pages`, ruta
+  "/examenes-internacionales"), igual que departamentos.hbs. Lo carga
+  scripts/2026-09-contenido-auditoria.js.
+
+  Las tarjetas muestran la foto SÓLO si el documento trae `cardImageN`. El doc del colegio no
+  trae fotos por tarjeta, así que se renderizan como tarjetas de texto: es prolijo y evita
+  publicar nueve placeholders de "FOTO PENDIENTE" (el defecto B.6 de /alumnos-intercambio).
+--}}
+
+<section id="landing">
+  <div class="landing-img"
+    style="background-image: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.15)),url({{#if textos.imageTop}}{{textos.imageTop}}{{else}}/img/aleman.jpg{{/if}});">
+    <h2 class="landing-title">{{textos.titulo}}</h2>
+    <h5 class="landing-subtitle">{{textos.saludo}}</h5>
+  </div>
+</section>
+
+<section>
+  <div class="contenedor">
+    <h3 class="text-center">{{{textos.subTitulo1}}}</h3>
+    <p>
+      {{{textos.parrafo1}}}
+    </p>
+  </div>
+</section>
+
+<section class="c-amarillo text-white">
+  <div class="contenedor pb-3">
+    <h3 class="text-center">{{textos.subTitulo2}}</h3>
+    <div class="row justify-content-md-center">
+      <div class="col-md-5">
+        <ul class="py-4 list-unstyled">
+          {{#if textos.auxText1}}<li class="py-1 h5">{{{textos.auxText1}}}</li>{{/if}}
+          {{#if textos.auxText2}}<li class="py-1 h5">{{{textos.auxText2}}}</li>{{/if}}
+          {{#if textos.auxText3}}<li class="py-1 h5">{{{textos.auxText3}}}</li>{{/if}}
+          {{#if textos.auxText4}}<li class="py-1 h5">{{{textos.auxText4}}}</li>{{/if}}
+          {{#if textos.auxText5}}<li class="py-1 h5">{{{textos.auxText5}}}</li>{{/if}}
+        </ul>
+      </div>
+      <div class="col-md-5">
+        <ul class="py-4 list-unstyled">
+          {{#if textos.auxText6}}<li class="py-1 h5">{{{textos.auxText6}}}</li>{{/if}}
+          {{#if textos.auxText7}}<li class="py-1 h5">{{{textos.auxText7}}}</li>{{/if}}
+          {{#if textos.auxText8}}<li class="py-1 h5">{{{textos.auxText8}}}</li>{{/if}}
+          {{#if textos.auxText9}}<li class="py-1 h5">{{{textos.auxText9}}}</li>{{/if}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="c-rojo text-white">
+  <div class="contenedor">
+    <h3 class="text-center">{{textos.subTitulo3}}</h3>
+    <p>{{{textos.parrafo3}}}</p>
+    <p>{{{textos.parrafo3b}}}</p>
+  </div>
+</section>
+
+<section id="title-cards" class="c-celeste text-white">
+  <div class="mx-4 p-5">
+    <h3 class="text-center mb-5">{{{textos.subTitulo4}}}</h3>
+
+    <h4 class="text-center mb-4">{{#if textos.grupo1}}{{textos.grupo1}}{{else}}Alemán{{/if}}</h4>
+    <div class="card-deck mb-5 text-dark">
+      {{#if textos.cardTitulo1}}
+      <div class="card">
+        {{#if textos.cardImage1}}<img src="{{textos.cardImage1}}" class="card-img-top" alt="{{textos.cardTitulo1}}">{{/if}}
+        <div class="card-body pb-2">
+          <h5 class="card-title">{{textos.cardTitulo1}}</h5>
+          <p>{{textos.cardTexto1}}</p>
+        </div>
+      </div>
+      {{/if}}
+      {{#if textos.cardTitulo2}}
+      <div class="card">
+        {{#if textos.cardImage2}}<img src="{{textos.cardImage2}}" class="card-img-top" alt="{{textos.cardTitulo2}}">{{/if}}
+        <div class="card-body pb-2">
+          <h5 class="card-title">{{textos.cardTitulo2}}</h5>
+          <p>{{textos.cardTexto2}}</p>
+        </div>
+      </div>
+      {{/if}}
+      {{#if textos.cardTitulo3}}
+      <div class="card">
+        {{#if textos.cardImage3}}<img src="{{textos.cardImage3}}" class="card-img-top" alt="{{textos.cardTitulo3}}">{{/if}}
+        <div class="card-body pb-2">
+          <h5 class="card-title">{{textos.cardTitulo3}}</h5>
+          <p>{{textos.cardTexto3}}</p>
+        </div>
+      </div>
+      {{/if}}
+    </div>
+    <div class="card-deck mb-5 text-dark">
+      {{#if textos.cardTitulo4}}
+      <div class="card">
+        {{#if textos.cardImage4}}<img src="{{textos.cardImage4}}" class="card-img-top" alt="{{textos.cardTitulo4}}">{{/if}}
+        <div class="card-body pb-2">
+          <h5 class="card-title">{{textos.cardTitulo4}}</h5>
+          <p>{{textos.cardTexto4}}</p>
+        </div>
+      </div>
+      {{/if}}
+      {{#if textos.cardTitulo5}}
+      <div class="card">
+        {{#if textos.cardImage5}}<img src="{{textos.cardImage5}}" class="card-img-top" alt="{{textos.cardTitulo5}}">{{/if}}
+        <div class="card-body pb-2">
+          <h5 class="card-title">{{textos.cardTitulo5}}</h5>
+          <p>{{textos.cardTexto5}}</p>
+        </div>
+      </div>
+      {{/if}}
+      {{#if textos.cardTitulo6}}
+      <div class="card">
+        {{#if textos.cardImage6}}<img src="{{textos.cardImage6}}" class="card-img-top" alt="{{textos.cardTitulo6}}">{{/if}}
+        <div class="card-body pb-2">
+          <h5 class="card-title">{{textos.cardTitulo6}}</h5>
+          <p>{{textos.cardTexto6}}</p>
+        </div>
+      </div>
+      {{/if}}
+    </div>
+
+    <h4 class="text-center mb-4">{{#if textos.grupo2}}{{textos.grupo2}}{{else}}Inglés{{/if}}</h4>
+    <div class="card-deck mb-5 text-dark">
+      {{#if textos.cardTitulo7}}
+      <div class="card">
+        {{#if textos.cardImage7}}<img src="{{textos.cardImage7}}" class="card-img-top" alt="{{textos.cardTitulo7}}">{{/if}}
+        <div class="card-body pb-2">
+          <h5 class="card-title">{{textos.cardTitulo7}}</h5>
+          <p>{{textos.cardTexto7}}</p>
+        </div>
+      </div>
+      {{/if}}
+      {{#if textos.cardTitulo8}}
+      <div class="card">
+        {{#if textos.cardImage8}}<img src="{{textos.cardImage8}}" class="card-img-top" alt="{{textos.cardTitulo8}}">{{/if}}
+        <div class="card-body pb-2">
+          <h5 class="card-title">{{textos.cardTitulo8}}</h5>
+          <p>{{textos.cardTexto8}}</p>
+        </div>
+      </div>
+      {{/if}}
+      {{#if textos.cardTitulo9}}
+      <div class="card">
+        {{#if textos.cardImage9}}<img src="{{textos.cardImage9}}" class="card-img-top" alt="{{textos.cardTitulo9}}">{{/if}}
+        <div class="card-body pb-2">
+          <h5 class="card-title">{{textos.cardTitulo9}}</h5>
+          <p>{{textos.cardTexto9}}</p>
+        </div>
+      </div>
+      {{/if}}
+    </div>
+  </div>
+</section>
+
+{{#if textos.cierre}}
+<section>
+  <div class="contenedor">
+    <p>{{{textos.cierre}}}</p>
+  </div>
+</section>
+{{/if}}
