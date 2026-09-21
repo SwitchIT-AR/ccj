@@ -41,18 +41,17 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        EL GARTENSTADT
+                        LA GARTENSTADT
                     </a>
+                    {{!-- A.7: ver nota en views/partials/nav.hbs. LÍDERES y Escuela para Familias
+                          quedan disabled hasta que exista la página destino. --}}
                     <div class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item disabled" href="/vidaescolar">Vida Escolar</a>
-                        <a class="dropdown-item " href="/orientacion">Equipo de Orientación Escolar</a>
                         <a class="dropdown-item " href="/mint">MINT</a>
                         <a class="dropdown-item disabled" href="/intercambios">Schüleraustausch</a>
                         <a class="dropdown-item " href="/veronica">Schullandheim Verónica</a>
-                        <a class="dropdown-item disabled" href="/serviciocomunitario">Community Service</a>
+                        <a class="dropdown-item disabled" href="/lideres">LÍDERES</a>
+                        <a class="dropdown-item disabled" href="/escuela-para-familias">Escuela para Familias</a>
                         <a class="dropdown-item disabled" href="/mejorpromedio">Ehrentafel</a>
-                        <a class="dropdown-item disabled" href="/aulas-digitales">Aulas Digitales: Educational
-                            Technology</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -60,10 +59,13 @@
                         aria-haspopup="true" aria-expanded="false">
                         EVENTOS
                     </a>
+                    {{!-- A.8: ver nota en views/partials/nav.hbs (disabled hasta que exista /eventos). --}}
                     <div class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item disabled" href="/concerts">English Concerts</a>
-                        <a class="dropdown-item disabled" href="/expresarte">Expresarte</a>
-                        <a class="dropdown-item disabled" href="/familienfest">Familienfest</a>
+                        <a class="dropdown-item disabled" href="/eventos">Ver todos</a>
+                        <a class="dropdown-item disabled" href="/eventos#concert">Concert</a>
+                        <a class="dropdown-item disabled" href="/eventos#expresarte">Expresarte</a>
+                        <a class="dropdown-item disabled" href="/eventos#familienfest">Familienfest</a>
+                        <a class="dropdown-item disabled" href="/eventos#musical-de-aleman">Musical de Alemán</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -114,21 +116,17 @@
                     <div class="btn-group dropdown h-100">
                         <button type="button" class="dropdown-toggle btn btn-block" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                            EL GARTENSTADT
+                            LA GARTENSTADT
                         </button>
+                        {{!-- A.7: ver nota en views/partials/nav.hbs. --}}
                         <div class="dropdown-menu bg-transparente pt-4 mt-n1">
-                            <a class="dropdown-item text-white disabled" href="/vidaescolar">Vida Escolar</a>
-                            <a class="dropdown-item text-white " href="/orientacion">Equipo de Orientación
-                                Escolar</a>
                             <a class="dropdown-item text-white " href="/mint">MINT</a>
                             <a class="dropdown-item text-white disabled" href="/intercambios">Schüleraustausch</a>
                             <a class="dropdown-item text-white " href="/veronica">Schullandheim Verónica</a>
-                            <a class="dropdown-item text-white disabled" href="/serviciocomunitario">Community
-                                Service</a>
+                            <a class="dropdown-item text-white disabled" href="/lideres">LÍDERES</a>
+                            <a class="dropdown-item text-white disabled" href="/escuela-para-familias">Escuela para
+                                Familias</a>
                             <a class="dropdown-item text-white disabled" href="/mejorpromedio">Ehrentafel</a>
-                            <a class="dropdown-item text-white disabled" href="/aulas-digitales">Aulas Digitales:
-                                Educational
-                                Technology</a>
                         </div>
                     </div>
                 </div>
@@ -138,10 +136,14 @@
                             aria-haspopup="true" aria-expanded="false">
                             EVENTOS
                         </button>
+                        {{!-- A.8: ver nota en views/partials/nav.hbs. --}}
                         <div class="dropdown-menu bg-transparente pt-4 mt-n1">
-                            <a class="dropdown-item text-white disabled" href="/concerts">English Concerts</a>
-                            <a class="dropdown-item text-white disabled" href="/expresarte">Expresarte</a>
-                            <a class="dropdown-item text-white disabled" href="/familienfest">Familienfest</a>
+                            <a class="dropdown-item text-white disabled" href="/eventos">Ver todos</a>
+                            <a class="dropdown-item text-white disabled" href="/eventos#concert">Concert</a>
+                            <a class="dropdown-item text-white disabled" href="/eventos#expresarte">Expresarte</a>
+                            <a class="dropdown-item text-white disabled" href="/eventos#familienfest">Familienfest</a>
+                            <a class="dropdown-item text-white disabled"
+                                href="/eventos#musical-de-aleman">Musical de Alemán</a>
                         </div>
                     </div>
                 </div>
