@@ -146,6 +146,9 @@ const routes = [
   // Auditoría 21/09 (B.8): el cuadro "Exámenes Internacionales" de la home iba a href="#".
   // Son 9 tarjetas en dos grupos (Alemán / Inglés), no entran en departamentos.hbs.
   { route: "examenes-internacionales", view: "examenes-internacionales", necesitaDoc: true },
+  // 21/09: los dos footers tenían un botón "Como llegar" disabled apuntando acá, y /comollegar
+  // era 404 desde siempre. Vista con texto propio: los datos de contacto no viven en Mongo.
+  { route: "comollegar", view: "comollegar" },
 ];
 
 routes.forEach((route) => {
