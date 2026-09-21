@@ -13,7 +13,12 @@ const fs = require("fs");
 const path = require("path");
 const handlebars = require("handlebars");
 
-const { INFORMATICA, ALUMNOS_INTERCAMBIO, FOTO_PENDIENTE } = require("./2026-09-contenido-a12-a13");
+const {
+  INFORMATICA,
+  ALUMNOS_INTERCAMBIO,
+  FOTO_PENDIENTE,
+  FOTOS_INFORMATICA,
+} = require("./2026-09-contenido-a12-a13");
 
 const VIEWS = path.join(__dirname, "..", "views");
 
@@ -63,9 +68,26 @@ function render(vista, contexto) {
     html.indexOf("El departamento se identifica") > html.indexOf("Sitio Web"),
     "A.12: el cierre va debajo de las tarjetas, no arriba"
   );
+  // A.12 ya tiene fotos reales: no debe quedar NINGÚN placeholder en la página.
   chequear(
-    (html.match(/placeholder-foto-pendiente\.svg/g) || []).length === 5,
-    "A.12: las 5 imágenes (portada + 4 tarjetas) usan el placeholder"
+    !html.includes("placeholder-foto-pendiente.svg"),
+    "A.12: ya no queda ningún placeholder en el HTML"
+  );
+  // el hero sale como background-image en el style del .landing-img
+  chequear(
+    html.includes(`url(${FOTOS_INFORMATICA.hero})`),
+    "A.12: el hero carga portada-hero.jpg como background-image"
+  );
+  // las 4 tarjetas, cada una con su foto
+  for (const card of ["card1", "card2", "card3", "card4"]) {
+    chequear(
+      html.includes(`src=${FOTOS_INFORMATICA[card]}`),
+      `A.12: la tarjeta ${card} carga ${FOTOS_INFORMATICA[card]}`
+    );
+  }
+  chequear(
+    (html.match(/\/img\/deptos\/informatica\//g) || []).length === 5,
+    "A.12: salen las 5 fotos (portada + 4 tarjetas)"
   );
 }
 

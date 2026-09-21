@@ -9,10 +9,15 @@
  *   3) Si un campo tiene otra cosa (lo editaron por /pagesEdit) -> NO se pisa, se avisa.
  *   4) Si un campo está vacío o falta -> se completa.
  *   5) El contenido cumple lo que pide el pliego: /informatica 4 tarjetas,
- *      /alumnos-intercambio 6 tarjetas, y ninguna foto real (todas placeholder).
+ *      /alumnos-intercambio 6 tarjetas.
+ *   6) Fotos: /informatica apunta a sus 5 fotos reales y los archivos existen en el repo;
+ *      /alumnos-intercambio sigue sin fotos y queda con el placeholder.
  *
  * USO:  node scripts/2026-09-contenido-a12-a13.test.js
  */
+
+const fs = require("fs");
+const path = require("path");
 
 const {
   INFORMATICA,
@@ -21,6 +26,7 @@ const {
   decidirCampo,
   planificar,
   FOTO_PENDIENTE,
+  FOTOS_INFORMATICA,
 } = require("./2026-09-contenido-a12-a13");
 
 let ok = 0;
@@ -114,13 +120,45 @@ for (const { punto, doc } of PAGINAS) {
   chequear(malos.length === 0, `${punto}: no se debe escribir cardImg* (va cardImage*)`);
 }
 
-// Todas las imágenes tienen que ser el placeholder mientras no tengamos las fotos.
-for (const { punto, doc } of PAGINAS) {
-  const imgs = Object.entries(doc).filter(([k]) => /^(imageTop|cardImage\d)$/.test(k));
-  chequear(imgs.length > 0, `${punto}: hay campos de imagen declarados`);
+// --- 6) fotos -------------------------------------------------------------
+// A.12 YA tiene las 5 fotos reales (las entregó el colegio el 21/09/2026).
+// A.13 sigue sin fotos: esas TIENEN que quedar en el placeholder.
+{
+  const imgs = Object.entries(INFORMATICA).filter(([k]) =>
+    /^(imageTop|cardImage\d)$/.test(k)
+  );
+  chequear(imgs.length === 5, "A.12: hay 5 campos de imagen (portada + 4 tarjetas)");
+  chequear(
+    imgs.every(([, v]) => v !== FOTO_PENDIENTE),
+    "A.12: ya no queda ninguna imagen en FOTO_PENDIENTE"
+  );
+  chequear(
+    imgs.every(([, v]) => v.startsWith("/img/deptos/informatica/")),
+    "A.12: todas las fotos cuelgan de /img/deptos/informatica/"
+  );
+  // las rutas tienen que existir de verdad en el repo, servidas por express.static(public)
+  for (const [campo, ruta] of imgs) {
+    const enDisco = path.join(__dirname, "..", "public", ruta);
+    chequear(fs.existsSync(enDisco), `A.12: el archivo de ${campo} existe en el repo (${ruta})`);
+  }
+  // el hero usa el recorte apaisado, no la vertical cruda (ver comentario del script)
+  chequear(
+    INFORMATICA.imageTop === FOTOS_INFORMATICA.hero &&
+      INFORMATICA.imageTop.includes("portada-hero"),
+    "A.12: el hero usa el recorte apaisado portada-hero.jpg"
+  );
+  // cada tarjeta con su foto, sin repetidas
+  const cards = imgs.filter(([k]) => k !== "imageTop").map(([, v]) => v);
+  chequear(new Set(cards).size === 4, "A.12: las 4 tarjetas usan 4 fotos distintas");
+}
+{
+  const imgs = Object.entries(ALUMNOS_INTERCAMBIO).filter(([k]) =>
+    /^(imageTop|cardImage\d)$/.test(k)
+  );
+  chequear(imgs.length === 7, "A.13: hay 7 campos de imagen (portada + 6 tarjetas)");
   chequear(
     imgs.every(([, v]) => v === FOTO_PENDIENTE),
-    `${punto}: toda imagen sin foto real apunta al placeholder identificable`
+    "A.13: sigue sin fotos -> toda imagen apunta al placeholder identificable"
   );
 }
 

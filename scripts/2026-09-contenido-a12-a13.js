@@ -30,12 +30,15 @@
  * Por eso acá se escribe `cardImage*`. Se escribe con el driver crudo (db.collection), igual
  * que el script de A.1-A.8, así que el schema no interviene.
  *
- * FOTOS QUE FALTAN:
- * las 5 fotos de Informática están en la carpeta de Drive 1o12QpLTUcKd7kvN9Q12ZI8AISiW2sPha
- * y las de Intercambio en 1HREh-D-3spdsuX5D_U7T_3Z5GTjca_TC, pero ninguna de las dos se pudo
- * bajar (la carpeta pide login). Todas las imágenes quedan apuntando a FOTO_PENDIENTE. Para
- * cambiarlas: poner el jpg en public/img/deptos/<pagina>/, editar la constante de abajo y
- * volver a correr el script con --apply (los textos ya aplicados los saltea).
+ * FOTOS:
+ * A.12 (/informatica) YA TIENE SUS 5 FOTOS REALES, versionadas en
+ * public/img/deptos/informatica/ (las entregó el colegio el 21/09/2026). Ver FOTOS_INFORMATICA.
+ *
+ * A.13 (/alumnos-intercambio) SIGUE SIN FOTOS: la carpeta de Drive
+ * 1HREh-D-3spdsuX5D_U7T_3Z5GTjca_TC pide login y nunca se pudo bajar. Esas imágenes quedan
+ * en FOTO_PENDIENTE. Para cambiarlas cuando lleguen: poner el jpg en
+ * public/img/deptos/alumnos-intercambio/, reemplazar FOTO_PENDIENTE por la ruta y volver a
+ * correr el script con --apply (los campos ya aplicados los saltea).
  */
 
 const mongoose = require("mongoose");
@@ -44,6 +47,28 @@ const APPLY = process.argv.includes("--apply");
 
 // Placeholder identificable para toda foto que todavía no tenemos.
 const FOTO_PENDIENTE = "/img/placeholder-foto-pendiente.svg";
+
+// Fotos reales de Informática (A.12). Los archivos están versionados en el repo, en
+// public/img/deptos/informatica/, y se sirven desde la raíz porque app.js hace
+// express.static(public). Son fotos de celular, verticales, 960x1280.
+//
+// OJO con la portada: el hero de views/departamentos.hbs es una franja apaisada
+// (#landing .landing-img, height 400px, background-size: cover), así que una vertical cruda
+// se recorta a una tira central y le come la cabeza a la alumna. Por eso el hero NO usa
+// portada.jpg sino portada-hero.jpg, que es un recorte apaisado 960x720 de esa misma foto
+// (region +0+200) con el sujeto centrado en vertical -- así el recorte "cover" del navegador
+// lo conserva en cualquier ancho de pantalla -- y un degradado oscuro horneado en la mitad
+// de abajo, para que el titulo blanco del hero se lea sobre el escritorio claro.
+// portada.jpg (el original entero) queda igual en el repo como fuente.
+// Las 4 fotos de las tarjetas van sin tocar: #title-cards .card-img-top ya las encuadra con
+// height 250px + object-fit: cover.
+const FOTOS_INFORMATICA = {
+  hero: "/img/deptos/informatica/portada-hero.jpg",
+  card1: "/img/deptos/informatica/infraestructura-y-software.jpg",
+  card2: "/img/deptos/informatica/triangulos.jpg",
+  card3: "/img/deptos/informatica/alumnos-inversores.jpg",
+  card4: "/img/deptos/informatica/sitio-web.jpg",
+};
 
 // ---------------------------------------------------------------------------
 // A.12 — /informatica
@@ -57,7 +82,7 @@ const INFORMATICA = {
   pagina: "/informatica",
 
   // [HERO]
-  imageTop: FOTO_PENDIENTE, // Drive: "Portada"
+  imageTop: FOTOS_INFORMATICA.hero, // recorte apaisado de portada.jpg (Drive: "Portada")
   titulo: "Dpto. de Informática y Tecnología",
   saludo: "¡Bienvenidos!",
 
@@ -105,25 +130,25 @@ const INFORMATICA = {
     "trabajo y una computadora maestra para control y proyección, y una Sala de Tecnología de " +
     "42 m² con Smart TV, placas Arduino, micro:bit y dispositivos Makey Makey. Se trabaja con " +
     "Windows 11 y Copilot+, Visual Studio Code, la librería P5 de JavaScript y Google Workspace.",
-  cardImage1: FOTO_PENDIENTE, // Drive: "Infraestructura y software"
+  cardImage1: FOTOS_INFORMATICA.card1, // Drive: "Infraestructura y software"
 
   cardTitulo2: "Triángulos",
   cardTexto2:
     "Integración de geometría con GeoGebra y programación en Scratch, en conjunto con el " +
     "departamento de Matemática.",
-  cardImage2: FOTO_PENDIENTE, // Drive: "Triángulos"
+  cardImage2: FOTOS_INFORMATICA.card2, // Drive: "Triángulos"
 
   cardTitulo3: "Alumnos Inversores",
   cardTexto3:
     "Los estudiantes de 5º año gestionan carteras de acciones en tiempo real utilizando Big " +
     "Data y herramientas financieras.",
-  cardImage3: FOTO_PENDIENTE, // Drive: "Alumnos inversores"
+  cardImage3: FOTOS_INFORMATICA.card3, // Drive: "Alumnos inversores"
 
   cardTitulo4: "Sitio Web",
   cardTexto4:
     "Desarrollo de sitios en HTML, CSS y JavaScript, con contenidos traducidos por los propios " +
     "alumnos a los idiomas extranjeros que enseña el colegio.",
-  cardImage4: FOTO_PENDIENTE, // Drive: "Sitio web"
+  cardImage4: FOTOS_INFORMATICA.card4, // Drive: "Sitio web"
 
   // [CIERRE, debajo de Actividades] -> campo nuevo `cierre`, ver views/departamentos.hbs
   cierre:
@@ -370,7 +395,15 @@ async function main() {
   await mongoose.disconnect();
 }
 
-module.exports = { INFORMATICA, ALUMNOS_INTERCAMBIO, PAGINAS, decidirCampo, planificar, FOTO_PENDIENTE };
+module.exports = {
+  INFORMATICA,
+  ALUMNOS_INTERCAMBIO,
+  PAGINAS,
+  decidirCampo,
+  planificar,
+  FOTO_PENDIENTE,
+  FOTOS_INFORMATICA,
+};
 
 if (require.main === module) {
   main().catch((e) => {
