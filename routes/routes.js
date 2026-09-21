@@ -129,6 +129,11 @@ const routes = [
   { route: "veronica", view: "departamentos" },
   { route: "actividadesMint", view: "departamentos" },
   { route: "staff", view: "staff" },
+  // A.13 — página nueva. Vista propia (6 tarjetas) pero el texto sale de Mongo.
+  { route: "alumnos-intercambio", view: "alumnos-intercambio" },
+  // A.9 — la ruta que necesitaba el cuadro "Eventos" de la home y los anclas del menú.
+  // Placeholder: el contenido real sigue bloqueado (doc "Eventos" sin compartir).
+  { route: "eventos", view: "eventos" },
 ];
 
 routes.forEach((route) => {

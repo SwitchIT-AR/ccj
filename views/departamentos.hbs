@@ -137,6 +137,20 @@
   </div>
 </section>
 
+{{!-- A.12 — Bloque de cierre, debajo de "Actividades".
+      Se usa un campo NUEVO (`cierre`) a propósito: ningún documento de `pages` lo tiene hoy
+      (verificado 21/09/2026 contra la base), así que este bloque sólo aparece en las páginas
+      donde se cargue y NO cambia nada en /deutsch, /english, /musica, /educacionfisica ni
+      /veronica. Se descartó reutilizar `parrafo4` justamente por eso: /orientacion, /deutsch,
+      /secundaria y /primaria ya lo tienen cargado y les habría aparecido un párrafo nuevo. --}}
+{{#if textos.cierre}}
+<section>
+  <div class="contenedor">
+    <p>{{{textos.cierre}}}</p>
+  </div>
+</section>
+{{/if}}
+
 <section class="d-none">
   <div id="carrusel" class="p-0 m-0 pb-3">
     <div><img src="#" alt="imagen de inglés"></div>

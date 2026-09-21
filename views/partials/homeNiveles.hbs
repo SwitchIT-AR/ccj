@@ -8,21 +8,7 @@
         </div>
       </a>
     </div>
-    <div class="col col-6 col-sm-2 content">
-      <a href="#">
-        <div class="cuadro c-aulas">
-          <h5>Aulas<span class="d-block"></span> Interactivas</h5>
-        </div>
-        <div class="content-overlay overlay-yellow"></div>
-        <div class="content-details fadeIn-top">
-          <h3 class="content-title">Aulas Interactivas</h3>
-          <p class="content-text">
-            El colegio cuenta con aulas equipadas para el desarrollo de las
-            clases de manera Interactiva
-          </p>
-        </div>
-      </a>
-    </div>
+    {{!-- A.9: se sacó el cuadro "Aulas Interactivas" (no llevaba a ningún lado). --}}
     <div class="col col-6 col-sm-2">
       <a href="/mint">
         <div class="cuadro c-verde">
@@ -114,8 +100,13 @@
         </div>
       </a>
     </div>
+    {{!-- A.9: el cuadro de Eventos ahora lleva a /eventos.
+          PENDIENTE: el pliego pide reemplazar la foto de fondo (clase .c-evento ->
+          public/img/c-evento.jpg, definida en public/css/main.css:635-636) por la imagen
+          "Eventos" de la subcarpeta "Página principal" de Drive. Esa imagen todavía no se
+          pudo bajar, así que el fondo sigue siendo el actual. --}}
     <div class="col col-6 col-sm-2 content">
-      <a href="#">
+      <a href="/eventos">
         <div class="cuadro c-evento">
           <h5>Eventos</h5>
         </div>

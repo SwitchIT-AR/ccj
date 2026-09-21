@@ -1,0 +1,144 @@
+{{!--
+  A.13 — Página "Alumnos Intercambio" (/alumnos-intercambio).
+
+  POR QUÉ ES UNA VISTA PROPIA Y NO departamentos.hbs:
+  el contenido del pliego trae 6 tarjetas de "Objetivos Pedagógicos" y departamentos.hbs
+  sólo dibuja 4 (cardTitulo1..4). Extender departamentos.hbs a 6 tocaba una vista que hoy
+  renderiza 6 páginas que YA ESTÁN EN PRODUCCIÓN (/deutsch, /english, /musica,
+  /educacionfisica, /veronica, /informatica) + los editores /pagesEdit, así que se prefirió
+  una vista propia y no arriesgar una regresión en páginas vivas.
+
+  OJO — esta vista NO hardcodea el texto: lo lee de Mongo igual que departamentos.hbs
+  ({{textos.*}}, colección `pages`, ruta "/alumnos-intercambio"). Eso es a propósito: la
+  vista propia hardcodeada es exactamente lo que rompió el punto A.5 en /orientacion, donde
+  el documento de Mongo quedó huérfano porque la vista no lo leía.
+
+  Usa los campos del schema de siempre + cardTitulo5/6, cardTexto5/6 y cardImage5/6 para las
+  dos tarjetas extra. Ningún otro documento de `pages` usa esos tres campos (verificado
+  21/09/2026), así que no pisan nada. Los editores web /pagesEdit/depto sólo muestran 4
+  tarjetas: las tarjetas 5 y 6 se editan con el script scripts/2026-09-contenido-a12-a13.js.
+--}}
+
+<section id="landing">
+  <div class="landing-img"
+    style="background-image: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.15)),url({{textos.imageTop}});">
+    <h2 class="landing-title">{{textos.titulo}}</h2>
+    <h5 class="landing-subtitle">{{textos.saludo}}</h5>
+  </div>
+</section>
+
+<section>
+  <div class="contenedor">
+    <h3 class="text-center">{{{textos.subTitulo1}}}</h3>
+    <p>
+      {{{textos.parrafo1}}}
+    </p>
+  </div>
+</section>
+
+<section class="c-amarillo text-white">
+  <div class="contenedor pb-3">
+    <h3 class="text-center">
+      {{textos.subTitulo2}}
+    </h3>
+    <p>
+      {{{textos.parrafo2}}}
+    </p>
+    <div class="row justify-content-md-center">
+      <div class="col-5">
+        <ul class="py-5">
+          <h5 class="h3 d-inline">
+            {{{textos.auxText1}}}
+          </h5>
+          <br>
+          <h5 class="h3 d-inline">
+            {{{textos.auxText2}}}
+          </h5>
+        </ul>
+      </div>
+      <div class="col-5">
+        <ul class="py-5">
+          <h5 class="h3 d-inline">
+            {{{textos.auxText3}}}
+          </h5>
+          <br>
+          <h5 class="h3 d-inline">
+            {{{textos.auxText4}}}
+          </h5>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="c-rojo text-white">
+  <div class="contenedor">
+    <h3 class="text-center">{{textos.subTitulo3}}</h3>
+    <p>
+      {{{textos.parrafo3}}}
+    </p>
+  </div>
+</section>
+
+<section id="title-cards" class="c-celeste text-white">
+  <div class="mx-4 p-5">
+    <h3 class="text-center mb-5">{{{textos.subTitulo4}}}</h3>
+
+    <div class="card-deck mb-5 text-dark">
+      <div class="card">
+        <img src={{textos.cardImage1}} class="card-img-top" alt="{{textos.cardTitulo1}}">
+        <div class="card-body pb-2">
+          <h5 class="card-title">{{textos.cardTitulo1}}</h5>
+          <p>{{textos.cardTexto1}}</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src={{textos.cardImage2}} class="card-img-top" alt="{{textos.cardTitulo2}}">
+        <div class="card-body pb-2">
+          <h5 class="card-title">{{textos.cardTitulo2}}</h5>
+          <p>{{textos.cardTexto2}}</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src={{textos.cardImage3}} class="card-img-top" alt="{{textos.cardTitulo3}}">
+        <div class="card-body pb-2">
+          <h5 class="card-title">{{textos.cardTitulo3}}</h5>
+          <p>{{textos.cardTexto3}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-deck mb-5 text-dark">
+      <div class="card">
+        <img src={{textos.cardImage4}} class="card-img-top" alt="{{textos.cardTitulo4}}">
+        <div class="card-body pb-2">
+          <h5 class="card-title">{{textos.cardTitulo4}}</h5>
+          <p>{{textos.cardTexto4}}</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src={{textos.cardImage5}} class="card-img-top" alt="{{textos.cardTitulo5}}">
+        <div class="card-body pb-2">
+          <h5 class="card-title">{{textos.cardTitulo5}}</h5>
+          <p>{{textos.cardTexto5}}</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src={{textos.cardImage6}} class="card-img-top" alt="{{textos.cardTitulo6}}">
+        <div class="card-body pb-2">
+          <h5 class="card-title">{{textos.cardTitulo6}}</h5>
+          <p>{{textos.cardTexto6}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{{#if textos.cierre}}
+<section>
+  <div class="contenedor">
+    <p>{{{textos.cierre}}}</p>
+  </div>
+</section>
+{{/if}}
