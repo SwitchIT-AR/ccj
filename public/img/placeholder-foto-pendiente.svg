@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Placeholder identificable para las fotos que TODAVÍA NO TENEMOS (pliego 2026-09).
+  Se usa en los documentos de Mongo de /informatica y /alumnos-intercambio mientras las
+  imágenes no estén en el repo. Es un SVG a propósito: pesa nada, se ve en el diff del PR
+  y sirve igual como <img src> y como url() de CSS.
+  Para reemplazarlo: poner el jpg real en public/img/deptos/<pagina>/ y correr
+  scripts/2026-09-contenido-a12-a13.js --apply con la ruta nueva.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <rect width="800" height="450" fill="#d9dee3"/>
+  <rect x="10" y="10" width="780" height="430" fill="none" stroke="#8b97a3" stroke-width="4"
+        stroke-dasharray="18 12"/>
+  <g fill="#5b6672" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <text x="400" y="205" font-size="46" font-weight="bold">FOTO PENDIENTE</text>
+    <text x="400" y="255" font-size="24">imagen todavía no disponible</text>
+    <text x="400" y="292" font-size="20">pliego 2026-09 — a reemplazar</text>
+  </g>
+</svg>
