@@ -41,17 +41,19 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            EL GARTENSTADT
+            LA GARTENSTADT
           </a>
+          {{!-- A.7: se sacaron Vida Escolar, Equipo de Orientación Escolar y Aulas Digitales.
+                "Community Service" pasó a ser LÍDERES y se agregó Escuela para Familias.
+                LÍDERES y Escuela para Familias quedan disabled porque todavía no existe la
+                página destino (el colegio no compartió los documentos). --}}
           <div class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item disabled" href="/vidaescolar">Vida Escolar</a>
-            <a class="dropdown-item" href="/orientacion">Equipo de Orientación Escolar</a>
             <a class="dropdown-item" href="/mint">Enfoque Mint</a>
             <a class="dropdown-item disabled" href="/intercambios">Schüleraustausch</a>
             <a class="dropdown-item " href="/veronica">Schullandheim Verónica</a>
-            <a class="dropdown-item disabled" href="/serviciocomunitario">Community Service</a>
+            <a class="dropdown-item disabled" href="/lideres">LÍDERES</a>
+            <a class="dropdown-item disabled" href="/escuela-para-familias">Escuela para Familias</a>
             <a class="dropdown-item disabled" href="/mejorpromedio">Ehrentafel</a>
-            <a class="dropdown-item disabled" href="/aulas-digitales">Aulas Digitales: Educational Technology</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -59,10 +61,15 @@
             aria-haspopup="true" aria-expanded="false">
             EVENTOS
           </a>
+          {{!-- A.8: una sola entrada Familienfest (bien escrita) y todo apunta a la página
+                única de Eventos con ancla. Quedan disabled hasta que exista la ruta /eventos
+                (punto A.9 del pliego): para habilitarlas alcanza con sacar la clase disabled. --}}
           <div class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item disabled" href="/concerts">English Concerts</a>
-            <a class="dropdown-item disabled" href="/expresarte">Expresarte</a>
-            <a class="dropdown-item disabled" href="/familienfest">FamilienFest</a>
+            <a class="dropdown-item disabled" href="/eventos">Ver todos</a>
+            <a class="dropdown-item disabled" href="/eventos#concert">Concert</a>
+            <a class="dropdown-item disabled" href="/eventos#expresarte">Expresarte</a>
+            <a class="dropdown-item disabled" href="/eventos#familienfest">Familienfest</a>
+            <a class="dropdown-item disabled" href="/eventos#musical-de-aleman">Musical de Alemán</a>
           </div>
         </li>
         <li class="nav-item">
