@@ -1,6 +1,6 @@
 <section id="landing">
   <div class="landing-img"
-    style="background-image: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.15)),url({{textos.imageTop}});">
+    style="background-image: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.15)),url({{#if textos.imageTop}}{{textos.imageTop}}{{else}}/img/nuestro-colegio/top.jpg{{/if}});">
     <h2 class="landing-title">{{textos.titulo}}</h2>
     <h5 class="landing-subtitle">{{textos.saludo}}</h5>
   </div>
@@ -82,9 +82,16 @@
 <section id="title-cards" class="c-celeste text-white">
   <div class="mx-4 p-5">
     <h3 class="text-center mb-5">{{{textos.subTitulo4}}}</h3>
+    {{!-- Auditoría 21/09: cada tarjeta se dibuja SÓLO si el documento trae su título, y la
+          foto sólo si trae cardImageN. Antes las cuatro se renderizaban siempre: una página
+          con 3 tarjetas (como /lideres o /escuela-para-familias) dejaba una tarjeta blanca
+          vacía al final, y una sin fotos publicaba cuatro placeholders de "FOTO PENDIENTE".
+          Las 6 páginas que ya estaban en producción traen los 4 cardTitulo cargados, así que
+          no cambian. --}}
     <div class="card-deck mb-5 text-dark">
+      {{#if textos.cardTitulo1}}
       <div class="card">
-        <img src={{textos.cardImage1}} class="card-img-top" alt="{{textos.cardTitulo1}}">
+        {{#if textos.cardImage1}}<img src="{{textos.cardImage1}}" class="card-img-top" alt="{{textos.cardTitulo1}}">{{/if}}
         <div class="card-body pb-2">
           <h5 class="card-title">
             {{textos.cardTitulo1}}
@@ -97,8 +104,10 @@
           <a href="#" class="btn btn-dark" hidden>Ver más</a>
         </div>
       </div>
+      {{/if}}
+      {{#if textos.cardTitulo2}}
       <div class="card">
-        <img src={{textos.cardImage2}} class="card-img-top" alt="{{textos.cardTitulo2}}">
+        {{#if textos.cardImage2}}<img src="{{textos.cardImage2}}" class="card-img-top" alt="{{textos.cardTitulo2}}">{{/if}}
         <div class="card-body pb-2">
           <h5 class="card-title">{{textos.cardTitulo2}}</h5>
           <p>
@@ -109,8 +118,10 @@
           <a href="#" class="btn btn-dark" hidden>Ver más</a>
         </div>
       </div>
+      {{/if}}
+      {{#if textos.cardTitulo3}}
       <div class="card">
-        <img src={{textos.cardImage3}} class="card-img-top" alt="{{textos.cardTitulo3}}">
+        {{#if textos.cardImage3}}<img src="{{textos.cardImage3}}" class="card-img-top" alt="{{textos.cardTitulo3}}">{{/if}}
         <div class="card-body pb-2">
           <h5 class="card-title">{{textos.cardTitulo3}}</h5>
           <p>
@@ -121,8 +132,10 @@
           <a href="#" class="btn btn-dark" hidden>Ver más</a>
         </div>
       </div>
+      {{/if}}
+      {{#if textos.cardTitulo4}}
       <div class="card">
-        <img src={{textos.cardImage4}} class="card-img-top" alt="{{textos.cardTitulo4}}">
+        {{#if textos.cardImage4}}<img src="{{textos.cardImage4}}" class="card-img-top" alt="{{textos.cardTitulo4}}">{{/if}}
         <div class="card-body pb-2">
           <h5 class="card-title">{{textos.cardTitulo4}}</h5>
           <p>
@@ -133,6 +146,7 @@
           <a href="#" class="btn btn-dark" hidden>Ver más</a>
         </div>
       </div>
+      {{/if}}
     </div>
   </div>
 </section>
