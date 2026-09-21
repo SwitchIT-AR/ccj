@@ -212,6 +212,28 @@ for (const partial of FOOTERS) {
   );
 }
 
+// ---------------------------------------------------------------------------
+// 7 — los assets estáticos de los layouts existen en disco
+//
+// Un barrido de los 58 links internos de producción devolvió tres 404, los tres iconos:
+// los layouts pedían /img/favicon-32x32.png y los archivos están en /img/favicon/.
+// El navegador no lo muestra como error, pero el sitio servía 404 en cada página.
+// ---------------------------------------------------------------------------
+{
+  const PUBLIC = path.join(RAIZ, "public");
+  for (const layout of ["layouts/main.hbs", "layouts/pages.hbs"]) {
+    const src = leerVista(layout);
+    // Sólo rutas literales: las que salen de Mongo ({{textos.imageTop}}) no se pueden chequear.
+    for (const m of src.matchAll(/(?:href|src)="(\/img\/[^"{}]+)"/g)) {
+      const rel = m[1];
+      chequear(
+        fs.existsSync(path.join(PUBLIC, rel)),
+        `${layout}: el asset ${rel} no existe en public/`
+      );
+    }
+  }
+}
+
 console.log("");
 console.log(`${ok} chequeos OK, ${fallos} fallas`);
 process.exit(fallos ? 1 : 0);
