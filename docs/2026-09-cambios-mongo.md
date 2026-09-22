@@ -60,6 +60,27 @@ sólo lectura, y el dry-run del script los confirmó uno por uno (12 cambios, 0 
 
 ---
 
+## Fotos de /eventos — hecho el 22/09/2026
+
+Las cinco fotos que Camila dejó en la carpeta de Drive "Eventos" ya están en el repo
+(`public/img/deptos/eventos/`) y sus rutas cargadas en el documento `pages` de `/eventos`:
+
+```bash
+export MONGODB_URI='...'
+node --no-deprecation scripts/2026-09-fotos-eventos.js            # dry-run
+node --no-deprecation scripts/2026-09-fotos-eventos.js --apply    # escribe
+```
+
+5 campos escritos (`imageTop`, `cardImage1..4`), 0 inesperados; la segunda pasada devuelve
+"ya aplicados: 5". El script es idempotente y no pisa una foto que hayan subido por
+`/pagesEdit`.
+
+Las fotos están en `public/img/deptos/eventos/` (no en `public/img/eventos/`) a propósito:
+es la ruta donde escribe el editor web `/pagesEdit/depto/eventos`, con los mismos nombres de
+archivo, así el colegio puede cambiar cualquiera de las cuatro sin tocar la base.
+
+---
+
 ## Pendientes / a confirmar con el colegio
 
 1. **A.4 — a qué corresponden las horas.** El pedido dice "horas de inglés/alemán" y da 9 hs
