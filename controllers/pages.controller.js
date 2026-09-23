@@ -75,6 +75,7 @@ pagesCtrl.updatePages = async (req, res) => {
   // (sin esto, un campo cardImageN vacío sigue vacío aunque se suba la foto).
   const imagenes = {};
   Object.entries(req.files || {}).forEach(([campo, archivos]) => {
+    if (campo === "homeCard") return; // va a public/img/c-*.jpg, lo lee el CSS de la home
     imagenes[campo] = "/" + path.relative("public", archivos[0].path).split(path.sep).join("/");
   });
 

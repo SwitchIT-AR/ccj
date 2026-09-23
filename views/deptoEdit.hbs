@@ -12,6 +12,8 @@
             <option value="informatica">informatica</option>
             <option value="deutsch">aleman</option>
             <option value="veronica">veronica</option>
+            <option value="eventos">eventos</option>
+            <option value="alumnos-intercambio">alumnos intercambio</option>
             <option value="actividadesMint">actividades Mint</option>
         </select>
         <label for="pagina">ID</label>
@@ -28,6 +30,13 @@
     <form action="/pagesEdit/depto/pagesUpdate" method="post" enctype="multipart/form-data">
         <input type="text" class="form-control" name="_id" value="{{pages._id}}" hidden><br>
         <input type="text" class="form-control" name="pagina" value="{{pages.ruta}}" hidden><br>
+        {{#if homeCard}}
+        <div class="container mb-3" style="background:#f4f4f4;padding:10px;border-radius:8px">
+            <label for="homeCard"><b>Foto de la tarjeta de la página principal</b> (la que lleva a esta página; horizontal, ideal 800x600, hasta ~300 KB):</label><br>
+            <img src="{{homeCard}}" alt="tarjeta actual" style="height:120px;border-radius:6px;margin:6px 0"><br>
+            <input type="file" class="form-control" name="homeCard" accept="image/*">
+        </div>
+        {{/if}}
         <div class="container">
             <section id="landing" data-ruta="{{pages.ruta}}">
                 <div class="landing-img"

@@ -34,6 +34,16 @@ const storageGalery = multer.diskStorage({
 });
 const uploadGalery = multer({ storage: storageGalery });
 
+// Departamentos que tienen una tarjeta con foto en la home. El CSS (public/css/main.css, .c-*)
+// usa estos archivos de public/img/, así que subirlos con el mismo nombre alcanza: no van a Mongo.
+const HOME_CARDS = {
+  veronica: "c-veronica.jpg",
+  musica: "c-musica.jpg",
+  educacionfisica: "c-fisica.jpg",
+  eventos: "c-evento.jpg",
+  "alumnos-intercambio": "c-intercambio.jpg",
+};
+
 const storageDeptos = multer.diskStorage({
   destination: function (req, file, cb) {
     // `pagina` viene del body y arma una ruta en disco: sólo se aceptan nombres simples.
@@ -43,6 +53,10 @@ const storageDeptos = multer.diskStorage({
     }
     // La portada (imageTop) se guarda como top.jpg en la carpeta del departamento;
     // las tarjetas, en cards/.
+    if (file.fieldname === "homeCard") {
+      if (!HOME_CARDS[pagina.slice(1)]) return cb(new Error("Sin tarjeta en la home: " + pagina));
+      return cb(null, "./public/img/");
+    }
     const dir =
       file.fieldname === "imageTop"
         ? `./public/img/deptos${pagina}/`
@@ -51,6 +65,7 @@ const storageDeptos = multer.diskStorage({
     cb(null, dir);
   },
   filename: function (req, file, cb) {
+    if (file.fieldname === "homeCard") return cb(null, HOME_CARDS[String(req.body.pagina).slice(1)]);
     cb(null, file.fieldname === "imageTop" ? "top.jpg" : file.fieldname + ".jpg");
   },
 });
@@ -189,13 +204,19 @@ routes.forEach((route) => {
 router.get("/pagesEdit/depto/:page", async (req, res) => {
   const pagesData = await Pages.find({ ruta: "/" + req.params.page }).lean();
   console.log(pagesData);
-  res.render("deptoEdit", { pages: pagesData[0], layout: "pages" });
+  const homeCard = HOME_CARDS[req.params.page];
+  res.render("deptoEdit", {
+    pages: pagesData[0],
+    layout: "pages",
+    homeCard: homeCard && "/img/" + homeCard,
+  });
 });
 router.post("/pages/newTicket", pagesCtrl.newPages);
 
 router.post(
   "/pagesEdit/depto/pagesUpdate",
   uploadDeptos.fields([
+    { name: "homeCard", maxCount: 1 },
     { name: "imageTop", maxCount: 1 },
     { name: "cardImage1", maxCount: 1 },
     { name: "cardImage2", maxCount: 1 },
