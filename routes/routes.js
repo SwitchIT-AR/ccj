@@ -54,12 +54,16 @@ const storageNiveles = multer.diskStorage({
     if (!["inicial", "primaria", "secundaria"].includes(nivel)) {
       return cb(new Error("Nivel inválido: " + req.body.pagina));
     }
-    const dir = `./public/img/nivel/${nivel}/cards`;
+    // La portada (imageTop) es public/img/nivel/<nivel>/top.jpg; las tarjetas van en cards/.
+    const dir =
+      file.fieldname === "imageTop"
+        ? `./public/img/nivel/${nivel}`
+        : `./public/img/nivel/${nivel}/cards`;
     fs.mkdirSync(dir, { recursive: true });
     cb(null, dir);
   },
   filename: function (req, file, cb) {
-    cb(null, file.fieldname + ".jpg");
+    cb(null, file.fieldname === "imageTop" ? "top.jpg" : file.fieldname + ".jpg");
   },
 });
 const uploadNiveles = multer({ storage: storageNiveles });
@@ -198,6 +202,7 @@ router.get("/pagesEdit/nivel/:page", async (req, res) => {
 router.post(
   "/pagesEdit/nivel/pagesUpdate",
   uploadNiveles.fields([
+    { name: "imageTop", maxCount: 1 },
     { name: "cardImage1", maxCount: 1 },
     { name: "cardImage2", maxCount: 1 },
     { name: "cardImage3", maxCount: 1 },
