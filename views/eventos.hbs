@@ -4,70 +4,83 @@
   Los ítems del menú EVENTOS de las tres barras (nav.hbs, NavMenu.hbs, homeMenu.hbs) apuntan
   a #concert, #expresarte, #familienfest y #musical-de-aleman: esos id NO se tocan.
 
-  El texto sale entero de Mongo (colección `pages`, ruta "/eventos"), lo carga
-  scripts/2026-09-contenido-auditoria.js con el contenido del Google Doc "Eventos"
-  (1F3zaWhR5AtKnkZUdN2RjcTvhdxjyow_EXQXVrB_knAg). La ruta tiene el guard `necesitaDoc` en
-  routes/routes.js: sin documento devuelve 404 en vez de una página en blanco, así que acá
-  ya no hace falta el aviso de "estamos preparando esta página" que tenía el placeholder.
+  El texto y las fotos salen enteros de Mongo (colección `pages`, ruta "/eventos"): título,
+  saludo, subTitulo1..4, parrafo1..4, imageTop y cardImage1..4. Se cargan con los scripts
+  de scripts/2026-09-*.
 
-  Cada bloque muestra su foto sólo si el documento trae el campo, para no publicar
-  placeholders de "FOTO PENDIENTE" a la vista de todos.
+  Formato (22/09/2026, pedido de Matías: "no tiene el formato de todas las páginas"): cada
+  evento es una franja a todo el ancho con los colores del sitio, en el mismo orden que usan
+  las páginas de departamentos (blanco → amarillo → rojo → celeste), con la foto al lado del
+  texto. El doc de Camila no pide franjas: es una decisión nuestra para que la página se vea
+  como el resto del sitio. La foto se muestra sólo si el documento la trae.
 --}}
 
 <section id="landing">
   <div class="landing-img"
-    style="background-image: linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),url({{#if textos.imageTop}}{{textos.imageTop}}{{else}}/img/c-evento.jpg{{/if}});">
+    style="background-image: linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.25)),url({{#if textos.imageTop}}{{textos.imageTop}}{{else}}/img/c-evento.jpg{{/if}});">
     <h2 class="landing-title">{{#if textos.titulo}}{{textos.titulo}}{{else}}Eventos{{/if}}</h2>
     <h5 class="landing-subtitle">{{textos.saludo}}</h5>
   </div>
 </section>
 
-<section>
+<section id="concert">
   <div class="contenedor">
-    <div id="concert" class="row align-items-center py-5">
+    <div class="row align-items-center">
       <div class="col-md-7">
-        <h3>{{#if textos.subTitulo1}}{{textos.subTitulo1}}{{else}}Concert{{/if}}</h3>
+        <h3 class="text-center text-md-left">{{#if textos.subTitulo1}}{{textos.subTitulo1}}{{else}}Concert{{/if}}</h3>
         <p>{{{textos.parrafo1}}}</p>
       </div>
       {{#if textos.cardImage1}}
-      <div class="col-md-5">
-        <img src="{{textos.cardImage1}}" class="img-fluid rounded" alt="{{textos.subTitulo1}}">
+      <div class="col-md-5 mt-4 mt-md-0">
+        <img src="{{textos.cardImage1}}" class="img-fluid rounded shadow" alt="{{textos.subTitulo1}}">
       </div>
       {{/if}}
     </div>
+  </div>
+</section>
 
-    <div id="expresarte" class="row align-items-center py-5">
+<section id="expresarte" class="c-amarillo text-white">
+  <div class="contenedor">
+    <div class="row align-items-center">
       {{#if textos.cardImage2}}
-      <div class="col-md-5 order-md-first">
-        <img src="{{textos.cardImage2}}" class="img-fluid rounded" alt="{{textos.subTitulo2}}">
+      <div class="col-md-5 order-md-first mb-4 mb-md-0">
+        <img src="{{textos.cardImage2}}" class="img-fluid rounded shadow" alt="{{textos.subTitulo2}}">
       </div>
       {{/if}}
       <div class="col-md-7">
-        <h3>{{#if textos.subTitulo2}}{{textos.subTitulo2}}{{else}}Expresarte{{/if}}</h3>
+        <h3 class="text-center text-md-left">{{#if textos.subTitulo2}}{{textos.subTitulo2}}{{else}}Expresarte{{/if}}</h3>
         <p>{{{textos.parrafo2}}}</p>
       </div>
     </div>
+  </div>
+</section>
 
-    <div id="familienfest" class="row align-items-center py-5">
+<section id="familienfest" class="c-rojo text-white">
+  <div class="contenedor">
+    <div class="row align-items-center">
       <div class="col-md-7">
-        <h3>{{#if textos.subTitulo3}}{{textos.subTitulo3}}{{else}}Familienfest{{/if}}</h3>
+        <h3 class="text-center text-md-left">{{#if textos.subTitulo3}}{{textos.subTitulo3}}{{else}}Familienfest{{/if}}</h3>
         <p>{{{textos.parrafo3}}}</p>
       </div>
       {{#if textos.cardImage3}}
-      <div class="col-md-5">
-        <img src="{{textos.cardImage3}}" class="img-fluid rounded" alt="{{textos.subTitulo3}}">
+      <div class="col-md-5 mt-4 mt-md-0">
+        <img src="{{textos.cardImage3}}" class="img-fluid rounded shadow" alt="{{textos.subTitulo3}}">
       </div>
       {{/if}}
     </div>
+  </div>
+</section>
 
-    <div id="musical-de-aleman" class="row align-items-center py-5">
+<section id="musical-de-aleman" class="c-celeste text-white">
+  <div class="contenedor">
+    <div class="row align-items-center">
       {{#if textos.cardImage4}}
-      <div class="col-md-5 order-md-first">
-        <img src="{{textos.cardImage4}}" class="img-fluid rounded" alt="{{textos.subTitulo4}}">
+      <div class="col-md-5 order-md-first mb-4 mb-md-0">
+        <img src="{{textos.cardImage4}}" class="img-fluid rounded shadow" alt="{{textos.subTitulo4}}">
       </div>
       {{/if}}
       <div class="col-md-7">
-        <h3>{{#if textos.subTitulo4}}{{textos.subTitulo4}}{{else}}Musical de Alemán{{/if}}</h3>
+        <h3 class="text-center text-md-left">{{#if textos.subTitulo4}}{{textos.subTitulo4}}{{else}}Musical de Alemán{{/if}}</h3>
         <p>{{{textos.parrafo4}}}</p>
       </div>
     </div>

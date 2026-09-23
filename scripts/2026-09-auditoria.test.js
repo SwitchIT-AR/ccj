@@ -361,19 +361,16 @@ for (const r of ["mint", "admisiones", "staff", "nuestrocolegio", "cv", "orienta
 }
 
 // ---------------------------------------------------------------------------
-// B.7 — el botón muerto de /mint
+// B.7 — el botón de /mint (22/09: la URL del blog es mint.colegiociudadjardin.edu.ar,
+// la misma que ya usaban las tarjetas; el botón se publica apuntando ahí)
 // ---------------------------------------------------------------------------
 {
-  const src = leerVista("mint.hbs");
   const html = render("mint.hbs", {});
   chequear(
-    !html.includes("VER TODAS LAS ACTIVIDADES"),
-    "B.7: el botón sin destino ya no se publica"
+    /href="https:\/\/mint\.colegiociudadjardin\.edu\.ar[^"]*"[^>]*>VER TODAS LAS ACTIVIDADES/.test(html),
+    "B.7: el botón VER TODAS LAS ACTIVIDADES apunta al blog de MINT"
   );
-  chequear(
-    src.includes("URL_DEL_BLOG"),
-    "B.7: queda el bloque comentado para reponerlo cuando llegue la URL"
-  );
+  chequear(!html.includes("URL_DEL_BLOG") && !/btn[^>]*disabled/.test(html), "B.7: no queda ningún botón sin destino");
 }
 
 // ---------------------------------------------------------------------------
