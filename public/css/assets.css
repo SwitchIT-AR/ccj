@@ -126,6 +126,18 @@ a:hover {
   object-position: center;
 }
 
+/* Fotos de secundaria que no son 4:3 (verticales): el encuadre vertical se ajusta a mano para
+   que no se corten los sujetos. Solo afecta si la foto es más alta que 4:3; con fotos 4:3 o
+   apaisadas no hace nada. 1: grupo en el Portón de Brandeburgo (gente abajo).
+   4: delegación de Kiribati (caras arriba). */
+#title-cards .card-deck .card:nth-child(1) .card-img-nivel {
+  object-position: center 80%;
+}
+
+#title-cards .card-deck .card:nth-child(4) .card-img-nivel {
+  object-position: center 28%;
+}
+
 #title-cards .card-icon {
   height: 50px;
   margin: auto;
