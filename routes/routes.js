@@ -2,6 +2,7 @@ const { Router } = require("express");
 const router = Router();
 const nodemailer = require("nodemailer");
 const path = require("path");
+const fs = require("fs");
 const Matriculado = require("../models/Matriculado");
 const Consulta = require("../models/Consulta");
 const homeCtrl = require("../controllers/home.controller");
@@ -35,7 +36,9 @@ const uploadGalery = multer({ storage: storageGalery });
 
 const storageDeptos = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, `./public/img/deptos${req.body.pagina}/cards/`);
+    const dir = `./public/img/deptos${req.body.pagina}/cards/`;
+    fs.mkdirSync(dir, { recursive: true });
+    cb(null, dir);
   },
   filename: function (req, file, cb) {
     cb(null, file.fieldname + ".jpg");
@@ -45,7 +48,9 @@ const uploadDeptos = multer({ storage: storageDeptos });
 
 const storageNiveles = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, `./public/img/niveles/cards`);
+    const dir = "./public/img/niveles/cards";
+    fs.mkdirSync(dir, { recursive: true });
+    cb(null, dir);
   },
   filename: function (req, file, cb) {
     cb(null, file.fieldname + ".jpg");

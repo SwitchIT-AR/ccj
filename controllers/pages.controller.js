@@ -1,4 +1,5 @@
 const pagesCtrl = {};
+const path = require("path");
 const Pages = require("../models/Pages");
 
 pagesCtrl.getPages = async (req, res) => {
@@ -61,26 +62,17 @@ pagesCtrl.updatePages = async (req, res) => {
   console.log("pagina", pagina);
   console.log("req files", req.files);
 
-  // Save images to a folder on the server
-  if (req.files && req.files.cardImage1) {
-    const image1 = req.files.cardImage1[0];
-  }
+  // multer ya guardó los archivos en disco; acá se registra su ruta pública en Mongo
+  // (sin esto, un campo cardImageN vacío sigue vacío aunque se suba la foto).
+  const imagenes = {};
+  Object.entries(req.files || {}).forEach(([campo, archivos]) => {
+    imagenes[campo] = "/" + path.relative("public", archivos[0].path).split(path.sep).join("/");
+  });
 
-  if (req.files && req.files.cardImage2) {
-    const image2 = req.files.cardImage2[0];
-  }
-
-  if (req.files && req.files.cardImage3) {
-    const image3 = req.files.cardImage3[0];
-  }
-
-  if (req.files && req.files.cardImage4) {
-    const image4 = req.files.cardImage4[0];
-  }
   try {
     const pageEdit = await Pages.findOneAndUpdate(
       { _id: req.body._id },
-      { ...rest },
+      { ...rest, ...imagenes },
       {
         new: true,
       }
