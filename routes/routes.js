@@ -36,12 +36,22 @@ const uploadGalery = multer({ storage: storageGalery });
 
 const storageDeptos = multer.diskStorage({
   destination: function (req, file, cb) {
-    const dir = `./public/img/deptos${req.body.pagina}/cards/`;
+    // `pagina` viene del body y arma una ruta en disco: sólo se aceptan nombres simples.
+    const pagina = String(req.body.pagina || "");
+    if (!/^\/[A-Za-z0-9_-]+$/.test(pagina)) {
+      return cb(new Error("Página inválida: " + pagina));
+    }
+    // La portada (imageTop) se guarda como top.jpg en la carpeta del departamento;
+    // las tarjetas, en cards/.
+    const dir =
+      file.fieldname === "imageTop"
+        ? `./public/img/deptos${pagina}/`
+        : `./public/img/deptos${pagina}/cards/`;
     fs.mkdirSync(dir, { recursive: true });
     cb(null, dir);
   },
   filename: function (req, file, cb) {
-    cb(null, file.fieldname + ".jpg");
+    cb(null, file.fieldname === "imageTop" ? "top.jpg" : file.fieldname + ".jpg");
   },
 });
 const uploadDeptos = multer({ storage: storageDeptos });
@@ -186,6 +196,7 @@ router.post("/pages/newTicket", pagesCtrl.newPages);
 router.post(
   "/pagesEdit/depto/pagesUpdate",
   uploadDeptos.fields([
+    { name: "imageTop", maxCount: 1 },
     { name: "cardImage1", maxCount: 1 },
     { name: "cardImage2", maxCount: 1 },
     { name: "cardImage3", maxCount: 1 },
