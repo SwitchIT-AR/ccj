@@ -117,6 +117,15 @@ a:hover {
   background-color: #ddd;
 }
 
+/* Tarjetas de niveles: la caja sigue la proporción 4:3 de las fotos (en vez de 250px fijos,
+   que en pantallas anchas recortaban arriba y abajo) y sin la franja gris de abajo. */
+#title-cards .card-img-nivel {
+  height: auto;
+  aspect-ratio: 4 / 3;
+  padding-bottom: 0;
+  object-position: center 30%;
+}
+
 #title-cards .card-icon {
   height: 50px;
   margin: auto;
