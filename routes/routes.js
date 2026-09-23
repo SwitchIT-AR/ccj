@@ -48,7 +48,13 @@ const uploadDeptos = multer({ storage: storageDeptos });
 
 const storageNiveles = multer.diskStorage({
   destination: function (req, file, cb) {
-    const dir = "./public/img/niveles/cards";
+    // Las fotos de cada nivel viven en public/img/nivel/<nivel>/cards/ (donde ya apuntan
+    // las rutas de Mongo). Se valida `pagina` porque viene del body y arma una ruta en disco.
+    const nivel = String(req.body.pagina || "").replace("/", "");
+    if (!["inicial", "primaria", "secundaria"].includes(nivel)) {
+      return cb(new Error("Nivel inválido: " + req.body.pagina));
+    }
+    const dir = `./public/img/nivel/${nivel}/cards`;
     fs.mkdirSync(dir, { recursive: true });
     cb(null, dir);
   },
