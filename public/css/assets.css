@@ -81,6 +81,12 @@ a:hover {
   text-align: center;
 }
 
+/* Encuadre de portada por página (departamentos.hbs pone data-ruta con la ruta del documento).
+   La portada es una franja baja: con `center` se pierde la parte de arriba de la foto. */
+#landing[data-ruta="/veronica"] .landing-img {
+  background-position: center 35%;
+}
+
 #landing .landing-title {
   display: block;
   font-size: 5rem;
