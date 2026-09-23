@@ -1,6 +1,6 @@
 <section id="landing" data-ruta="{{textos.ruta}}">
   <div class="landing-img"
-    style="background-image: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.15)),url({{#if textos.imageTop}}{{textos.imageTop}}{{else}}/img/nuestro-colegio/top.jpg{{/if}});">
+    style="background-image: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.15)),url({{#if textos.imageTop}}{{textos.imageTop}}{{else}}/img/nuestro-colegio/top.jpg{{/if}});{{#if textos.imageTopPos}} background-position: center {{textos.imageTopPos}}%;{{/if}}">
     <h2 class="landing-title">{{textos.titulo}}</h2>
     <h5 class="landing-subtitle">{{textos.saludo}}</h5>
   </div>
@@ -91,7 +91,7 @@
     <div class="card-deck mb-5 text-dark">
       {{#if textos.cardTitulo1}}
       <div class="card">
-        {{#if textos.cardImage1}}<img src="{{textos.cardImage1}}" class="card-img-top" alt="{{textos.cardTitulo1}}">{{/if}}
+        {{#if textos.cardImage1}}<img src="{{textos.cardImage1}}" class="card-img-top" alt="{{textos.cardTitulo1}}"{{#if textos.cardImage1Pos}} style="object-position: center {{textos.cardImage1Pos}}%"{{/if}}>{{/if}}
         <div class="card-body pb-2">
           <h5 class="card-title">
             {{textos.cardTitulo1}}
@@ -107,7 +107,7 @@
       {{/if}}
       {{#if textos.cardTitulo2}}
       <div class="card">
-        {{#if textos.cardImage2}}<img src="{{textos.cardImage2}}" class="card-img-top" alt="{{textos.cardTitulo2}}">{{/if}}
+        {{#if textos.cardImage2}}<img src="{{textos.cardImage2}}" class="card-img-top" alt="{{textos.cardTitulo2}}"{{#if textos.cardImage2Pos}} style="object-position: center {{textos.cardImage2Pos}}%"{{/if}}>{{/if}}
         <div class="card-body pb-2">
           <h5 class="card-title">{{textos.cardTitulo2}}</h5>
           <p>
@@ -121,7 +121,7 @@
       {{/if}}
       {{#if textos.cardTitulo3}}
       <div class="card">
-        {{#if textos.cardImage3}}<img src="{{textos.cardImage3}}" class="card-img-top" alt="{{textos.cardTitulo3}}">{{/if}}
+        {{#if textos.cardImage3}}<img src="{{textos.cardImage3}}" class="card-img-top" alt="{{textos.cardTitulo3}}"{{#if textos.cardImage3Pos}} style="object-position: center {{textos.cardImage3Pos}}%"{{/if}}>{{/if}}
         <div class="card-body pb-2">
           <h5 class="card-title">{{textos.cardTitulo3}}</h5>
           <p>
@@ -135,7 +135,7 @@
       {{/if}}
       {{#if textos.cardTitulo4}}
       <div class="card">
-        {{#if textos.cardImage4}}<img src="{{textos.cardImage4}}" class="card-img-top" alt="{{textos.cardTitulo4}}">{{/if}}
+        {{#if textos.cardImage4}}<img src="{{textos.cardImage4}}" class="card-img-top" alt="{{textos.cardTitulo4}}"{{#if textos.cardImage4Pos}} style="object-position: center {{textos.cardImage4Pos}}%"{{/if}}>{{/if}}
         <div class="card-body pb-2">
           <h5 class="card-title">{{textos.cardTitulo4}}</h5>
           <p>

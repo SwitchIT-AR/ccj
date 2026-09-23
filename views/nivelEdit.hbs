@@ -25,11 +25,15 @@
         <input type="text" class="form-control" name="_id" value="{{pages._id}}" hidden><br>
         <input type="text" class="form-control" name="pagina" value="{{pages.ruta}}" hidden><br>
         <div class="container">
-            <section id="landing">
+            <section id="landing" data-ruta="{{pages.ruta}}">
                 <div class="landing-img"
                     style="background-image: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.15)),url({{pages.imageTop}});">
                     <label for="imageTop">Portada (foto horizontal, ideal 1920x1081, hasta ~300 KB):</label>
                     <input type="file" class="form-control" name="imageTop" accept="image/*"><br>
+                    <div class="encuadre my-2" style="background:rgba(255,255,255,.85);color:#000;padding:6px 10px;border-radius:8px">
+                        <label class="mb-0">Encuadre de la portada: <b><span class="encuadre-valor"></span>%</b> <small>(0 = arriba, 100 = abajo)</small></label>
+                        <input type="range" min="0" max="100" step="1" class="form-control-range" data-name="imageTopPos" data-saved="{{pages.imageTopPos}}">
+                    </div>
 
                     <label for="titulo">Titulo:</label>
                     <input type="text" class="form-control-sm" name="titulo" value="{{pages.titulo}}"><br>
@@ -92,8 +96,12 @@
                     <input type="text" class="form-control" name="subTitulo4" value="{{pages.subTitulo4}}"><br>
                     <div class="card-deck mb-5">
                         <div class="card">
-                            <img src="{{pages.cardImage1}}" class="card-img-top" alt="proyectos inicial">
+                            <img src="{{pages.cardImage1}}" class="card-img-top card-img-nivel" alt="proyectos inicial">
                             <input type="file" class="form-control" name="cardImage1" accept="image/*"><br>
+                            <div class="encuadre my-2" style="background:rgba(255,255,255,.85);color:#000;padding:6px 10px;border-radius:8px">
+                                <label class="mb-0">Encuadre de la foto: <b><span class="encuadre-valor"></span>%</b> <small>(0 = arriba, 100 = abajo)</small></label>
+                                <input type="range" min="0" max="100" step="1" class="form-control-range" data-name="cardImage1Pos" data-saved="{{pages.cardImage1Pos}}">
+                            </div>
                             <div class="card-body pb-2">
                                 <label for="cardTitulo1">Card Titulo 1:</label>
                                 <input type="text" class="form-control" name="cardTitulo1"
@@ -109,8 +117,12 @@
                             </div>
                         </div>
                         <div class="card">
-                            <img src="{{pages.cardImage2}}" class="card-img-top" alt="proyectos inicial">
+                            <img src="{{pages.cardImage2}}" class="card-img-top card-img-nivel" alt="proyectos inicial">
                             <input type="file" class="form-control" name="cardImage2" accept="image/*"><br>
+                            <div class="encuadre my-2" style="background:rgba(255,255,255,.85);color:#000;padding:6px 10px;border-radius:8px">
+                                <label class="mb-0">Encuadre de la foto: <b><span class="encuadre-valor"></span>%</b> <small>(0 = arriba, 100 = abajo)</small></label>
+                                <input type="range" min="0" max="100" step="1" class="form-control-range" data-name="cardImage2Pos" data-saved="{{pages.cardImage2Pos}}">
+                            </div>
                             <div class="card-body pb-2">
                                 <label for="cardTitulo2">Card Titulo 2:</label>
                                 <input type="text" class="form-control" name="cardTitulo2"
@@ -125,8 +137,12 @@
                             </div>
                         </div>
                         <div class="card">
-                            <img src="{{pages.cardImage3}}" class="card-img-top" alt="proyectos inicial">
+                            <img src="{{pages.cardImage3}}" class="card-img-top card-img-nivel" alt="proyectos inicial">
                             <input type="file" class="form-control" name="cardImage3" accept="image/*"><br>
+                            <div class="encuadre my-2" style="background:rgba(255,255,255,.85);color:#000;padding:6px 10px;border-radius:8px">
+                                <label class="mb-0">Encuadre de la foto: <b><span class="encuadre-valor"></span>%</b> <small>(0 = arriba, 100 = abajo)</small></label>
+                                <input type="range" min="0" max="100" step="1" class="form-control-range" data-name="cardImage3Pos" data-saved="{{pages.cardImage3Pos}}">
+                            </div>
                             <div class="card-body pb-2">
                                 <label for="cardTitulo3">Card Titulo 3:</label>
                                 <input type="text" class="form-control" name="cardTitulo3"
@@ -141,8 +157,12 @@
                             </div>
                         </div>
                         <div class="card">
-                            <img src="{{pages.cardImage4}}" class="card-img-top" alt="proyectos inicial">
+                            <img src="{{pages.cardImage4}}" class="card-img-top card-img-nivel" alt="proyectos inicial">
                             <input type="file" class="form-control" name="cardImage4" accept="image/*"><br>
+                            <div class="encuadre my-2" style="background:rgba(255,255,255,.85);color:#000;padding:6px 10px;border-radius:8px">
+                                <label class="mb-0">Encuadre de la foto: <b><span class="encuadre-valor"></span>%</b> <small>(0 = arriba, 100 = abajo)</small></label>
+                                <input type="range" min="0" max="100" step="1" class="form-control-range" data-name="cardImage4Pos" data-saved="{{pages.cardImage4Pos}}">
+                            </div>
                             <div class="card-body pb-2">
                                 <label for="cardTitulo4">Card Titulo 4:</label>
                                 <input type="text" class="form-control" name="cardTitulo4"
@@ -187,4 +207,30 @@
         </div>
     </form>
 </div>
+<script>
+// Encuadre vertical de la portada y de las fotos de las tarjetas. El slider mueve la vista previa
+// en vivo y sólo se envía (tiene `name`) si se lo toca: así guardar otra cosa no pisa el encuadre.
+(function () {
+  function y(el, prop) {
+    var v = getComputedStyle(el)[prop] || "";
+    var n = parseFloat(v.split(" ").pop());
+    return isNaN(n) ? 50 : Math.round(n);
+  }
+  document.querySelectorAll(".encuadre input[type=range]").forEach(function (slider) {
+    var hero = slider.closest(".landing-img");
+    var target = hero || slider.closest(".card").querySelector("img");
+    var out = slider.parentNode.querySelector(".encuadre-valor");
+    var saved = parseFloat(slider.getAttribute("data-saved"));
+    var start = isNaN(saved) ? y(target, hero ? "backgroundPositionY" : "objectPosition") : saved;
+    slider.value = start;
+    out.textContent = start;
+    slider.addEventListener("input", function () {
+      slider.name = slider.getAttribute("data-name");
+      out.textContent = slider.value;
+      if (hero) target.style.backgroundPosition = "center " + slider.value + "%";
+      else target.style.objectPosition = "center " + slider.value + "%";
+    });
+  });
+})();
+</script>
 <script src="/dist/js/pages/nivelEdit.js">

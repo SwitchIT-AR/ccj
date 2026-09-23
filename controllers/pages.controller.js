@@ -62,6 +62,15 @@ pagesCtrl.updatePages = async (req, res) => {
   console.log("pagina", pagina);
   console.log("req files", req.files);
 
+  // Los encuadres (imageTopPos, cardImageNPos) se escriben en un style="" de las vistas:
+  // sólo se aceptan números, acotados a 0-100.
+  Object.keys(rest).forEach((campo) => {
+    if (!/Pos$/.test(campo)) return;
+    const n = String(rest[campo]).trim() === "" ? NaN : Number(rest[campo]);
+    if (Number.isFinite(n)) rest[campo] = String(Math.min(100, Math.max(0, Math.round(n))));
+    else delete rest[campo];
+  });
+
   // multer ya guardó los archivos en disco; acá se registra su ruta pública en Mongo
   // (sin esto, un campo cardImageN vacío sigue vacío aunque se suba la foto).
   const imagenes = {};
