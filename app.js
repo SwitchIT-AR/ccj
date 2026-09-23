@@ -21,6 +21,26 @@ app.engine(
     partials: path.join(app.get("views"), "partials"),
     extname: ".hbs",
     defaultLayout: "main",
+    helpers: {
+      // Textarea del editor, un ítem por línea -> lista de textos (ver views/mint.hbs).
+      lineas: (texto) =>
+        String(texto || "")
+          .split(/\r?\n/)
+          .map((l) => l.trim())
+          .filter(Boolean),
+      // Igual, pero cada línea es "Título: texto" -> [{ titulo, texto }].
+      entradas: (texto) =>
+        String(texto || "")
+          .split(/\r?\n/)
+          .map((l) => l.trim())
+          .filter(Boolean)
+          .map((l) => {
+            const i = l.indexOf(":");
+            return i === -1
+              ? { titulo: "", texto: l }
+              : { titulo: l.slice(0, i).trim(), texto: l.slice(i + 1).trim() };
+          }),
+    },
   })
 );
 app.set("view engine", ".hbs");

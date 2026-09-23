@@ -93,6 +93,21 @@ const storageNiveles = multer.diskStorage({
 });
 const uploadNiveles = multer({ storage: storageNiveles });
 
+// MINT: portada, tarjetas, fotos del equipo y tabla van a public/img/mint/. Como la ruta de cada
+// foto se guarda en Mongo (ver updatePages), el nombre no tiene por qué coincidir con el anterior.
+const storageMint = multer.diskStorage({
+  destination: function (req, file, cb) {
+    const dir = "./public/img/mint";
+    fs.mkdirSync(dir, { recursive: true });
+    cb(null, dir);
+  },
+  filename: function (req, file, cb) {
+    const ext = path.extname(file.originalname).toLowerCase();
+    cb(null, file.fieldname + ([".jpg", ".jpeg", ".png", ".webp"].includes(ext) ? ext : ".jpg"));
+  },
+});
+const uploadMint = multer({ storage: storageMint });
+
 const ruta = path.join(__dirname, "../public/views/");
 
 // rutas del colegio
@@ -162,7 +177,7 @@ const routes = [
   { route: "administracion", view: "administracion" },
   { route: "cv", view: "curriculum" },
   { route: "orientacion", view: "orientacion" },
-  { route: "mint", view: "mint" },
+  { route: "mint", view: "mint", necesitaDoc: true },
   { route: "inicial", view: "niveles", necesitaDoc: true },
   { route: "primaria", view: "niveles", necesitaDoc: true },
   { route: "secundaria", view: "niveles", necesitaDoc: true },
@@ -239,6 +254,26 @@ router.post(
     { name: "cardImage2", maxCount: 1 },
     { name: "cardImage3", maxCount: 1 },
     { name: "cardImage4", maxCount: 1 },
+  ]),
+  pagesCtrl.updatePages
+);
+
+router.get("/pagesEdit/mint", async (req, res) => {
+  const pagesData = await Pages.find({ ruta: "/mint" }).lean();
+  res.render("mintEdit", { pages: pagesData[0], ok: req.query.ok, layout: "pages" });
+});
+router.post(
+  "/pagesEdit/mint/pagesUpdate",
+  uploadMint.fields([
+    { name: "imageTop", maxCount: 1 },
+    { name: "cardImage1", maxCount: 1 },
+    { name: "cardImage2", maxCount: 1 },
+    { name: "cardImage3", maxCount: 1 },
+    { name: "cardImage4", maxCount: 1 },
+    { name: "equipoImage1", maxCount: 1 },
+    { name: "equipoImage2", maxCount: 1 },
+    { name: "equipoImage3", maxCount: 1 },
+    { name: "tablaImage", maxCount: 1 },
   ]),
   pagesCtrl.updatePages
 );

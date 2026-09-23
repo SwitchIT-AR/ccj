@@ -1,33 +1,19 @@
 <section id="landing">
   <div class="landing-img"
-    style="background-image: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.15)),url(/img/mint/mintBanner.jpg);">
-    <h2 style="margin-top: -240px;">MINT</h2>
+    style="background-image: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.15)),url({{#if textos.imageTop}}{{textos.imageTop}}{{else}}/img/mint/mintBanner.jpg{{/if}});">
+    <h2 style="margin-top: -240px;">{{textos.titulo}}</h2>
   </div>
 </section>
 
 <section>
   <div class="contenedor">
     <img class="img-nivel mt-n4" src="/img/iconos/iconos-15.png" alt="">
-    <p>
-      MINT es una iniciativa del Ministerio de Cultura y Educación de la República Federal de Alemania, promovida en
-      nuestro
-      país por la AGDS (Comunidad de Trabajo de Escuelas Argentino Germanas). Tiene como objetivo fortalecer el
-      aprendizaje de
-      los estudiantes en las áreas de Matemática, Informática, Ciencias Naturales y Tecnología.
-    </p>
+    <p>{{textos.parrafo1}}</p>
     <br />
-    <p>
-      En este último tiempo, la promoción de las asignaturas MINT ha comenzado a ocupar un lugar destacado en nuestro
-      proyecto
-      institucional, acompañado por una mayor utilización de las nuevas tecnologías, la realización de proyectos
-      interdisciplinarios y la incorporación del alemán en las clases de Físico Química y, próximamente, de Informática.
-    </p>
+    <p>{{textos.parrafo2}}</p>
     <p>
       <br />
-      Con el objetivo de favorecer el desarrollo de las áreas MINT, también se ha renovado el laboratorio de ciencias,
-      se han
-      equipado las aulas con computadoras y televisores, se ha mejorado el equipamiento de la sala de informática y se
-      habilitó una sala de tecnología para el nivel primario.
+      {{textos.parrafo3}}
     </p>
 
     {{!-- A.10 — Botón al blog de MINT (Blogger, mint.colegiociudadjardin.edu.ar: es el mismo
@@ -43,234 +29,107 @@
 
 <section>
   <div class="contenedor" style="background-color: #F8CC3D;">
-    <h5 style="font-weight: 600;">
-      La iniciativa MINT también se destaca por fomentar el contacto con otros colegios y con universidades que trabajan
-      con
-      el mismo enfoque. Cabe mencionar que una de las escuelas alemanas con las que realizamos el intercambio, Maria
-      Sibylla
-      Merian Gymnasium - Telgte, es escuela MINT, lo cual nos brinda una oportunidad importantísima de trabajo
-      colaborativo.
-      Asimismo, nuestro colegio realiza visitas a universidades que brindan carreras relacionadas con Ciencias,
-      Ingeniería,
-      Tecnología, etc. y está desarrollando lazos con la Escuela Técnica Roberto Rocca de Campana.
-    </h5>
+    <h5 style="font-weight: 600;">{{textos.parrafo4}}</h5>
   </div>
 </section>
 
 <section id="title-cards" class="c-rojo">
   <div class="mx-4 p-5">
-    <h2 class="text-center mb-5">Algunas actividades que realizamos</h2>
+    <h2 class="text-center mb-5">{{textos.subTitulo1}}</h2>
     <div class="card-deck card-deck-primaria mb-5">
+      {{!-- Las cuatro tarjetas llevan al blog de MINT. La foto se muestra sólo si el documento la trae. --}}
       <div class="card">
-        <a href="https://mint.colegiociudadjardin.edu.ar/?view=magazine">
-          <img src="/img/mint/card1.png" class="card-img-top" alt="imagen orientacion Educacional">
+        <a href="https://mint.colegiociudadjardin.edu.ar/?view=magazine" style="text-decoration: none;">
+          {{#if textos.cardImage1}}<img src="{{textos.cardImage1}}" class="card-img-top" alt="{{textos.cardTitulo1}}">{{/if}}
           <div class="card-body">
-            <h5 class="card-title" style="color:black;text-decoration: none;">
-              Espacio de aprendizaje MINT
-            </h5>
-
+            <h5 class="card-title" style="color:black;text-decoration: none;">{{textos.cardTitulo1}}</h5>
           </div>
         </a>
       </div>
       <div class="card">
         <a href="https://mint.colegiociudadjardin.edu.ar/?view=magazine" style="text-decoration: none;">
-          <img src="/img/mint/card2.png" class="card-img-top" alt="imagen orientacion Educacional">
+          {{#if textos.cardImage2}}<img src="{{textos.cardImage2}}" class="card-img-top" alt="{{textos.cardTitulo2}}">{{/if}}
           <div class="card-body">
-            <h5 class="card-title" style="color:black;text-decoration: none;">
-              Orientación profesional MINT</h5>
-
+            <h5 class="card-title" style="color:black;text-decoration: none;">{{textos.cardTitulo2}}</h5>
           </div>
         </a>
       </div>
       <div class="card">
         <a href="https://mint.colegiociudadjardin.edu.ar/?view=magazine" style="text-decoration: none;">
-
-          <img src="/img/mint/card3.png" class="card-img-top" alt="imagen orientacion Educacional">
+          {{#if textos.cardImage3}}<img src="{{textos.cardImage3}}" class="card-img-top" alt="{{textos.cardTitulo3}}">{{/if}}
           <div class="card-body">
-            <h5 class="card-title" style="color:black;text-decoration: none;">
-              Salidas Educativas MINT</h5>
-
+            <h5 class="card-title" style="color:black;text-decoration: none;">{{textos.cardTitulo3}}</h5>
           </div>
         </a>
       </div>
       <div class="card">
         <a href="https://mint.colegiociudadjardin.edu.ar/?view=magazine" style="text-decoration: none;">
-
-          <img src="/img/mint/card4.png" class="card-img-top" alt="imagen orientacion Educacional">
+          {{#if textos.cardImage4}}<img src="{{textos.cardImage4}}" class="card-img-top" alt="{{textos.cardTitulo4}}">{{/if}}
           <div class="card-body">
-            <h5 class="card-title" style="color:black;text-decoration: none;">
-              Trabajo en Laboratorio</h5>
-
+            <h5 class="card-title" style="color:black;text-decoration: none;">{{textos.cardTitulo4}}</h5>
           </div>
         </a>
       </div>
-
     </div>
   </div>
 </section>
 
 <section class="c-celeste text-white" id="data">
   <div class="contenedor">
-    <h2>Equipo de trabajo MINT</h2>
-    <p>Con el fin de profundizar a largo plazo el perfil de MINT de nuestra institución y apoyar a los estudiantes en el
-      desarrollo óptimo de su potencial, se creó el equipo de trabajo MINT, compuesto actualmente por tres profesores de
-      las
-      áreas MINT:</p>
+    <h2>{{textos.subTitulo2}}</h2>
+    <p>{{textos.parrafo5}}</p>
     <div class="row eoe">
       <div class="col-sm-3 d-flex justify-content-center align-items-center">
-        <img class="img-nivel" src="/img/mint/mint1.png" alt="">
+        {{#if textos.equipoImage1}}<img class="img-nivel" src="{{textos.equipoImage1}}" alt="">{{/if}}
       </div>
       <div class="col-sm-9 h-100 m-auto">
-        <p>Mi nombre es Andrea Espinosa, profesora de Matemática desde el año 2001.
-          Una de las experiencias más enriquecedoras que he tenido como profesora de matemáticas ha sido la coordinación
-          del
-          proyecto de Olimpiadas Matemáticas.
-          Además de mi experiencia docente, me he capacitado en el uso de herramientas tecnológicas como Geogebra, un
-          software
-          educativo.
-          Otro recurso que he integrado en mi enseñanza es el origami, el arte tradicional japonés del plegado de papel.
-          En
-          resumen, ser profesora de matemáticas es una experiencia gratificante y desafiante.</p>
+        <p>{{textos.equipoTexto1}}</p>
       </div>
     </div>
     <div class="row eoe">
       <div class="col-sm-3 d-flex justify-content-center align-items-center">
-        <img class="img-nivel" src="/img/mint/mint2.png" alt="">
+        {{#if textos.equipoImage2}}<img class="img-nivel" src="{{textos.equipoImage2}}" alt="">{{/if}}
       </div>
       <div class="col-sm-9 h-100 m-auto">
-        <p>Mi nombre es Christian Pérez, profesional universitario en sistemas, profesor de informática y desarrollador.
-          Dentro de
-          la institución ocupo el cargo de Coordinador de Informática y Tecnología, como así también profesor del nivel
-          secundario
-          en Nuevas tecnologías e Informática Aplicada. Me apasiona combinar el proceso de enseñanza-aprendizaje con el
-          fascinante
-          mundo de la programación.</p>
+        <p>{{textos.equipoTexto2}}</p>
       </div>
     </div>
     <div class="row eoe">
       <div class="col-sm-3 d-flex justify-content-center align-items-center">
-        <img class="img-nivel img-perfil-circular" src="/img/mint/mint4.png" alt="">
+        {{#if textos.equipoImage3}}<img class="img-nivel img-perfil-circular" src="{{textos.equipoImage3}}" alt="">{{/if}}
       </div>
       <div class="col-sm-9 h-100 m-auto">
-        <p> Soy Tatiana Brito, estudié en la Universidad Pedagógica Experimental Libertador, 
-          Instituto Pedagógico de Caracas, Venezuela. 
-          Recibí el título de Profesora en la especialidad de Biología. 
-          Desde que egresé, en el año 2004, me he desempeñado en distintos cargos docentes y administrativos. 
-          Actualmente tengo la satisfacción de estar a cargo del laboratorio de la escuela y me encanta poder 
-          realizar experiencias tanto en primaria como en secundaria con el enfoque CTS, (Ciencia, Tecnología y Sociedad), 
-          de manera que el aprendizaje sea útil y significativo para los estudiantes.</p>
+        <p>{{textos.equipoTexto3}}</p>
       </div>
     </div>
-    <p>
-      Este equipo está subordinado a un grupo de dirección compuesto por miembros del equipo de dirección de la escuela:
-      Viviana Gordiola (Directora nivel primario), Diana Bria (Directora del nivel secundario) y Alejandro Broggi
-      (Director General). La Prof. Bárbara Defferrari (Coordinadora Departamento de Alemán nivel primario) está a cargo
-      de la gestión del grupo directivo de MINT. Coordina el desarrollo y profundización del perfil MINT en colaboración
-      con los profesores hispanohablantes y el equipo de la Fachschaft Deutsch. En resumen, sus tareas incluyen:
-      <br />
+    <p>{{textos.gestion}}</p>
     <ul>
+      {{#each (lineas textos.gestionLista)}}
       <li>
-        <p>
-        <p>Persona de contacto para preguntas sobre el concepto MINT de la escuela</p>
-
+        <p>{{this}}</p>
       </li>
-      <li>
-        <p>Coordinación de la cooperación MINT/DaF</p>
-      </li>
-      <li>
-        <p>Elaboración de un plan de estudios de Ciencias Naturales que tenga en cuenta el idioma</p>
-      </li>
-      <li>
-        <p>Asesoramiento sobre la promoción de MINT (por ejemplo, AGs)</p>
-      </li>
-      <li>
-        <p>Representación del concepto MINT y de los temas MINT interna y externamente</p>
-      </li>
-      <li>
-        <p>Información de los departamentos de STEM sobre concursos, cursos de formación y proyectos</p>
-      </li>
-
+      {{/each}}
     </ul>
-
-    </p>
     <br />
-    <h5>La mejora del perfil MINT cuenta con el apoyo del Consejo de Padres de la escuela, que proporciona sobre todo
-      los
-      medios
-      financieros para desarrollar este enfoque.</h5>
-
+    <h5>{{textos.apoyo}}</h5>
   </div>
 </section>
 
+{{#if textos.tablaImage}}
 <section id="title-cards" class="c-rojo">
   <div class="mx-5 p-5" style="text-align: center;">
-    <img src="/img/tablaMint.png" style="width: 80vw; border-radius:10px; " />
+    <img src="{{textos.tablaImage}}" alt="" style="width: 80vw; border-radius:10px; " />
   </div>
 </section>
+{{/if}}
 
 <section id="title-cards" class="c-amarillo">
   <div class="mx-5 p-5">
-    <h3>Calendario MINT
-    </h3>
+    <h3>{{textos.subTitulo3}}</h3>
     <div>
-      <h5> <strong> Abril: </strong>
-
-        Visita de los alumnos de 2º año del nivel primario al Museo de Ciencias Naturales
-        Participación de alumnos de 4º y 5º año en un debate sobre cambio climático en la Asociación escuelas Lincoln.
-      </h5><br />
-
-      <h5> <strong>Mayo:</strong>
-
-        Visita de los alumnos de 4º año del nivel primario al Jardín Botánico
-        Orientación vocacional: charlas de padres profesionales en el área de las Ciencias para los alumnos de 6º año
-
-      </h5><br />
-      <h5> <strong>Junio:</strong>
-
-        Visita de los alumnos de 3º año del nivel secundario a la Reserva Ecológica de Vicente López
-        Orientación vocacional: charlas de padres profesionales en el área de las Ciencias para los alumnos de 6º año
-      </h5><br />
-      <h5> <strong>Julio:</strong>
-
-        Jornada en la Escuela Técnica Roberto Rocca (Campana): visita de los alumnos de 5º y 6º año, clases compartidas
-        con los
-        alumnos de dicho colegio y charlas de profesionales.
-      </h5><br />
-      <h5> <strong>Agosto:</strong>
-
-        Visita de 4º año del nivel secundario a la “Semana de la Biología” en la Universidad de Buenos Aires.
-        Participación de
-        una experiencia en el laboratorio a cargo de la Dra. Irene Baroli.
-        Visita de 1º año del nivel secundario al Museo de Ciencias Naturales de La Plata
-      </h5><br />
-      <h5> <strong>Septiembre:</strong>
-
-        Visita de 3º año del nivel secundario al INVAP (Instituto de Investigación Aplicada y Desarrollo Tecnológico de
-        la
-        Provincia de Río Negro)
-      </h5><br />
-
-      <h5> <strong>Octubre:</strong>
-        Encuentro de Juegos Matemáticos para escuelas de la AGDS nivel primario (organizado por nuestra escuela)
-      </h5><br />
-
-      <h5> <strong>Noviembre:</strong>
-        Semana de las Ciencias: ferias MINT de los tres niveles
-      </h5><br />
-
-      <h5> <strong>Marzo a noviembre:</strong>
-
-        Participación de los alumnos de 5º y 6º año nivel primario y de 1º a 6º año del nivel secundario en las
-        Olimpíadas
-        Matemáticas Ñandú y OMA y en Mateclubes.
-        Proyecto huerta escolar: realizada por alumnos de 3º y 4º año del nivel primario
-        Proyecto cuidado de la Plaza Aviador Hörhammer: realizado por los alumnos de 1º año del nivel secundario
-
-      </h5><br />
-
-
-
-
+      {{#each (entradas textos.calendario)}}
+      <h5>{{#if titulo}}<strong>{{titulo}}:</strong>{{/if}} {{texto}}</h5><br />
+      {{/each}}
     </div>
   </div>
 </section>

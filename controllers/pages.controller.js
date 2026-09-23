@@ -58,7 +58,7 @@ pagesCtrl.newPages = async (req, res) => {
 pagesCtrl.updatePages = async (req, res) => {
   console.log("post.body", req.body);
 
-  const { _id, pagina, ...rest } = req.body;
+  const { _id, pagina, volver, ...rest } = req.body;
   console.log("pagina", pagina);
   console.log("req files", req.files);
 
@@ -90,6 +90,10 @@ pagesCtrl.updatePages = async (req, res) => {
     if (!pageEdit) {
       return res.status(204).json({ message: "no existe el ticket" });
     } else {
+      // Si el formulario indica a qué editor volver, se vuelve ahí (sólo rutas internas).
+      if (/^\/pagesEdit\/[A-Za-z0-9/_-]*$/.test(String(volver || ""))) {
+        return res.redirect(volver + "?ok=1");
+      }
       return res.status(200).render("deptoEdit", {
         message: "los datos fueron guardados",
       });

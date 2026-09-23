@@ -1,0 +1,134 @@
+<div class="container-fluid" style="background-color:rgb(198, 198, 198);">
+    <div class="container" style="padding-top: 100px; background-color: white;">
+        <h1>MINT Update</h1>
+        <p>Editá los textos y fotos de <a href="/mint" target="_blank">/mint</a>. Las fotos son opcionales: si no elegís una, queda la actual.</p>
+        {{#if ok}}<div class="alert alert-success">Los datos fueron guardados.</div>{{/if}}
+        {{#unless pages}}
+        <div class="alert alert-warning">No existe el documento de MINT en Mongo (colección <b>pages</b>, <code>ruta: "/mint"</code>). Cargalo primero; hasta entonces este formulario no puede guardar.</div>
+        {{/unless}}
+
+    <form action="/pagesEdit/mint/pagesUpdate" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="_id" value="{{pages._id}}">
+        <input type="hidden" name="pagina" value="{{pages.ruta}}">
+        <input type="hidden" name="volver" value="/pagesEdit/mint">
+        <h4 class="mt-4">Portada</h4>
+        <div class="p-3 mb-3" style="background:#f4f4f4;border-radius:8px">
+            <div class="mb-3">
+                <label for="imageTop">Foto de portada (horizontal, ideal 1920x1081, hasta ~300 KB)</label><br>
+                {{#if pages.imageTop}}<img src="{{pages.imageTop}}" alt="" style="height:90px;border-radius:6px;margin:4px 0;background:#ddd"><br>{{/if}}
+                <input type="file" class="form-control" name="imageTop" accept="image/*">
+            </div>
+            <label for="titulo">Título</label>
+            <input type="text" class="form-control mb-3" name="titulo" value="{{pages.titulo}}">
+        </div>
+        <h4 class="mt-4">Descripción</h4>
+        <div class="p-3 mb-3" style="background:#f4f4f4;border-radius:8px">
+            <label for="parrafo1">Párrafo 1</label>
+            <textarea class="form-control mb-3" name="parrafo1" rows="5">{{pages.parrafo1}}</textarea>
+            <label for="parrafo2">Párrafo 2</label>
+            <textarea class="form-control mb-3" name="parrafo2" rows="4">{{pages.parrafo2}}</textarea>
+            <label for="parrafo3">Párrafo 3</label>
+            <textarea class="form-control mb-3" name="parrafo3" rows="4">{{pages.parrafo3}}</textarea>
+        </div>
+        <h4 class="mt-4">Banda amarilla</h4>
+        <div class="p-3 mb-3" style="background:#f4f4f4;border-radius:8px">
+            <label for="parrafo4">Texto</label>
+            <textarea class="form-control mb-3" name="parrafo4" rows="6">{{pages.parrafo4}}</textarea>
+        </div>
+        <h4 class="mt-4">Actividades (tarjetas que llevan al blog de MINT)</h4>
+        <div class="p-3 mb-3" style="background:#f4f4f4;border-radius:8px">
+            <label for="subTitulo1">Título de la sección</label>
+            <input type="text" class="form-control mb-3" name="subTitulo1" value="{{pages.subTitulo1}}">
+            <hr>
+            <label for="cardTitulo1">Tarjeta 1 — título</label>
+            <input type="text" class="form-control mb-3" name="cardTitulo1" value="{{pages.cardTitulo1}}">
+            <div class="mb-3">
+                <label for="cardImage1">Tarjeta 1 — foto (horizontal, ideal 800x600)</label><br>
+                {{#if pages.cardImage1}}<img src="{{pages.cardImage1}}" alt="" style="height:90px;border-radius:6px;margin:4px 0;background:#ddd"><br>{{/if}}
+                <input type="file" class="form-control" name="cardImage1" accept="image/*">
+            </div>
+            <hr>
+            <label for="cardTitulo2">Tarjeta 2 — título</label>
+            <input type="text" class="form-control mb-3" name="cardTitulo2" value="{{pages.cardTitulo2}}">
+            <div class="mb-3">
+                <label for="cardImage2">Tarjeta 2 — foto (horizontal, ideal 800x600)</label><br>
+                {{#if pages.cardImage2}}<img src="{{pages.cardImage2}}" alt="" style="height:90px;border-radius:6px;margin:4px 0;background:#ddd"><br>{{/if}}
+                <input type="file" class="form-control" name="cardImage2" accept="image/*">
+            </div>
+            <hr>
+            <label for="cardTitulo3">Tarjeta 3 — título</label>
+            <input type="text" class="form-control mb-3" name="cardTitulo3" value="{{pages.cardTitulo3}}">
+            <div class="mb-3">
+                <label for="cardImage3">Tarjeta 3 — foto (horizontal, ideal 800x600)</label><br>
+                {{#if pages.cardImage3}}<img src="{{pages.cardImage3}}" alt="" style="height:90px;border-radius:6px;margin:4px 0;background:#ddd"><br>{{/if}}
+                <input type="file" class="form-control" name="cardImage3" accept="image/*">
+            </div>
+            <hr>
+            <label for="cardTitulo4">Tarjeta 4 — título</label>
+            <input type="text" class="form-control mb-3" name="cardTitulo4" value="{{pages.cardTitulo4}}">
+            <div class="mb-3">
+                <label for="cardImage4">Tarjeta 4 — foto (horizontal, ideal 800x600)</label><br>
+                {{#if pages.cardImage4}}<img src="{{pages.cardImage4}}" alt="" style="height:90px;border-radius:6px;margin:4px 0;background:#ddd"><br>{{/if}}
+                <input type="file" class="form-control" name="cardImage4" accept="image/*">
+            </div>
+        </div>
+        <h4 class="mt-4">Equipo de trabajo</h4>
+        <div class="p-3 mb-3" style="background:#f4f4f4;border-radius:8px">
+            <label for="subTitulo2">Título de la sección</label>
+            <input type="text" class="form-control mb-3" name="subTitulo2" value="{{pages.subTitulo2}}">
+            <label for="parrafo5">Introducción</label>
+            <textarea class="form-control mb-3" name="parrafo5" rows="4">{{pages.parrafo5}}</textarea>
+            <hr>
+            <label for="equipoTexto1">Integrante 1 — texto</label>
+            <textarea class="form-control mb-3" name="equipoTexto1" rows="5">{{pages.equipoTexto1}}</textarea>
+            <div class="mb-3">
+                <label for="equipoImage1">Integrante 1 — foto</label><br>
+                {{#if pages.equipoImage1}}<img src="{{pages.equipoImage1}}" alt="" style="height:90px;border-radius:6px;margin:4px 0;background:#ddd"><br>{{/if}}
+                <input type="file" class="form-control" name="equipoImage1" accept="image/*">
+            </div>
+            <hr>
+            <label for="equipoTexto2">Integrante 2 — texto</label>
+            <textarea class="form-control mb-3" name="equipoTexto2" rows="5">{{pages.equipoTexto2}}</textarea>
+            <div class="mb-3">
+                <label for="equipoImage2">Integrante 2 — foto</label><br>
+                {{#if pages.equipoImage2}}<img src="{{pages.equipoImage2}}" alt="" style="height:90px;border-radius:6px;margin:4px 0;background:#ddd"><br>{{/if}}
+                <input type="file" class="form-control" name="equipoImage2" accept="image/*">
+            </div>
+            <hr>
+            <label for="equipoTexto3">Integrante 3 — texto</label>
+            <textarea class="form-control mb-3" name="equipoTexto3" rows="5">{{pages.equipoTexto3}}</textarea>
+            <div class="mb-3">
+                <label for="equipoImage3">Integrante 3 — foto</label><br>
+                {{#if pages.equipoImage3}}<img src="{{pages.equipoImage3}}" alt="" style="height:90px;border-radius:6px;margin:4px 0;background:#ddd"><br>{{/if}}
+                <input type="file" class="form-control" name="equipoImage3" accept="image/*">
+            </div>
+        </div>
+        <h4 class="mt-4">Grupo de dirección</h4>
+        <div class="p-3 mb-3" style="background:#f4f4f4;border-radius:8px">
+            <label for="gestion">Texto antes de la lista</label>
+            <textarea class="form-control mb-3" name="gestion" rows="5">{{pages.gestion}}</textarea>
+            <label for="gestionLista">Tareas (una por línea)</label>
+            <textarea class="form-control mb-3" name="gestionLista" rows="7">{{pages.gestionLista}}</textarea>
+            <label for="apoyo">Texto de cierre</label>
+            <textarea class="form-control mb-3" name="apoyo" rows="4">{{pages.apoyo}}</textarea>
+        </div>
+        <h4 class="mt-4">Tabla MINT</h4>
+        <div class="p-3 mb-3" style="background:#f4f4f4;border-radius:8px">
+            <div class="mb-3">
+                <label for="tablaImage">Imagen de la tabla</label><br>
+                {{#if pages.tablaImage}}<img src="{{pages.tablaImage}}" alt="" style="height:90px;border-radius:6px;margin:4px 0;background:#ddd"><br>{{/if}}
+                <input type="file" class="form-control" name="tablaImage" accept="image/*">
+            </div>
+        </div>
+        <h4 class="mt-4">Calendario</h4>
+        <div class="p-3 mb-3" style="background:#f4f4f4;border-radius:8px">
+            <label for="subTitulo3">Título</label>
+            <input type="text" class="form-control mb-3" name="subTitulo3" value="{{pages.subTitulo3}}">
+            <label for="calendario">Una línea por mes, con el formato <code>Mes: texto</code> (lo que va antes de los dos puntos sale en negrita)</label>
+            <textarea class="form-control mb-3" name="calendario" rows="14">{{pages.calendario}}</textarea>
+        </div>
+
+        <input class="btn btn-primary btn-lg btn-block mb-5" type="submit" value="Guardar" {{#unless pages}}disabled{{/unless}}>
+    </form>
+    </div>
+</div>
