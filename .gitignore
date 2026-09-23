@@ -2,3 +2,7 @@
 /node_modules
 .DS_Store
 
+
+# Fotos subidas desde el editor /pagesEdit/nivel (viven solo en cada servidor)
+public/img/niveles/cards/*
+!public/img/niveles/cards/.gitkeep
