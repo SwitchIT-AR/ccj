@@ -730,6 +730,20 @@ a.c-celeste:hover {
   background-position: center !important;
 }
 
+.c-examenes {
+  background-color: #007aff;
+  background-image: url(../img/c-examenes.jpg) !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.c-classroom {
+  background-color: #34c759;
+  background-image: url(../img/c-classroom.jpg) !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
 /* AFILIADOS */
 #afiliados {
   margin: 80px 0;

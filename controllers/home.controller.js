@@ -5,12 +5,14 @@ const Slide = require("../models/Slide");
 
 // Tarjetas de la home que tienen foto (ver HOME_CARDS en routes/routes.js). Si el archivo existe,
 // el partial no muestra el ícono encima.
-const TARJETAS_CON_FOTO = ["mint", "orientacion", "english", "deutsch"];
+const TARJETAS_CON_FOTO = ["mint", "orientacion", "english", "deutsch", "examenes", "classroom"];
 const ARCHIVOS_TARJETA = {
   mint: "c-mint.jpg",
   orientacion: "c-orientacion.jpg",
   english: "c-english.jpg",
   deutsch: "c-deutsch.jpg",
+  examenes: "c-examenes.jpg",
+  classroom: "c-classroom.jpg",
 };
 function fotosHome() {
   const fotos = {};

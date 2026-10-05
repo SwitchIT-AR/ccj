@@ -46,6 +46,8 @@ const HOME_CARDS = {
   orientacion: "c-orientacion.jpg",
   english: "c-english.jpg",
   deutsch: "c-deutsch.jpg",
+  examenes: "c-examenes.jpg",
+  classroom: "c-classroom.jpg",
 };
 const HOME_CARDS_NOMBRES = {
   veronica: "Verónica",
@@ -57,6 +59,8 @@ const HOME_CARDS_NOMBRES = {
   orientacion: "Equipo de Orientación Escolar",
   english: "English",
   deutsch: "Deutsch",
+  examenes: "Exámenes Internacionales",
+  classroom: "Classroom",
 };
 
 const storageHome = multer.diskStorage({
