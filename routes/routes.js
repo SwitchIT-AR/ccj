@@ -300,6 +300,43 @@ router.post("/pagesEdit/tarjetas/pagesUpdate", uploadHome.single("homeCard"), (r
   res.redirect("/pagesEdit/tarjetas?ok=1");
 });
 
+// Portada de /orientacion (única foto editable por ahora). La ruta se guarda en el documento
+// pages de "/orientacion"; si no existe, se crea.
+const storageOrientacion = multer.diskStorage({
+  destination: function (req, file, cb) {
+    const dir = "./public/img/orientacion";
+    fs.mkdirSync(dir, { recursive: true });
+    cb(null, dir);
+  },
+  filename: function (req, file, cb) {
+    cb(null, "top.jpg");
+  },
+});
+const uploadOrientacion = multer({ storage: storageOrientacion });
+
+router.get("/pagesEdit/orientacion", async (req, res) => {
+  const pagesData = await Pages.find({ ruta: "/orientacion" }).lean();
+  res.render("orientacionEdit", { pages: pagesData[0], ok: req.query.ok, layout: "pages" });
+});
+router.post(
+  "/pagesEdit/orientacion/pagesUpdate",
+  uploadOrientacion.single("imageTop"),
+  async (req, res) => {
+    if (!req.file) return res.redirect("/pagesEdit/orientacion");
+    try {
+      await Pages.findOneAndUpdate(
+        { ruta: "/orientacion" },
+        { ruta: "/orientacion", imageTop: "/img/orientacion/top.jpg" },
+        { upsert: true }
+      );
+      res.redirect("/pagesEdit/orientacion?ok=1");
+    } catch (error) {
+      console.log(error);
+      res.status(500).send("No se pudo guardar la portada");
+    }
+  }
+);
+
 router.get("/pagesEdit/mint", async (req, res) => {
   const pagesData = await Pages.find({ ruta: "/mint" }).lean();
   res.render("mintEdit", { pages: pagesData[0], ok: req.query.ok, layout: "pages" });

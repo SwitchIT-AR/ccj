@@ -1,0 +1,14 @@
+<div class="container-fluid" style="background-color:rgb(198, 198, 198);">
+    <div class="container" style="padding-top: 100px; background-color: white;">
+        <h1>Orientación Update</h1>
+        <p>Cambiá la portada de <a href="/orientacion" target="_blank">/orientacion</a>. Conviene horizontal, ideal 1920x1081, hasta ~300 KB.</p>
+        {{#if ok}}<div class="alert alert-success">La portada fue guardada. Refrescá con Cmd+Shift+R.</div>{{/if}}
+        <div class="p-3 mb-3" style="background:#f4f4f4;border-radius:8px">
+            <img src="{{#if pages.imageTop}}{{pages.imageTop}}{{else}}/img/eoe/top.jpg{{/if}}" alt="" style="width:100%;max-height:260px;object-fit:cover;border-radius:6px;margin-bottom:12px">
+            <form action="/pagesEdit/orientacion/pagesUpdate" method="post" enctype="multipart/form-data">
+                <input type="file" class="form-control-file" name="imageTop" accept="image/*" required>
+                <button type="submit" class="btn btn-primary mt-3">Guardar portada</button>
+            </form>
+        </div>
+    </div>
+</div>
