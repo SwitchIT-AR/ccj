@@ -2,3 +2,24 @@
 /node_modules
 .DS_Store
 
+
+# Fotos que se suben desde los editores (/pagesEdit/*, /pagesEdit/tarjetas). Viven en cada server;
+# no se versionan para que un pull no pise lo que ya cargó el colegio.
+public/img/deptos/*/cards/cardImage*.jpg
+public/img/deptos/*/top.jpg
+public/img/nivel/*/cards/cardImage*.jpg
+public/img/nivel/*/top.jpg
+public/img/orientacion/
+public/img/mint/imageTop.*
+public/img/mint/cardImage*.*
+public/img/mint/equipoImage*.*
+public/img/mint/tablaImage.*
+public/img/c-veronica.jpg
+public/img/c-musica.jpg
+public/img/c-fisica.jpg
+public/img/c-evento.jpg
+public/img/c-intercambio.jpg
+public/img/c-mint.jpg
+public/img/c-orientacion.jpg
+public/img/c-english.jpg
+public/img/c-deutsch.jpg
