@@ -1,0 +1,18 @@
+<div class="container-fluid" style="background-color:rgb(198, 198, 198);">
+    <div class="container" style="padding-top: 100px; background-color: white;">
+        <h1>Fotos de la página principal</h1>
+        <p>Cada foto es la de la tarjeta de la home que lleva a esa página. Subí una nueva y se reemplaza al instante. Conviene horizontal, unos 800x600 y hasta 300 KB.</p>
+        {{#if ok}}<div class="alert alert-success">La foto fue actualizada. Refrescá la home con Cmd+Shift+R.</div>{{/if}}
+        {{#each tarjetas}}
+        <form action="/pagesEdit/tarjetas/pagesUpdate" method="post" enctype="multipart/form-data" class="d-flex align-items-center p-3 mb-3" style="background:#f4f4f4;border-radius:8px">
+            <input type="hidden" name="key" value="{{key}}">
+            <img src="{{foto}}" alt="" style="width:160px;height:110px;object-fit:cover;border-radius:6px;background:#ddd;margin-right:16px">
+            <div class="flex-grow-1">
+                <b>{{nombre}}</b><br>
+                <input type="file" class="form-control-file" name="homeCard" accept="image/*" required>
+            </div>
+            <button type="submit" class="btn btn-primary ml-3">Subir</button>
+        </form>
+        {{/each}}
+    </div>
+</div>

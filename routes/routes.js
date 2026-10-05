@@ -42,7 +42,34 @@ const HOME_CARDS = {
   educacionfisica: "c-fisica.jpg",
   eventos: "c-evento.jpg",
   "alumnos-intercambio": "c-intercambio.jpg",
+  mint: "c-mint.jpg",
+  orientacion: "c-orientacion.jpg",
+  english: "c-english.jpg",
+  deutsch: "c-deutsch.jpg",
 };
+const HOME_CARDS_NOMBRES = {
+  veronica: "Verónica",
+  musica: "Música",
+  educacionfisica: "Educación Física",
+  eventos: "Eventos",
+  "alumnos-intercambio": "Alumnos Intercambio",
+  mint: "MINT",
+  orientacion: "Equipo de Orientación Escolar",
+  english: "English",
+  deutsch: "Deutsch",
+};
+
+const storageHome = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./public/img/");
+  },
+  filename: function (req, file, cb) {
+    const archivo = HOME_CARDS[req.body.key];
+    if (!archivo) return cb(new Error("Tarjeta inexistente: " + req.body.key));
+    cb(null, archivo);
+  },
+});
+const uploadHome = multer({ storage: storageHome });
 
 const storageDeptos = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -257,6 +284,21 @@ router.post(
   ]),
   pagesCtrl.updatePages
 );
+
+// Fotos de las tarjetas de la home (todas las que llevan foto). No pasa por Mongo: el archivo
+// tiene nombre fijo y el CSS de main.css lo lee de public/img/.
+router.get("/pagesEdit/tarjetas", (req, res) => {
+  const tarjetas = Object.keys(HOME_CARDS).map((key) => ({
+    key,
+    nombre: HOME_CARDS_NOMBRES[key],
+    foto: "/img/" + HOME_CARDS[key] + "?v=" + Date.now(),
+  }));
+  res.render("tarjetasEdit", { tarjetas, ok: req.query.ok, layout: "pages" });
+});
+router.post("/pagesEdit/tarjetas/pagesUpdate", uploadHome.single("homeCard"), (req, res) => {
+  if (!req.file) return res.redirect("/pagesEdit/tarjetas");
+  res.redirect("/pagesEdit/tarjetas?ok=1");
+});
 
 router.get("/pagesEdit/mint", async (req, res) => {
   const pagesData = await Pages.find({ ruta: "/mint" }).lean();

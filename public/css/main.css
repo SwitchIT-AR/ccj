@@ -701,6 +701,35 @@ a.c-celeste:hover {
   background-position: center !important;
 }
 
+/* Tarjetas de la home con foto (ver HOME_CARDS en routes/routes.js). Si falta el archivo, queda el color. */
+.c-mint {
+  background-color: #34c759;
+  background-image: url(../img/c-mint.jpg) !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.c-orientacion {
+  background-color: #8e5bd6;
+  background-image: url(../img/c-orientacion.jpg) !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.c-english {
+  background-color: #ff3b30;
+  background-image: url(../img/c-english.jpg) !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.c-deutsch {
+  background-color: #ffcc00;
+  background-image: url(../img/c-deutsch.jpg) !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
 /* AFILIADOS */
 #afiliados {
   margin: 80px 0;
