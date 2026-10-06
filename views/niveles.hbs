@@ -26,43 +26,14 @@
     <div class="row justify-content-md-center">
       <div class="col-5">
         <ul class="py-5">
-
-          <h5 class="h3 d-inline">
-
-            {{{textos.auxText1}}}
-
-          </h5>
-
-
-          <br>
-
-          <h5 class="h3 d-inline">
-
-            {{{textos.auxText2}}}
-
-          </h5>
-
-
+          {{#if textos.auxText1}}<li class="h3 mb-4">{{{textos.auxText1}}}</li>{{/if}}
+          {{#if textos.auxText2}}<li class="h3 mb-4">{{{textos.auxText2}}}</li>{{/if}}
         </ul>
       </div>
       <div class="col-5">
         <ul class="py-5">
-
-          <h5 class="h3 d-inline">
-
-            {{{textos.auxText3}}}
-
-          </h5>
-
-
-          <br>
-
-          <h5 class="h3 d-inline">
-
-            {{{textos.auxText4}}}
-
-          </h5>
-
+          {{#if textos.auxText3}}<li class="h3 mb-4">{{{textos.auxText3}}}</li>{{/if}}
+          {{#if textos.auxText4}}<li class="h3 mb-4">{{{textos.auxText4}}}</li>{{/if}}
         </ul>
       </div>
     </div>
