@@ -54,7 +54,7 @@ const HOME_CARDS_NOMBRES = {
   musica: "Música",
   educacionfisica: "Educación Física",
   eventos: "Eventos",
-  "alumnos-intercambio": "Alumnos Intercambio",
+  "alumnos-intercambio": "Estudiantes de Intercambio",
   mint: "MINT",
   orientacion: "Equipo de Orientación Escolar",
   english: "English",
@@ -418,7 +418,7 @@ router.post("/landing/matricula", async (req, res) => {
   if (nombreApellido && mail && edad) {
     contentHtml = `
     <h4>Este es un mensaje autogenerado por el formulario de admisiones, a continuación se detallan los datos del mismo:</h4>
-    <p>Nombre del alumno entrante: ${nombreApellido}</p>
+    <p>Nombre del estudiante entrante: ${nombreApellido}</p>
     <p>Edad: ${edad}</p>
     <p>Nivel educativo: ${nivelEducativo}</p>
     ${sala ? `<p>Sala: ${sala}</p>` : ''}
